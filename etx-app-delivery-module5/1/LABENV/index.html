@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Lab Environment :: Developer Hub and Platform Engineering</title>
     <link rel="prev" href="../index.html">
-    <link rel="next" href="../chapter1/index.html">
+    <link rel="next" href="../chapter1/day2-devhub-overview.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
@@ -44,7 +44,7 @@
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../index.html">Home</a>
+    <a class="nav-link" href="../index.html">Developer Hub and Platform Engineering</a>
   </li>
 </ul>
   </li>
@@ -59,38 +59,15 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../chapter1/index.html">What’s in this break-fix?</a>
+    <a class="nav-link" href="../chapter1/day2-devhub-overview.html">Developer Hub</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter1/section1.html">Break-fix activity</a>
+    <a class="nav-link" href="../chapter1/day2-lab2-dh1-install-configure.html">Install and configure Red Hat Developer Hub</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter1/section2.html">Check your work</a>
+    <a class="nav-link" href="../chapter1/day2-lab2-dh2-golden-paths.html">Developer Hub: templates and integrations</a>
   </li>
 </ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <a class="nav-link" href="../chapter2/index.html">Guided solution</a>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter2/section1.html">Guided solution (page 1 of 2)</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter2/section2.html">Guided solution (page 2 of 2)</a>
-  </li>
-</ul>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="0">
-<ul class="nav-list">
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../appendix/appendix.html">Appendix</a>
   </li>
 </ul>
   </li>
@@ -133,82 +110,77 @@
 </aside>
 <article class="doc">
 <h1 class="page">Lab Environment</h1>
-<div class="sect1">
-<h2 id="_instructions_to_launch_your_lab_on_the_red_hat_demo_platform_rhdp"><a class="anchor" href="#_instructions_to_launch_your_lab_on_the_red_hat_demo_platform_rhdp"></a>Instructions to Launch Your Lab on the Red Hat Demo Platform (RHDP)</h2>
+<div id="preamble">
 <div class="sectionbody">
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p><strong>Log in</strong> to the <a href="#RHDP-Portal-Links">RHDP portal</a></p>
-</li>
-<li>
-<p><strong>Search</strong> for the catalog entry: <strong>FIXME Lab Catalog Name</strong>.</p>
-</li>
-<li>
-<p><strong>Click</strong> on the catalog entry in the search results.</p>
-</li>
-<li>
-<p>On the catalog page, <strong>click</strong> the <strong>Order</strong> button.</p>
-</li>
-<li>
-<p><strong>Fill out</strong> the required details in the order form.</p>
-</li>
-<li>
-<p><strong>Review the warning</strong> at the bottom of the form and <strong>check the box</strong> labeled:<br>
-<strong>“I confirm that I understand the above warnings.”</strong></p>
-</li>
-<li>
-<p><strong>Click</strong> the <strong>Order</strong> button to place your lab order.</p>
-</li>
-</ol>
+<div class="paragraph">
+<p>Click the <a href="https://demo.redhat.com/">RHDP</a> link above, log in to RHDP, and click <code>Order</code> to request a new <a href="https://catalog.demo.redhat.com/catalog/babylon-catalog-dev?item=babylon-catalog-dev/openshift-cnv.app-platform-factory-cnv.dev&amp;utm_source=webapp&amp;utm_medium=share-link">Service Enablement: App Platform Software Factory</a>. On the order page for the catalog item, do the following:</p>
 </div>
-<div class="sect2">
-<h3 id="_important_notes"><a class="anchor" href="#_important_notes"></a>Important Notes:</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>This lab may take approximately <strong>FIXME minutes</strong> to become ready.</p>
+<p><strong>Activity</strong>: Select <code>Practice/Enablement</code></p>
 </li>
 <li>
-<p>You will receive an <strong>email with access details</strong> once your lab environment is ready.</p>
+<p><strong>Purpose</strong>: Select <code>Learning about the Product</code></p>
 </li>
 <li>
-<p>You can also <strong>retrieve lab access</strong> directly from the RHDP portal.</p>
+<p><strong>Salesforce ID</strong>: If you have an opportunity ID, enter it into this field, otherwise select <code>Project</code>, and then enter "Learning about RHCL" in the text field. You will see a warning message that a Salesforce ID is required, but you can safely ignore it.</p>
+</li>
+<li>
+<p><strong>Features</strong>: Select <code>Enable Let&#8217;s Encrypt</code></p>
+</li>
+<li>
+<p><strong>Region</strong>: Select the AWS region closest to your location</p>
+</li>
+<li>
+<p><strong>User count</strong>: <code>1</code></p>
+</li>
+<li>
+<p><strong>Control Plane Count</strong>: <code>1</code></p>
+</li>
+<li>
+<p><strong>OpenShift Version</strong>: <code>4.16</code></p>
+</li>
+<li>
+<p><strong>Control Plane Instance Type</strong>: <code>m6a.4xlarge</code></p>
+</li>
+<li>
+<p>Select the checkbox at the bottom of the page to confirm that lab costs will be charged to your cost center, and click <code>Order</code>.</p>
 </li>
 </ul>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The lab environment will take an hour to provision. You can check the status and details of the OpenShift cluster from the <code>Services</code> page of RHDP. The classroom is available for 48 hours initially. You can extend the duration of classroom availability by clicking <code>Help &gt; Get Technical Help</code> in RHDP, and then requesting an extension by opening a ServiceNow ticket with the RHDP team.
+</td>
+</tr>
+</table>
 </div>
-<div class="sect2">
-<h3 id="_how_to_access_your_lab_via_the_rhdp_portal"><a class="anchor" href="#_how_to_access_your_lab_via_the_rhdp_portal"></a>How to Access Your Lab via the RHDP Portal:</h3>
-<div class="olist arabic">
-<ol class="arabic">
-<li>
-<p>On the RHDP portal, <strong>click</strong> on the <strong>Services</strong> option in the left-hand menu.</p>
-</li>
-<li>
-<p><strong>Select your lab</strong> from the listings on the right-hand side of the page to view access details.</p>
-</li>
-</ol>
 </div>
 </div>
-<div class="sect2">
-<h3 id="RHDP-Portal-Links"><a class="anchor" href="#RHDP-Portal-Links"></a>RHDP Portal Links</h3>
+<div class="sect1">
+<h2 id="_rhdp_portal_links"><a class="anchor" href="#_rhdp_portal_links"></a>RHDP Portal Links</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>RedHat associates: <a href="https://demo.redhat.com/" target="_blank" rel="noopener">https://demo.redhat.com/</a></p>
+<p><a href="https://demo.redhat.com/">RedHat Associates</a></p>
 </li>
 <li>
-<p>RedHat partners: <a href="https://partner.demo.redhat.com/" target="_blank" rel="noopener">https://partner.demo.redhat.com/</a></p>
+<p><a href="https://partner.demo.redhat.com/">RedHat Partners</a></p>
 </li>
 </ul>
-</div>
 </div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../index.html">Home</a></span>
-  <span class="next"><a href="../chapter1/index.html">What’s in this break-fix?</a></span>
+  <span class="prev"><a href="../index.html">Developer Hub and Platform Engineering</a></span>
+  <span class="next"><a href="../chapter1/day2-devhub-overview.html">Developer Hub</a></span>
 </nav>
 </article>
   </div>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Developer Hub: Templates and Integrations :: Developer Hub and Platform Engineering</title>
+    <link rel="prev" href="day2-lab2-dh1-install-configure.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Developer Hub and Platform Engineering</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Developer Hub and Platform Engineering</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Developer Hub and Platform Engineering</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="day2-devhub-overview.html">Developer Hub</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="day2-lab2-dh1-install-configure.html">Install and configure Red Hat Developer Hub</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="day2-lab2-dh2-golden-paths.html">Developer Hub: templates and integrations</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Developer Hub and Platform Engineering</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Developer Hub and Platform Engineering</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Developer Hub and Platform Engineering</a></li>
+    <li><a href="day2-devhub-overview.html">Developer Hub</a></li>
+    <li><a href="day2-lab2-dh2-golden-paths.html">Developer Hub: templates and integrations</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Developer Hub: Templates and Integrations</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Complete <a href="day2-lab2-dh1-install-configure.html" class="xref page">Install and configure Red Hat Developer Hub</a> before this section so you have a running instance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_overview"><a class="anchor" href="#_overview"></a>Overview</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section you will register a Golden Path or Software template that scaffolds new Quarkus projects with CI/CD
+pre-configured, integrate Dev Spaces for one-click workspace creation, and configure OpenShift OAuth for enterprise authentication.</p>
+</div>
+<div class="paragraph">
+<p>Software templates in Red Hat Developer Hub enable your team(s) to create Entities, such as new Components, and - through
+the use of "actions" provided by plugins - create resources in other systems such as your GitLab, GitHub,
+and OpenShift GitOps instances. Templates themselves are represented as Entities in the Software Catalog, meaning you can
+import them similar to any other Entity!</p>
+</div>
+<div class="paragraph">
+<p>Platform Engineers will often be the authors of Templates, and use them to create "golden paths" that follow
+best-practices and use approved processes and tooling. Development teams will be the consumers of Templates to create new
+software and automate their tasks. Using Templates reduces cognitive load on the development teams by allowing them to
+focus on development tasks, while platform concerns are addressed by the template.</p>
+</div>
+<div class="paragraph">
+<p>Templates are defined using YAML, but are rendered as a rich form in the Red Hat Developer Hub UI when used by development teams.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_register_a_golden_path_template"><a class="anchor" href="#_register_a_golden_path_template"></a>Register a Golden Path Template</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Golden Path templates provide a self-service way for developers to create new projects that follow organizational standards.</p>
+</div>
+<div class="sect2">
+<h3 id="_template_structure"><a class="anchor" href="#_template_structure"></a>Template Structure</h3>
+<div class="paragraph">
+<p>A Golden Path template consists of:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>golden-path-quarkus/
+├── template.yaml          # Template definition
+└── skeleton/
+    ├── devfile.yaml        # Dev Spaces workspace config
+    ├── pom.xml             # Quarkus project with dependencies
+    ├── src/                # Application source code
+    ├── catalog-info.yaml   # Backstage catalog entity
+    ├── tekton/             # Pipeline definitions
+    │   ├── pipeline.yaml
+    │   └── trigger.yaml
+    └── gitops/             # Argo CD manifests
+        ├── dev/
+        │   ├── deployment.yaml
+        │   ├── service.yaml
+        │   └── route.yaml
+        └── stage/
+            ├── deployment.yaml
+            ├── service.yaml
+            └── route.yaml</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_the_template_definition"><a class="anchor" href="#_create_the_template_definition"></a>Create the Template Definition</h3>
+<div class="paragraph">
+<p>Create a Git repository in GitLab to hold the template definition.:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Log into GitLab:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">{gitlab_url}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Navigate to the Software Factory group</p>
+</li>
+<li>
+<p>Create a new empty and public project: <strong>golden-path-quarkus</strong></p>
+</li>
+<li>
+<p>Uncheck the "Initialize repository with a README" checkbox.</p>
+</li>
+<li>
+<p>Clone it locally:</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cd ~/workshop
+git clone {gitlab_url}/software-factory/golden-path-quarkus.git
+cd golden-path-quarkus</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Create <code>template.yaml</code> in your Git repository:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: quarkus-golden-path
+  title: Quarkus Application (Golden Path)
+  description: |
+    Create a Quarkus application with CI/CD pipeline, GitOps deployment,
+    Dev Spaces workspace, and OpenTelemetry instrumentation pre-configured.
+  tags:
+    - quarkus
+    - java
+    - recommended
+spec:
+  owner: platform-team
+  type: service
+  parameters:
+    - title: Application Details
+      required:
+        - name
+        - owner
+      properties:
+        name:
+          title: Application Name
+          type: string
+          pattern: "^[a-z0-9-]+$"
+        description:
+          title: Description
+          type: string
+        owner:
+          title: Owner
+          type: string
+          ui:field: OwnerPicker
+
+    - title: Repository
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - {gitlab_url}
+  steps:
+    - id: fetch-skeleton
+      name: Fetch Skeleton
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          name: ${{ parameters.name }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+
+    - id: publish
+      name: Publish to GitLab
+      action: publish:gitlab
+      input:
+        repoUrl: ${{ parameters.repoUrl }}
+        description: ${{ parameters.description }}
+        defaultBranch: main
+
+    - id: register
+      name: Register in Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Open in Catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_the_catalog_entity"><a class="anchor" href="#_create_the_catalog_entity"></a>Create the Catalog Entity</h3>
+<div class="paragraph">
+<p>Add <code>catalog-info.yaml</code> to the skeleton directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.name }}
+  description: ${{ values.description }}
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: ${{ values.name }}-dev
+    janus-idp.io/tekton: ${{ values.name }}
+spec:
+  type: service
+  lifecycle: production
+  owner: ${{ values.owner }}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Commit and push the template repository:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git add .
+git commit -m "feat: initial commit"
+git push origin main</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_register_the_template_in_developer_hub"><a class="anchor" href="#_register_the_template_in_developer_hub"></a>Register the Template in Developer Hub</h3>
+<div class="paragraph">
+<p>Red Hat Developer Hub discovers Software Templates through <strong>catalog locations</strong> in <code>app-config.yaml</code>.
+After you push <code>template.yaml</code> to GitLab, add a <code>catalog</code> section that points at that file so the catalog importer
+loads your Golden Path template.
+You update the existing <code>rhdh-config</code> ConfigMap in the <code>setup-rhdh</code> namespace—the same ConfigMap created in <a href="day2-lab2-dh1-install-configure.html" class="xref page">Install and configure Red Hat Developer Hub</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open {openshift_console_url}[^] and switch to the <strong>setup-rhdh</strong> project.</p>
+</li>
+<li>
+<p>In the console, open <strong>Workloads</strong> → <strong>ConfigMaps</strong> and select <strong>rhdh-config</strong>.</p>
+</li>
+<li>
+<p>Click <strong>Actions</strong> → <strong>Edit ConfigMap</strong> and stay in <strong>YAML view</strong> (or open the <strong>Data</strong> tab and edit the <code>app-config.yaml</code> key).</p>
+</li>
+<li>
+<p>Under <code>data.app-config.yaml</code>, keep your existing <code>app</code> and <code>auth</code> settings and add the <code>catalog</code> block below.
+Do not replace the whole file—merge the new section with what is already there.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">    catalog:
+      locations:
+        - type: url
+          target: '{gitlab_url}/software-factory/golden-path-quarkus/-/raw/main/template.yaml'
+          rules:
+            - allow: [Template]</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>Save</strong> to apply the ConfigMap.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The Red Hat Developer Hub Operator rolls out the change and restarts the application pod.
+When the pod is <code>Running</code> again, open Developer Hub and confirm the template appears under menu:Create[Templates].</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/rhdh-quarkus-golden-path-template.png" target="blank"><img src="_images/rhdh-quarkus-golden-path-template.png" alt="Quarkus Golden Path template in Red Hat Developer Hub" width="700"></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integrate_with_dev_spaces"><a class="anchor" href="#_integrate_with_dev_spaces"></a>Integrate with Dev Spaces</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Add a Dev Spaces link to catalog components so developers can open a workspace directly from the component page.</p>
+</div>
+<div class="sect2">
+<h3 id="_add_the_dev_spaces_url_annotation"><a class="anchor" href="#_add_the_dev_spaces_url_annotation"></a>Add the Dev Spaces URL Annotation</h3>
+<div class="paragraph">
+<p>In the <code>catalog-info.yaml</code> skeleton, add the Dev Spaces annotation:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">metadata:
+  annotations:
+    che.eclipse.org/che-server: {devspaces_url}</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Do not forget to commit and push the changes to the Git repository.
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git add catalog-info.yaml
+git commit -m "feat: add dev spaces annotation"
+git push origin main</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When a component has this annotation, the Developer Hub UI shows a "Dev Spaces" link that opens a workspace for the component&#8217;s repository.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_the_dev_spaces_plugin"><a class="anchor" href="#_configure_the_dev_spaces_plugin"></a>Configure the Dev Spaces Plugin</h3>
+<div class="paragraph">
+<p>Add the Dev Spaces plugin configuration to <strong>rhdh-config</strong> ConfigMap. Under <code>data.app-config.yaml</code>, keep your
+existing <code>app</code>, <code>auth</code> and other settings and add the <code>devSpaces</code> block below.
+Do not replace the whole file—merge the new section with what is already there.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">    devSpaces:
+      defaultUrl: {devspaces_url}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Update the ConfigMap and wait for the pod to restart.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configure_openshift_oauth_authentication"><a class="anchor" href="#_configure_openshift_oauth_authentication"></a>Configure OpenShift OAuth Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Replace guest authentication with OpenShift OAuth for production-like access.</p>
+</div>
+<div class="sect2">
+<h3 id="_create_an_oauth_client"><a class="anchor" href="#_create_an_oauth_client"></a>Create an OAuth Client</h3>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create -f - &lt;&lt;EOF
+apiVersion: oauth.openshift.io/v1
+kind: OAuthClient
+metadata:
+  name: rhdh-oauth-client
+grantMethod: auto
+redirectURIs:
+  - https://backstage-rhdh-setup-rhdh.{openshift_cluster_ingress_domain}/api/auth/oidc/handler/frame
+secret: GENERATE_A_RANDOM_SECRET
+EOF</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can generate a random secret value using the following command:
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">node -p 'require("crypto").randomBytes(24).toString("base64")'</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_the_auth_secret"><a class="anchor" href="#_create_the_auth_secret"></a>Create the Auth Secret</h3>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create secret generic rhdh-auth-secret -n setup-rhdh \
+  --from-literal=AUTH_OIDC_CLIENT_ID=rhdh-oauth-client \
+  --from-literal=AUTH_OIDC_CLIENT_SECRET=GENERATE_A_RANDOM_SECRET \
+  --from-literal=AUTH_OIDC_METADATA_URL=https://oauth-openshift.{openshift_cluster_ingress_domain}/.well-known/openid-configuration</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_app_config"><a class="anchor" href="#_update_app_config"></a>Update app-config</h3>
+<div class="paragraph">
+<p>Replace the guest auth block with OIDC:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">    signInPage: oidc
+    auth:
+      session:
+        secret: MY_SESSION_SECRET
+      environment: production
+      providers:
+        oidc:
+          production:
+            clientId: ${AUTH_OIDC_CLIENT_ID}
+            clientSecret: ${AUTH_OIDC_CLIENT_SECRET}
+            metadataUrl: ${AUTH_OIDC_METADATA_URL}
+            prompt: auto</code></pre>
+</div>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+You can replace <code>MY_SESSION_SECRET</code> with a random value using the following command:
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">node -p 'require("crypto").randomBytes(24).toString("base64")'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Click <strong>Save</strong> and wait for the Backstage pod to restart.</p>
+</div>
+<div class="paragraph">
+<p><code>signInPage: oidc</code> shows the OpenShift sign-in flow on the login page.
+The <code>${AUTH_OIDC_*}</code> placeholders are resolved from the Secret mounted on the <code>Backstage</code> CR in the next step.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_mount_the_secret_in_the_backstage_cr"><a class="anchor" href="#_mount_the_secret_in_the_backstage_cr"></a>Mount the Secret in the Backstage CR</h3>
+<div class="paragraph">
+<p>Mount <code>rhdh-auth-secret</code> on the <code>Backstage</code> custom resource so the OIDC client ID, secret, and metadata URL are available to <code>app-config</code> as environment variables.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open {openshift_console_url}[^] and switch to the <strong>setup-rhdh</strong> project.</p>
+</li>
+<li>
+<p>Go to <strong>Ecosystem</strong> → <strong>Installed Operators</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Red Hat Developer Hub</strong>.</p>
+</li>
+<li>
+<p>Open the <strong>Backstage</strong> tab.</p>
+</li>
+<li>
+<p>Click the <strong>rhdh</strong> instance created.</p>
+</li>
+<li>
+<p>Click <strong>Actions</strong> → <strong>Edit Backstage</strong> and switch to <strong>YAML view</strong>.</p>
+</li>
+<li>
+<p>Under <code>spec.application</code>, add the <code>extraEnvs</code> block below.
+Keep the existing <code>appConfig</code> and <code>route</code> sections from the initial deployment.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">    extraEnvs:
+      secrets:
+        - name: rhdh-auth-secret</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>Save</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The Red Hat Developer Hub Operator reconciles the CR and restarts the Backstage pod.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_verify_openshift_sign_in"><a class="anchor" href="#_verify_openshift_sign_in"></a>Verify OpenShift sign-in</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Wait until the Backstage pod in <strong>setup-rhdh</strong> is <code>Running</code>.</p>
+</li>
+<li>
+<p>Open the Developer Hub route URL from the first step in this section.</p>
+</li>
+<li>
+<p>On the login page, choose <strong>OIDC</strong>.</p>
+</li>
+<li>
+<p>Sign in with your OpenShift credentials (for example <code>{user}</code> / <code>{password}</code>).</p>
+<div class="paragraph">
+<p>You should land on the Developer Hub home page authenticated as your OpenShift user, not as Guest.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The signed-in user must exist in the Software Catalog (or be mapped via your org setup) to use some catalog features. For template creation in this lab, guest access is no longer available after this change.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_test_the_golden_path"><a class="anchor" href="#_test_the_golden_path"></a>Test the Golden Path</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Developer Hub and go to menu:Create[Templates]</p>
+</li>
+<li>
+<p>Select the <strong>Quarkus Application (Golden Path)</strong> template</p>
+</li>
+<li>
+<p>Fill in the parameters (name, owner, repository location)</p>
+</li>
+<li>
+<p>Click btn:[Create]</p>
+</li>
+<li>
+<p>Verify the template:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>A new GitLab repository is created with the skeleton code</p>
+</li>
+<li>
+<p>The component is registered in the Developer Hub catalog</p>
+</li>
+<li>
+<p>The repository includes a devfile, Tekton pipeline, and GitOps manifests</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Open the component in the catalog and click the Dev Spaces link to launch a workspace</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developer Hub now provides:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Golden Path templates</strong> that scaffold complete projects with CI/CD, GitOps, and Dev Spaces pre-configured</p>
+</li>
+<li>
+<p><strong>Software Catalog</strong> with component metadata, ownership, and links to pipelines and deployments</p>
+</li>
+<li>
+<p><strong>Dev Spaces integration</strong> for one-click workspace creation from catalog components</p>
+</li>
+<li>
+<p><strong>OpenShift OAuth</strong> for enterprise authentication</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Proceed to <a href="#day2-recap.adoc" class="xref unresolved">Day 2 Recap</a>.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="day2-lab2-dh1-install-configure.html">Install and configure Red Hat Developer Hub</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>

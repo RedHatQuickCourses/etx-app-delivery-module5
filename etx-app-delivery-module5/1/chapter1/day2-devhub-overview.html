@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Developer Hub Overview :: Developer Hub and Platform Engineering</title>
+    <link rel="prev" href="../LABENV/index.html">
+    <link rel="next" href="day2-lab2-dh1-install-configure.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Developer Hub and Platform Engineering</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Developer Hub and Platform Engineering</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Developer Hub and Platform Engineering</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="day2-devhub-overview.html">Developer Hub</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="day2-lab2-dh1-install-configure.html">Install and configure Red Hat Developer Hub</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="day2-lab2-dh2-golden-paths.html">Developer Hub: templates and integrations</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Developer Hub and Platform Engineering</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Developer Hub and Platform Engineering</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Developer Hub and Platform Engineering</a></li>
+    <li><a href="day2-devhub-overview.html">Developer Hub</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Developer Hub Overview</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Technology companies developing cutting-edge software solutions are increasingly focusing on the
+<strong>Developer Experience (DevEx)</strong> to improve productivity and reduce time to market. Focusing on
+improving the developer experience has numerous advantages:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reduced cognitive load for developers</p>
+</li>
+<li>
+<p>Reduced software development costs</p>
+</li>
+<li>
+<p>Increased software delivery speed</p>
+</li>
+<li>
+<p>Increased software quality</p>
+</li>
+<li>
+<p>Reduced burnout &#8594; happier developers &#8594; reduced attrition and higher retention rate</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Developer Experience is the <strong>user experience</strong> that developers are subject to when developing applications using a platform, along with a host of supporting tools, utilities, and workflows.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>The developer experience is a major component of, and usually related to the following terms:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Internal Developer Platform (IDP)</dt>
+<dd>
+<p>The set of tools and processes that software developers use to create business capabilities, and deploy them in production.</p>
+</dd>
+<dt class="hdlist1">Platform Engineering</dt>
+<dd>
+<p>A diverse group of technology professionals - developers, system administrators, and site reliability engineers (SRE) that build, run, and maintain an internal developer platform.</p>
+</dd>
+<dt class="hdlist1">Internal Developer Portal (IDP)</dt>
+<dd>
+<p>A centralized, self-service interface where developers discover services, documentation, standards,
+ownership, and workflows needed to build and operate software efficiently.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_red_hat_developer_hub"><a class="anchor" href="#_what_is_red_hat_developer_hub"></a>What is Red Hat Developer Hub?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://developers.redhat.com/products/rhdh" target="_blank" rel="noopener">Red Hat Developer Hub</a> is an enterprise-grade internal developer portal built on the Backstage open source project.
+It provides a single pane of glass where developers can discover services, create new projects from templates, and access documentation&#8201;&#8212;&#8201;all without needing to understand the underlying infrastructure.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_an_internal_developer_portal"><a class="anchor" href="#_why_an_internal_developer_portal"></a>Why an Internal Developer Portal?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As organizations adopt microservices, GitOps, and platform engineering, developers face increasing complexity: multiple Git repositories, CI/CD tools, deployment targets, and observability platforms.
+An internal developer portal addresses this by providing:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Discoverability</strong>&#8201;&#8212;&#8201;A searchable software catalog of all services, APIs, and infrastructure components</p>
+</li>
+<li>
+<p><strong>Self-service</strong>&#8201;&#8212;&#8201;Golden Path templates that let developers create new projects with all the scaffolding pre-configured</p>
+</li>
+<li>
+<p><strong>Consistency</strong>&#8201;&#8212;&#8201;Every new project follows organizational standards for CI/CD, security, and observability</p>
+</li>
+<li>
+<p><strong>Reduced cognitive load</strong>&#8201;&#8212;&#8201;Developers interact with one portal instead of navigating dozens of tools</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_architecture"><a class="anchor" href="#_architecture"></a>Architecture</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developer Hub has several core components:</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1"><strong>Software Catalog</strong></dt>
+<dd>
+<p>A centralized registry of all software components (services, APIs, libraries, infrastructure) in the organization.
+Each component has an owner, lifecycle stage, and links to its repository, CI pipelines, and documentation.</p>
+</dd>
+<dt class="hdlist1"><strong>Golden Path Templates</strong></dt>
+<dd>
+<p>Parameterized project scaffolds that generate complete, ready-to-deploy projects.
+A template typically creates a Git repository, CI pipeline, GitOps manifests, <code>devfile</code>, and catalog registration&#8201;&#8212;&#8201;all in one click. They are also called <strong>Software Templates</strong>.</p>
+</dd>
+<dt class="hdlist1"><strong>Plugins</strong></dt>
+<dd>
+<p>Extend Developer Hub with integrations for external tools.
+Common plugins include Tekton (pipeline status), Argo CD (deployment status), Topology (OpenShift view), and Dev Spaces (launch workspace).</p>
+</dd>
+<dt class="hdlist1"><strong>TechDocs</strong></dt>
+<dd>
+<p>Documentation-as-code that renders Markdown docs alongside catalog entries.
+Developers find API documentation, runbooks, and architecture decisions in the same portal where they manage their services.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_key_concepts"><a class="anchor" href="#_key_concepts"></a>Key Concepts</h2>
+<div class="sectionbody">
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Software Catalog Entity</dt>
+<dd>
+<p>A YAML file (<code>catalog-info.yaml</code>) at the root of a repository that registers the component in the catalog.
+Defines metadata like name, owner, type, lifecycle, and relationships to other components.</p>
+</dd>
+<dt class="hdlist1">Golden Path Template</dt>
+<dd>
+<p>A <code>template.yaml</code> that defines parameters (user inputs), steps (actions to execute), and outputs (what gets created).
+Steps can create repositories, render files from skeletons, register catalog entities, and trigger pipelines.</p>
+</dd>
+<dt class="hdlist1">Plugin</dt>
+<dd>
+<p>A frontend or backend module that adds functionality to the portal.
+Red Hat Developer Hub ships with curated plugins for OpenShift ecosystem tools.</p>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_developer_hub_fits_the_software_factory"><a class="anchor" href="#_how_developer_hub_fits_the_software_factory"></a>How Developer Hub Fits the Software Factory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developer Hub ties together all the tools from Day 2 into a unified developer experience:</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Tool</th>
+<th class="tableblock halign-left valign-top">Developer Hub Integration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dev Spaces</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Launch a workspace directly from a catalog component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tekton</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">View pipeline runs and status for each component</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Argo CD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">See deployment status across environments</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitLab</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Link to source repositories and merge requests</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenTelemetry</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Access observability dashboards from the component page</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>A developer&#8217;s workflow becomes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Developer Hub</p>
+</li>
+<li>
+<p>Create a new project from a Golden Path template</p>
+</li>
+<li>
+<p>Launch a Dev Spaces workspace from the catalog</p>
+</li>
+<li>
+<p>Write code, push, and watch the pipeline run&#8201;&#8212;&#8201;all visible in the portal</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>When you are ready for the hands-on lab, proceed to <a href="#day2-lab1-environment.adoc" class="xref unresolved">Environment Overview</a> to get started.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../LABENV/index.html">Lab Environment</a></span>
+  <span class="next"><a href="day2-lab2-dh1-install-configure.html">Install and configure Red Hat Developer Hub</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>

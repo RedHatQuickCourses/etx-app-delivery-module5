@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lab 2: Install and configure Red Hat Developer Hub :: Developer Hub and Platform Engineering</title>
+    <link rel="prev" href="day2-devhub-overview.html">
+    <link rel="next" href="day2-lab2-dh2-golden-paths.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Developer Hub and Platform Engineering</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Developer Hub and Platform Engineering</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Developer Hub and Platform Engineering</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="day2-devhub-overview.html">Developer Hub</a>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="day2-lab2-dh1-install-configure.html">Install and configure Red Hat Developer Hub</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="day2-lab2-dh2-golden-paths.html">Developer Hub: templates and integrations</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Developer Hub and Platform Engineering</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Developer Hub and Platform Engineering</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Developer Hub and Platform Engineering</a></li>
+    <li><a href="day2-devhub-overview.html">Developer Hub</a></li>
+    <li><a href="day2-lab2-dh1-install-configure.html">Install and configure Red Hat Developer Hub</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lab 2: Install and configure Red Hat Developer Hub</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>After the Software Factory work in Lab 1, you need a single front door where developers discover services, templates, and links to the tools they use every day.
+Red Hat Developer Hub provides that experience on OpenShift when you pair the Red Hat Developer Hub Operator with a small <code>app-config</code> and a <code>Backstage</code> custom resource.</p>
+</div>
+<div class="paragraph">
+<p>Red Hat Developer Hub is a component of Red Hat Advanced Developer Suite that enables platform engineers to build
+internal developer portals for their organization. It is based on the <a href="https://backstage.io/" target="content">Backstage</a>
+project for building internal developer portals. This project was donated to the <a href="https://www.cncf.io/projects/backstage/" target="content">CNCF</a> by Spotify in 2020.
+Platform engineers can use Red Hat Developer Hub to build internal developer portals. Doing so involves integrating
+Red Hat Developer Hub with various data sources, cataloging existing software components, infrastructure, and resources,
+configuring authentication, and more.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_learning_objectives"><a class="anchor" href="#_learning_objectives"></a>Learning objectives</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By the end of this lab, you will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Install the Red Hat Developer Hub Operator on your cluster.</p>
+</li>
+<li>
+<p>Create a project, supply a minimal <code>app-config</code> through a ConfigMap, and deploy a <code>Backstage</code> custom resource.</p>
+</li>
+<li>
+<p>Verify pods, routes, and sign-in to Red Hat Developer Hub using the guest provider configured for lab use.</p>
+</li>
+<li>
+<p>Explain why guest authentication is restricted to non-production scenarios.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exercise_1_install_the_operator_and_create_the_setup_rhdh_project"><a class="anchor" href="#_exercise_1_install_the_operator_and_create_the_setup_rhdh_project"></a>Exercise 1: Install the Operator and create the <code>setup-rhdh</code> project</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the OpenShift web console at {openshift_console_url} and sign in with <code>{user}</code> and <code>{password}</code>.</p>
+</li>
+<li>
+<p>In the OpenShift Web Console, go to menu:Ecosystem[Software Catalog]</p>
+</li>
+<li>
+<p>Search for <strong>Red Hat Developer Hub</strong>.</p>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Make sure that you choose the <strong>Operator Backed</strong> entry from the results.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Click btn:[Install]</p>
+</li>
+<li>
+<p>Keep the operator installation namespace as <code>rhdh-operator</code></p>
+</li>
+<li>
+<p>Accept the defaults for the rest (All namespaces, Automatic approval) and click btn:[Install]</p>
+</li>
+<li>
+<p>Wait for the operator to reach the <code>Succeeded</code> phase</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>From the terminal tab, create the <code>setup-rhdh</code> the project:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">oc create namespace setup-rhdh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Expected output (namespace line may vary slightly by cluster):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>Now using project "setup-rhdh" on server "https://api.openshift.example.com:6443".</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exercise_2_create_the_rhdh_config_configmap"><a class="anchor" href="#_exercise_2_create_the_rhdh_config_configmap"></a>Exercise 2: Create the <code>rhdh-config</code> ConfigMap</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Red Hat Developer Hub reads <code>app-config</code> settings from files mounted into the application container. You store that file in a ConfigMap in the <code>setup-rhdh</code> namespace.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the console, open <strong>Workloads</strong> and <strong>ConfigMaps</strong> while <strong>setup-rhdh</strong> is selected.</p>
+</li>
+<li>
+<p>Click <strong>Create ConfigMap</strong>, switch to <strong>YAML view</strong>, replace the placeholder content, and apply the following manifest.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rhdh-config
+  namespace: setup-rhdh
+data:
+  app-config.yaml: |
+    app:
+      title: Red Hat Developer Hub
+    backend:
+      reading:
+        allow:
+          - host: 'gitlab.{openshift_cluster_ingress_domain}'
+    auth:
+      providers:
+        guest:
+          dangerouslyAllowOutsideDevelopment: true</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>backend.reading.allow</code> entry permits the Developer Hub backend to fetch catalog data and templates from `{gitlab_url}.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Guest access with <code>dangerouslyAllowOutsideDevelopment</code> is only for isolated lab environments. Do not use this pattern when the cluster reaches real data sources or production systems.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Click <strong>Create</strong> to save the ConfigMap.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_verify"><a class="anchor" href="#_verify"></a>Verify</h3>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">oc get configmap rhdh-config -n setup-rhdh -o yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Expected output (truncated):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rhdh-config
+  namespace: setup-rhdh
+...</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exercise_3_deploy_the_backstage_custom_resource"><a class="anchor" href="#_exercise_3_deploy_the_backstage_custom_resource"></a>Exercise 3: Deploy the <code>Backstage</code> custom resource</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Red Hat Developer Hub Operator watches for <code>Backstage</code> resources and reconciles PostgreSQL and application pods, routes, and mounts for your ConfigMap.
+The <code>spec.application.appConfig</code> section mounts <code>rhdh-config</code> into the Backstage container so the running instance loads <code>app-config.yaml</code>, including <code>backend.reading.allow</code> for the GitLab host at <code>{gitlab_url}</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click the plus (<strong>+</strong>) icon in the top bar and choose <strong>Import YAML</strong>.</p>
+</li>
+<li>
+<p>Paste the following manifest and select your <strong>setup-rhdh</strong> project if prompted.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">apiVersion: rhdh.redhat.com/v1alpha3
+kind: Backstage
+metadata:
+  name: rhdh
+  namespace: setup-rhdh
+spec:
+  application:
+    appConfig:
+      mountPath: /opt/app-root/src
+      configMaps:
+        - name: rhdh-config
+    route:
+      enabled: true
+  database:
+    enableLocalDb: true</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Click <strong>Create</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_verify_2"><a class="anchor" href="#_verify_2"></a>Verify</h3>
+<div class="paragraph">
+<p>Watch the pods until PostgreSQL and the main Backstage pod report <code>Running</code> and ready:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">oc get pods -n setup-rhdh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Expected output (names and ages will differ):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>NAME                          READY   STATUS    RESTARTS   AGE
+backstage-rhdh-xxxxxxxx-xx    1/1     Running   0          2m
+postgresql-xxxxxxxx-xx        1/1     Running   0          3m</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check the custom resource and route:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">oc get backstage -n setup-rhdh</code></pre>
+</div>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">oc get route backstage-rhdh -n setup-rhdh -o jsonpath='https://{.spec.host}{"\n"}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Expected route list includes an entry for the Developer Hub host with port 443.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_exercise_4_open_red_hat_developer_hub_and_sign_in"><a class="anchor" href="#_exercise_4_open_red_hat_developer_hub_and_sign_in"></a>Exercise 4: Open Red Hat Developer Hub and sign in</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open <strong>Networking</strong> and <strong>Routes</strong> for project <code>setup-rhdh</code>.</p>
+</li>
+<li>
+<p>Click the <strong>Location</strong> URL for the Developer Hub route, or use the <strong>Developer Hub</strong> tab in the Showroom UI if it is configured for your environment.</p>
+<div class="paragraph">
+<p>If you see <strong>Application is not available</strong>, wait one minute and refresh. Pods may still be completing readiness checks.</p>
+</div>
+</li>
+<li>
+<p>On the sign-in screen, choose <strong>Guest</strong>.</p>
+<div class="paragraph">
+<p>You should land on the home page signed in as a guest user.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/rhdh-guest-home.png" target="blank"><img src="_images/rhdh-guest-home.png" alt="Red Hat Developer Hub home after guest sign-in" width="700"></a>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_verify_3"><a class="anchor" href="#_verify_3"></a>Verify</h3>
+<div class="paragraph">
+<p>Confirm you can load the UI and that the browser shows Red Hat Developer Hub with <strong>Guest</strong> context.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_troubleshooting"><a class="anchor" href="#_troubleshooting"></a>Troubleshooting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Issue</strong>: Pods stay in <code>CrashLoopBackOff</code> for the Backstage workload.
+<strong>Solution</strong>: List pods with <code>oc get pods -n setup-rhdh</code>, run <code>oc describe pod &lt;pod-name&gt; -n setup-rhdh</code> on the Backstage pod, and confirm the ConfigMap mounted without typos. Ensure <code>app-config</code> URLs match your route hostname.</p>
+</div>
+<div class="paragraph">
+<p><strong>Issue</strong>: Route returns 503 or application not available.
+<strong>Solution</strong>: Wait for readiness probes to pass. Check <code>oc get pods -n setup-rhdh</code> until both pods are ready.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_learning_outcomes_checkpoint"><a class="anchor" href="#_learning_outcomes_checkpoint"></a>Learning outcomes checkpoint</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before you leave this lab, confirm you can:</p>
+</div>
+<div class="ulist checklist">
+<ul class="checklist">
+<li>
+<p><i class="fa fa-square-o"></i> Explain how a portal complements the Software Factory capabilities from Lab 1.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> List the main resources you created (<code>Project</code>, <code>ConfigMap</code>, <code>Backstage</code> CR) and what each one does.</p>
+</li>
+<li>
+<p><i class="fa fa-square-o"></i> Contrast guest access with enterprise authentication for real environments.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You deployed Red Hat Developer Hub using the Operator, a minimal <code>app-config</code> in a ConfigMap, and a <code>Backstage</code> custom resource in the <code>setup-rhdh</code> namespace.</p>
+</div>
+<div class="paragraph">
+<p><strong>Next steps</strong></p>
+</div>
+<div class="paragraph">
+<p>Connect Red Hat Developer Hub to Git providers, identity providers, and GitOps so catalogs and templates reflect your toolchain. See <a href="https://docs.redhat.com/en/documentation/red_hat_developer_hub/" target="_blank" rel="noopener">Red Hat Developer Hub documentation</a> for supported integrations and security guidance.</p>
+</div>
+<div class="paragraph">
+<p>For Golden Path templates, Dev Spaces integration, and authentication configuration, continue with <a href="day2-lab2-dh2-golden-paths.html" class="xref page">Developer Hub: templates and integrations</a>.</p>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="day2-devhub-overview.html">Developer Hub</a></span>
+  <span class="next"><a href="day2-lab2-dh2-golden-paths.html">Developer Hub: templates and integrations</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>
