@@ -1,6 +1,6 @@
 site:
-  title: FIXME Course Title
-  start_page: REPLACEREPONAME::index.adoc
+  title: Developer Hub and Platform Engineering
+  start_page: etx-app-delivery-module5::index.adoc
 
 content:
   sources:
