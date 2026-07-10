@@ -1,12 +1,51 @@
-= An Example Break-fix course
+= Developer Hub and Platform Engineering
 :navtitle: Home
 
 == Introduction
 
-TITLE1: Red Hat Enterprise Linux 9 (FIXME product)
+Welcome to this quick course on the _**Developer Hub and Platform Engineering**_.
+This course is the `fifth` in a series of `six` courses about **Application Platform Delivery**:
 
-TITLE2: Break-fix Practice 1 (FIXME title)
+* https://link[_Foundations: Developer Experience and GitOps Workflows_, window=browser]
+* https://link[_Cloud-Native Development with Dev Spaces_, window=browser]
+* https://link[_Software Factory and CI/CD_, window=browser]
+* https://link[_Application Modernization_, window=browser]
+* _Developer Hub and Platform Engineering_(_This course_)
+* https://link[_Trusted Software Supply Chain (TSSC)_, window=browser]
 
-Description:
-This break-fix training simulates a problem FIXME . You'll investigate and solve the problem in a hands-on lab environment to complete the training.
+== What's in this course?
 
+This training provides a comprehensive understanding of a modern Software Factory and its role in automating the software delivery lifecycle. Participants will learn how supporting services, Continuous Integration (CI), OpenShift Pipelines (Tekton), Continuous Delivery (CD), and promotion pipelines work together to build, validate, deploy, and promote applications across environments. By the end of the training, learners will understand how to implement standardized, automated, and GitOps-driven software delivery workflows on Red Hat OpenShift, enabling faster, more secure, and reliable application delivery.
+
+Duration: 2.00 hours
+
+== Contributors
+
+The PTL team acknowledges the valuable contributions of the following Red Hat associates:
+
+* .. (SME)
+* .. (SME)
+* Yogita Soni (Content Architect)
+* Anna Swicegood (Learning Product Manager)
+
+== Objectives
+
+On completing this course, you should be able to:
+
+Based on the section index, here are concise learning objectives:
+
+### Learning Objectives
+
+By the end of this module, you will be able to:
+
+* Integrate Dev Spaces with GitLab to enable source code management and developer workflows.
+* Create and use Dev Spaces workspaces for cloud-native application development.
+* Understand how Continuous Integration (CI) pipelines are triggered and executed from developer workspaces.
+* Deploy applications to OpenShift using automated delivery workflows.
+* Explain the role of promotion pipelines in advancing applications across development, testing, and production environments.
+
+== Prerequisites
+
+This course assumes that you have the following prior experience:
+
+1. https://training-lms.redhat.com/lmt/clmscoursedetails.prmain?in_sessionId=5034892A2J492834&in_selfContained=N&in_offeringId=57857955&in_tab_group=&in_from_module=CLMSBROWSEV2.PRMAIN[Red Hat OpenShift Container Platform (OCP) Technical Overview] or Kubernetes Basics

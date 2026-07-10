@@ -1,0 +1,385 @@
+= Developer Hub: Templates and Integrations
+:navtitle: Developer Hub: templates and integrations
+
+Complete xref:day2-lab2-dh1-install-configure.adoc[Install and configure Red Hat Developer Hub] before this section so you have a running instance.
+
+== Overview
+
+In this section you will register a Golden Path or Software template that scaffolds new Quarkus projects with CI/CD
+pre-configured, integrate Dev Spaces for one-click workspace creation, and configure OpenShift OAuth for enterprise authentication.
+
+Software templates in Red Hat Developer Hub enable your team(s) to create Entities, such as new Components, and - through
+the use of "actions" provided by plugins - create resources in other systems such as your GitLab, GitHub,
+and OpenShift GitOps instances. Templates themselves are represented as Entities in the Software Catalog, meaning you can
+import them similar to any other Entity!
+
+Platform Engineers will often be the authors of Templates, and use them to create "golden paths" that follow
+best-practices and use approved processes and tooling. Development teams will be the consumers of Templates to create new
+software and automate their tasks. Using Templates reduces cognitive load on the development teams by allowing them to
+focus on development tasks, while platform concerns are addressed by the template.
+
+Templates are defined using YAML, but are rendered as a rich form in the Red Hat Developer Hub UI when used by development teams.
+
+== Register a Golden Path Template
+
+Golden Path templates provide a self-service way for developers to create new projects that follow organizational standards.
+
+=== Template Structure
+
+A Golden Path template consists of:
+
+----
+golden-path-quarkus/
+├── template.yaml          # Template definition
+└── skeleton/
+    ├── devfile.yaml        # Dev Spaces workspace config
+    ├── pom.xml             # Quarkus project with dependencies
+    ├── src/                # Application source code
+    ├── catalog-info.yaml   # Backstage catalog entity
+    ├── tekton/             # Pipeline definitions
+    │   ├── pipeline.yaml
+    │   └── trigger.yaml
+    └── gitops/             # Argo CD manifests
+        ├── dev/
+        │   ├── deployment.yaml
+        │   ├── service.yaml
+        │   └── route.yaml
+        └── stage/
+            ├── deployment.yaml
+            ├── service.yaml
+            └── route.yaml
+----
+
+=== Create the Template Definition
+
+Create a Git repository in GitLab to hold the template definition.:
+
+. Log into GitLab:
++
+[source,text,subs="attributes+"]
+----
+{gitlab_url}
+----
++
+. Navigate to the Software Factory group
+. Create a new empty and public project: *golden-path-quarkus* 
+. Uncheck the "Initialize repository with a README" checkbox.
+. Clone it locally:
++
+[source,bash,role=execute,subs="attributes+"]
+----
+cd ~/workshop
+git clone {gitlab_url}/software-factory/golden-path-quarkus.git
+cd golden-path-quarkus
+----
+
+Create `template.yaml` in your Git repository:
+
+[source,yaml,subs="attributes+"]
+----
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: quarkus-golden-path
+  title: Quarkus Application (Golden Path)
+  description: |
+    Create a Quarkus application with CI/CD pipeline, GitOps deployment,
+    Dev Spaces workspace, and OpenTelemetry instrumentation pre-configured.
+  tags:
+    - quarkus
+    - java
+    - recommended
+spec:
+  owner: platform-team
+  type: service
+  parameters:
+    - title: Application Details
+      required:
+        - name
+        - owner
+      properties:
+        name:
+          title: Application Name
+          type: string
+          pattern: "^[a-z0-9-]+$"
+        description:
+          title: Description
+          type: string
+        owner:
+          title: Owner
+          type: string
+          ui:field: OwnerPicker
+
+    - title: Repository
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - {gitlab_url}
+  steps:
+    - id: fetch-skeleton
+      name: Fetch Skeleton
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          name: ${{ parameters.name }}
+          description: ${{ parameters.description }}
+          owner: ${{ parameters.owner }}
+
+    - id: publish
+      name: Publish to GitLab
+      action: publish:gitlab
+      input:
+        repoUrl: ${{ parameters.repoUrl }}
+        description: ${{ parameters.description }}
+        defaultBranch: main
+
+    - id: register
+      name: Register in Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps['publish'].output.repoContentsUrl }}
+        catalogInfoPath: /catalog-info.yaml
+
+  output:
+    links:
+      - title: Repository
+        url: ${{ steps['publish'].output.remoteUrl }}
+      - title: Open in Catalog
+        icon: catalog
+        entityRef: ${{ steps['register'].output.entityRef }}
+----
+
+=== Create the Catalog Entity
+
+Add `catalog-info.yaml` to the skeleton directory:
+
+[source,yaml]
+----
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ${{ values.name }}
+  description: ${{ values.description }}
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    argocd/app-name: ${{ values.name }}-dev
+    janus-idp.io/tekton: ${{ values.name }}
+spec:
+  type: service
+  lifecycle: production
+  owner: ${{ values.owner }}
+----
+
+Commit and push the template repository:
+
+[source,bash,role=execute]
+----
+git add .
+git commit -m "feat: initial commit"
+git push origin main
+----
+
+=== Register the Template in Developer Hub
+
+Red Hat Developer Hub discovers Software Templates through *catalog locations* in `app-config.yaml`.
+After you push `template.yaml` to GitLab, add a `catalog` section that points at that file so the catalog importer
+loads your Golden Path template.
+You update the existing `rhdh-config` ConfigMap in the `setup-rhdh` namespace—the same ConfigMap created in xref:day2-lab2-dh1-install-configure.adoc[Install and configure Red Hat Developer Hub].
+
+. Open {openshift_console_url}[^] and switch to the *setup-rhdh* project.
+. In the console, open **Workloads** → **ConfigMaps** and select *rhdh-config*.
+. Click **Actions** → *Edit ConfigMap* and stay in **YAML view** (or open the **Data** tab and edit the `app-config.yaml` key).
+. Under `data.app-config.yaml`, keep your existing `app` and `auth` settings and add the `catalog` block below.
+  Do not replace the whole file—merge the new section with what is already there.
++
+[source,yaml,subs="attributes+"]
+----
+    catalog:
+      locations:
+        - type: url
+          target: '{gitlab_url}/software-factory/golden-path-quarkus/-/raw/main/template.yaml'
+          rules:
+            - allow: [Template]
+----
++
+. Click **Save** to apply the ConfigMap.
+
+The Red Hat Developer Hub Operator rolls out the change and restarts the application pod.
+When the pod is `Running` again, open Developer Hub and confirm the template appears under menu:Create[Templates].
+
+image::rhdh-quarkus-golden-path-template.png[Quarkus Golden Path template in Red Hat Developer Hub,link=self,window=blank,width=700]
+
+== Integrate with Dev Spaces
+
+Add a Dev Spaces link to catalog components so developers can open a workspace directly from the component page.
+
+=== Add the Dev Spaces URL Annotation
+
+In the `catalog-info.yaml` skeleton, add the Dev Spaces annotation:
+
+[source,yaml,subs="attributes+"]
+----
+metadata:
+  annotations:
+    che.eclipse.org/che-server: {devspaces_url}
+----
+
+WARNING: Do not forget to commit and push the changes to the Git repository.
+
+[source,bash,role=execute]
+----
+git add catalog-info.yaml
+git commit -m "feat: add dev spaces annotation"
+git push origin main
+----
+
+When a component has this annotation, the Developer Hub UI shows a "Dev Spaces" link that opens a workspace for the component's repository.
+
+=== Configure the Dev Spaces Plugin
+
+Add the Dev Spaces plugin configuration to *rhdh-config* ConfigMap. Under `data.app-config.yaml`, keep your
+existing `app`, `auth` and other settings and add the `devSpaces` block below.
+Do not replace the whole file—merge the new section with what is already there.
+
+[source,yaml,subs="attributes+"]
+----
+    devSpaces:
+      defaultUrl: {devspaces_url}
+----
+
+Update the ConfigMap and wait for the pod to restart.
+
+== Configure OpenShift OAuth Authentication
+
+Replace guest authentication with OpenShift OAuth for production-like access.
+
+=== Create an OAuth Client
+
+[source,bash,role=execute,subs="attributes+"]
+----
+oc create -f - <<EOF
+apiVersion: oauth.openshift.io/v1
+kind: OAuthClient
+metadata:
+  name: rhdh-oauth-client
+grantMethod: auto
+redirectURIs:
+  - https://backstage-rhdh-setup-rhdh.{openshift_cluster_ingress_domain}/api/auth/oidc/handler/frame
+secret: GENERATE_A_RANDOM_SECRET
+EOF
+----
+
+TIP: You can generate a random secret value using the following command:
+[source,bash,role=execute,subs="attributes+"]
+----
+node -p 'require("crypto").randomBytes(24).toString("base64")'
+----
+
+=== Create the Auth Secret
+
+[source,bash,role=execute,subs="attributes+"]
+----
+oc create secret generic rhdh-auth-secret -n setup-rhdh \
+  --from-literal=AUTH_OIDC_CLIENT_ID=rhdh-oauth-client \
+  --from-literal=AUTH_OIDC_CLIENT_SECRET=GENERATE_A_RANDOM_SECRET \
+  --from-literal=AUTH_OIDC_METADATA_URL=https://oauth-openshift.{openshift_cluster_ingress_domain}/.well-known/openid-configuration
+----
+
+=== Update app-config
+
+Replace the guest auth block with OIDC:
+
+[source,yaml]
+----
+    signInPage: oidc
+    auth:
+      session:
+        secret: MY_SESSION_SECRET
+      environment: production
+      providers:
+        oidc:
+          production:
+            clientId: ${AUTH_OIDC_CLIENT_ID}
+            clientSecret: ${AUTH_OIDC_CLIENT_SECRET}
+            metadataUrl: ${AUTH_OIDC_METADATA_URL}
+            prompt: auto
+----
+
+TIP: You can replace `MY_SESSION_SECRET` with a random value using the following command:
+
+[source,bash,role=execute,subs="attributes+"]
+----
+node -p 'require("crypto").randomBytes(24).toString("base64")'
+----
+
+Click **Save** and wait for the Backstage pod to restart.
+
+`signInPage: oidc` shows the OpenShift sign-in flow on the login page.
+The `${AUTH_OIDC_*}` placeholders are resolved from the Secret mounted on the `Backstage` CR in the next step.
+
+=== Mount the Secret in the Backstage CR
+
+Mount `rhdh-auth-secret` on the `Backstage` custom resource so the OIDC client ID, secret, and metadata URL are available to `app-config` as environment variables.
+
+. Open {openshift_console_url}[^] and switch to the *setup-rhdh* project.
+. Go to **Ecosystem** → **Installed Operators**.
+. Select *Red Hat Developer Hub*.
+. Open the **Backstage** tab.
+. Click the *rhdh* instance created.
+. Click **Actions** → *Edit Backstage* and switch to **YAML view**.
+. Under `spec.application`, add the `extraEnvs` block below.
+  Keep the existing `appConfig` and `route` sections from the initial deployment.
++
+[source,yaml]
+----
+    extraEnvs:
+      secrets:
+        - name: rhdh-auth-secret
+----
++
+. Click **Save**.
+
+The Red Hat Developer Hub Operator reconciles the CR and restarts the Backstage pod.
+
+=== Verify OpenShift sign-in
+
+. Wait until the Backstage pod in *setup-rhdh* is `Running`.
+. Open the Developer Hub route URL from the first step in this section.
+. On the login page, choose *OIDC*.
+. Sign in with your OpenShift credentials (for example `{user}` / `{password}`).
++
+You should land on the Developer Hub home page authenticated as your OpenShift user, not as Guest.
+
+IMPORTANT: The signed-in user must exist in the Software Catalog (or be mapped via your org setup) to use some catalog features. For template creation in this lab, guest access is no longer available after this change.
+
+== Test the Golden Path
+
+. Open Developer Hub and go to menu:Create[Templates]
+. Select the *Quarkus Application (Golden Path)* template
+. Fill in the parameters (name, owner, repository location)
+. Click btn:[Create]
+. Verify the template:
+  * A new GitLab repository is created with the skeleton code
+  * The component is registered in the Developer Hub catalog
+  * The repository includes a devfile, Tekton pipeline, and GitOps manifests
+. Open the component in the catalog and click the Dev Spaces link to launch a workspace
+
+== Summary
+
+Developer Hub now provides:
+
+* *Golden Path templates* that scaffold complete projects with CI/CD, GitOps, and Dev Spaces pre-configured
+* *Software Catalog* with component metadata, ownership, and links to pipelines and deployments
+* *Dev Spaces integration* for one-click workspace creation from catalog components
+* *OpenShift OAuth* for enterprise authentication
+
+== Next Steps
+
+Proceed to xref:day2-recap.adoc[Day 2 Recap].

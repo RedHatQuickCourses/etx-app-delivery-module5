@@ -1,21 +1,23 @@
-= What’s in this break-fix?
+:imagesdir: ../images
 
-== In this break-fix:
+= Software Factory Overview
+:navtitle: Software Factory Overview
 
-**Type of issue:**
+== Overview
 
-FIXME: Describe an issue type/category that this specific issue falls into, like, "A Red Hat Enterprise Linux 7 system won't boot after a kernel update." Save issue-specific details for the break-fix scenario page.
+Modern software development requires teams to deliver applications rapidly without compromising quality, security, or reliability. A Software Factory provides a standardized platform that automates the software delivery lifecycle, enabling developers to focus on writing code while the platform handles repetitive operational tasks.
 
+A Software Factory combines development tools, CI/CD automation, security scanning, artifact management, GitOps, and platform services into an integrated ecosystem. Instead of each team building and maintaining its own delivery process, the Software Factory offers reusable capabilities that promote consistency and reduce operational overhead.
 
+A typical Software Factory includes source code management, developer workspaces, continuous integration pipelines, container registries, artifact repositories, security and compliance tools, GitOps-based deployment, and an application platform such as Red Hat OpenShift.
 
-**What you should already know:**
+By adopting a Software Factory, organizations can standardize development practices, accelerate application delivery, improve collaboration between development and platform teams, and ensure applications are deployed securely and consistently across environments.
 
-FIXME: This training assumes that you are a Red Hat Certified System Administrator (RHCSA) or have equivalent experience administrating Red Hat Enterprise Linux 7 or 8. FIXME - update this as needed
+== Key Benefits
 
-
-**How break-fix training works:**
-
-. Challenge yourself in the break-fix activity. It describes a problem scenario that's simulated in the lab environment where you can investigate and solve the problem.
-. Follow up with the guided solution:
-.. If you weren't able to solve the problem on your own, read and follow the instructions in the Guided Solution to complete this training.
-.. If you were successful in solving the problem, read the solution for useful tips you can apply when solving similar problems.
+* Standardized development workflows
+* Faster software delivery
+* Improved collaboration
+* Automated quality and security checks
+* Consistent deployments across environments
+* Reduced operational complexity

@@ -1,27 +1,21 @@
 = Lab Environment
 
-== Instructions to Launch Your Lab on the Red Hat Demo Platform (RHDP)
+Click the https://demo.redhat.com/[RHDP] link above, log in to RHDP, and click `Order` to request a new https://catalog.demo.redhat.com/catalog/babylon-catalog-dev?item=babylon-catalog-dev/openshift-cnv.app-platform-factory-cnv.dev&utm_source=webapp&utm_medium=share-link[Service Enablement: App Platform Software Factory]. On the order page for the catalog item, do the following:
 
-. **Log in** to the xref:#RHDP-Portal-Links[RHDP portal]
-. **Search** for the catalog entry: **FIXME Lab Catalog Name**.
-. **Click** on the catalog entry in the search results.
-. On the catalog page, **click** the **Order** button.
-. **Fill out** the required details in the order form.
-. **Review the warning** at the bottom of the form and **check the box** labeled: +
-   *“I confirm that I understand the above warnings.”*
-. **Click** the **Order** button to place your lab order.
+* *Activity*: Select `Practice/Enablement`
+* *Purpose*: Select `Learning about the Product`
+* *Salesforce ID*: If you have an opportunity ID, enter it into this field, otherwise select `Project`, and then enter "Learning about RHCL" in the text field. You will see a warning message that a Salesforce ID is required, but you can safely ignore it.
+* *Features*: Select `Enable Let's Encrypt`
+* *Region*: Select the AWS region closest to your location
+* *User count*: `1`
+* *Control Plane Count*: `1`
+* *OpenShift Version*: `4.16`
+* *Control Plane Instance Type*: `m6a.4xlarge`
 
-=== Important Notes:
-- This lab may take approximately **FIXME minutes** to become ready.
-- You will receive an **email with access details** once your lab environment is ready.
-- You can also **retrieve lab access** directly from the RHDP portal.
+* Select the checkbox at the bottom of the page to confirm that lab costs will be charged to your cost center, and click `Order`.
 
-=== How to Access Your Lab via the RHDP Portal:
-. On the RHDP portal, **click** on the **Services** option in the left-hand menu.
-. **Select your lab** from the listings on the right-hand side of the page to view access details.
+NOTE: The lab environment will take an hour to provision. You can check the status and details of the OpenShift cluster from the `Services` page of RHDP. The classroom is available for 48 hours initially. You can extend the duration of classroom availability by clicking `Help > Get Technical Help` in RHDP, and then requesting an extension by opening a ServiceNow ticket with the RHDP team.
 
-[[RHDP-Portal-Links]]
-=== RHDP Portal Links
-- RedHat associates: https://demo.redhat.com/[https://demo.redhat.com/,window=_blank]
-- RedHat partners: https://partner.demo.redhat.com/[https://partner.demo.redhat.com/,window=_blank]
-
+== RHDP Portal Links
+* https://demo.redhat.com/[RedHat Associates]
+* https://partner.demo.redhat.com/[RedHat Partners]
