@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Modernizing Applications with Migration Toolkit for Applications :: Developer Hub and Platform Engineering</title>
+    <link rel="prev" href="../LABENV/index.html">
+    <link rel="next" href="components.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Developer Hub and Platform Engineering</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Application Modernization</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Application Modernization</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MTA Overview</span>
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="index.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components.html">MTA at Scale</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lightspeed.html">Developer Lightspeed for MTA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hands-on Lab</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="scenerio.html">Lab Scenario</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab1.html"> Application Modernization with MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab2.html">Migrate Application with Developer Lightspeed</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="summary.html">Summary and What&#8217;s Next?</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Application Modernization</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Application Modernization</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Application Modernization</a></li>
+    <li>MTA Overview</li>
+    <li><a href="index.html">Introduction</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Modernizing Applications with Migration Toolkit for Applications</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Many organizations already have large portfolios of existing applications built on traditional application servers and legacy frameworks. While these applications continue to provide business value, they can become increasingly difficult to maintain, scale, and deploy in modern Kubernetes environments.</p>
+</div>
+<div class="paragraph">
+<p>In this lesson, you&#8217;ll learn how the <strong><a href="https://developers.redhat.com/products/mta">Red Hat Migration Toolkit for Applications (MTA)</a></strong> helps organizations assess, plan, and modernize existing applications so they can take advantage of cloud-native platforms such as Red Hat OpenShift.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+Think about the applications running in your own organization. Which ones would benefit most from modernization?
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_modernize_applications"><a class="anchor" href="#_why_modernize_applications"></a>Why Modernize Applications?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Application modernization is the process of updating existing applications to use modern runtimes, frameworks, and deployment models without necessarily rewriting them from scratch.</p>
+</div>
+<div class="paragraph">
+<p>Organizations modernize applications to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Accelerate software delivery</p>
+</li>
+<li>
+<p>Improve developer productivity</p>
+</li>
+<li>
+<p>Reduce operational and maintenance costs</p>
+</li>
+<li>
+<p>Simplify security updates and compliance</p>
+</li>
+<li>
+<p>Prepare applications for containers and Kubernetes</p>
+</li>
+<li>
+<p>Adopt modern cloud-native development practices</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Modernization is not always about rewriting an application. Many organizations achieve significant value by incrementally modernizing existing applications while preserving their business logic.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_what_is_migration_toolkit_for_applications"><a class="anchor" href="#_what_is_migration_toolkit_for_applications"></a>What is Migration Toolkit for Applications?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong><a href="https://developers.redhat.com/products/mta">Red Hat Migration Toolkit for Applications (MTA)</a></strong> is a Red Hat solution that helps organizations analyze existing applications and identify the changes required to migrate them to modern runtimes and platforms.</p>
+</div>
+<div class="paragraph">
+<p>Rather than manually reviewing thousands of source files, MTA automatically scans an application and produces detailed migration guidance, allowing development teams to modernize applications in a predictable and repeatable way.</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta.png" alt="mta" width="500">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_mta_helps_modernize_applications"><a class="anchor" href="#_how_mta_helps_modernize_applications"></a>How MTA Helps Modernize Applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>MTA provides several capabilities that simplify application modernization.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Capability</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application Analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scans application source code, configuration files, and dependencies to identify migration issues.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Migration Rules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uses pre-built rule sets to detect changes required for different migration targets, frameworks, and runtimes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Portfolio Assessment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Analyzes multiple applications to help organizations prioritize modernization efforts across large application portfolios.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web Console</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides a centralized interface for managing modernization projects, reviewing reports, and tracking migration progress.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CLI</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows developers and CI/CD pipelines to perform automated application analysis as part of the software delivery workflow.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_modernization_strategies"><a class="anchor" href="#_modernization_strategies"></a>Modernization Strategies</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Not every application requires the same level of modernization.</p>
+</div>
+<div class="paragraph">
+<p>Depending on business requirements, organizations typically adopt one of the following approaches.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Strategy</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rehost</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move an application to a new infrastructure with little or no code changes. The application architecture remains unchanged.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Replatform</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Move the application to containers and OpenShift with minimal code modifications while adopting a supported runtime.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Refactor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Redesign the application to adopt cloud-native architectures such as microservices, event-driven services, or modern Java frameworks like Quarkus.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/path.png" alt="path" width="500">
+</div>
+</div>
+<div class="paragraph">
+<p>As modernization effort increases, organizations gain greater flexibility, scalability, and cloud-native capabilities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_supported_red_hat_runtimes"><a class="anchor" href="#_supported_red_hat_runtimes"></a>Supported Red Hat Runtimes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After modernization, applications typically run on one of Red Hat&#8217;s supported runtimes.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Runtime</th>
+<th class="tableblock halign-left valign-top">Typical Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red Hat build of Quarkus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Build modern Kubernetes-native Java applications with fast startup and low memory consumption.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JBoss Enterprise Application Platform (EAP)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run enterprise Jakarta EE applications with long-term support.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red Hat build of Spring Boot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Develop modern Spring Boot applications with enterprise support from Red Hat.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Node.js, .NET, and Go Runtimes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Support modernization across polyglot application environments.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mta_in_the_software_factory"><a class="anchor" href="#_mta_in_the_software_factory"></a>MTA in the Software Factory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Application modernization is another stage within the Software Factory.</p>
+</div>
+<div class="paragraph">
+<p>Instead of creating a new application, developers begin with an existing application and use MTA to prepare it for modern application platforms.</p>
+</div>
+<div class="paragraph">
+<p>The modernization workflow follows these steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Analyze the legacy application using MTA.</p>
+</li>
+<li>
+<p>Review migration reports and recommended code changes.</p>
+</li>
+<li>
+<p>Modernize the application to use a supported runtime.</p>
+</li>
+<li>
+<p>Commit the updated source code to Git.</p>
+</li>
+<li>
+<p>Build and validate the application using the existing CI pipeline.</p>
+</li>
+<li>
+<p>Deploy the application through the GitOps workflow.</p>
+</li>
+<li>
+<p>Continue operating the application using the same Software Factory used for cloud-native applications.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>This allows organizations to modernize existing applications while continuing to use the same standardized development and deployment processes.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Migration Toolkit for Applications does not automatically rewrite applications. Instead, it analyzes existing applications, identifies migration issues, and provides actionable guidance that helps development teams modernize applications efficiently.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reflection"><a class="anchor" href="#_reflection"></a>Reflection</h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Think about your own organization (Click to expand)</summary>
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Which applications are the best candidates for modernization?</p>
+</li>
+<li>
+<p>Would they require rehosting, replatforming, or refactoring?</p>
+</li>
+<li>
+<p>How could automated migration analysis reduce modernization effort?</p>
+</li>
+<li>
+<p>How would integrating MTA into your Software Factory improve software delivery?</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_check_your_understanding"><a class="anchor" href="#_check_your_understanding"></a>Check Your Understanding</h2>
+<div class="sectionbody">
+<details>
+<summary class="title">Quiz Time! (Click to expand)</summary>
+<div class="content">
+<div class="paragraph">
+<p>Which statement best describes the purpose of Migration Toolkit for Applications?</p>
+</div>
+<div class="olist upperalpha">
+<ol class="upperalpha" type="A">
+<li>
+<p>Automatically converts any application into a microservice.</p>
+</li>
+<li>
+<p>Analyzes existing applications, identifies migration issues, and provides guidance for modernization.</p>
+</li>
+<li>
+<p>Replaces CI/CD pipelines during software delivery.</p>
+</li>
+<li>
+<p>Deploys applications directly to OpenShift.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Answer</strong></p>
+</div>
+<div class="paragraph">
+<p><strong>B</strong> — MTA analyzes applications, identifies migration issues, estimates modernization effort, and provides recommendations to help development teams modernize applications.</p>
+</div>
+</div>
+</details>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="../LABENV/index.html">Lab Environment</a></span>
+  <span class="next"><a href="components.html">MTA at Scale</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>

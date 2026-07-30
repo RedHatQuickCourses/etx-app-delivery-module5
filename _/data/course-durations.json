@@ -1,11 +1,11 @@
 {
-  "totalSeconds": 781,
-  "pageCount": 5,
+  "totalSeconds": 866,
+  "pageCount": 9,
   "pages": [
     {
       "module": "ROOT",
       "page": "index.adoc",
-      "seconds": 92
+      "seconds": 90
     },
     {
       "module": "LABENV",
@@ -13,19 +13,39 @@
       "seconds": 68
     },
     {
-      "module": "chapter1",
-      "page": "day2-devhub-overview.adoc",
-      "seconds": 185
+      "module": "chapter0",
+      "page": "index.adoc",
+      "seconds": 188
     },
     {
-      "module": "chapter1",
-      "page": "day2-lab2-dh1-install-configure.adoc",
-      "seconds": 182
+      "module": "chapter0",
+      "page": "components.adoc",
+      "seconds": 160
     },
     {
-      "module": "chapter1",
-      "page": "day2-lab2-dh2-golden-paths.adoc",
-      "seconds": 254
+      "module": "chapter0",
+      "page": "lightspeed.adoc",
+      "seconds": 104
+    },
+    {
+      "module": "chapter0",
+      "page": "scenerio.adoc",
+      "seconds": 81
+    },
+    {
+      "module": "chapter0",
+      "page": "lab1.adoc",
+      "seconds": 105
+    },
+    {
+      "module": "chapter0",
+      "page": "lab2.adoc",
+      "seconds": 69
+    },
+    {
+      "module": "chapter0",
+      "page": "summary.adoc",
+      "seconds": 1
     }
   ]
 }
