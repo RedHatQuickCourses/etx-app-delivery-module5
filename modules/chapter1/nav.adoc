@@ -1,3 +1,0 @@
-* xref:day2-devhub-overview.adoc[Developer Hub]
-** xref:day2-lab2-dh1-install-configure.adoc[Install and configure Red Hat Developer Hub]
-** xref:day2-lab2-dh2-golden-paths.adoc[Developer Hub: templates and integrations]

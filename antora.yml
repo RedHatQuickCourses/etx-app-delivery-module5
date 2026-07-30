@@ -1,7 +1,7 @@
 name: etx-app-delivery-module5
-title: Developer Hub and Platform Engineering
+title: Application Modernization
 version: 1
 nav:
 - modules/ROOT/nav.adoc
 - modules/LABENV/nav.adoc
-- modules/chapter1/nav.adoc
+- modules/chapter0/nav.adoc

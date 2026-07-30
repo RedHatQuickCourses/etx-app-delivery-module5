@@ -1,0 +1,9 @@
+* MTA Overview
+** xref:index.adoc[Introduction]
+** xref:components.adoc[MTA at Scale]
+** xref:lightspeed.adoc[Developer Lightspeed for MTA]
+* Hands-on Lab
+** xref:scenerio.adoc[Lab Scenario]
+** xref:lab1.adoc[ Application Modernization with MTA]
+** xref:lab2.adoc[Migrate Application with Developer Lightspeed]
+* xref:summary.adoc[Summary and What's Next?]

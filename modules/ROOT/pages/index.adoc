@@ -1,16 +1,16 @@
-= Developer Hub and Platform Engineering
+= Application Modernization
 :navtitle: Home
 
 == Introduction
 
-Welcome to this quick course on the _**Developer Hub and Platform Engineering**_.
+Welcome to this quick course on the _**Application Modernization**_.
 This course is the `fifth` in a series of `six` courses about **Application Platform Delivery**:
 
-* https://link[_Foundations: Developer Experience and GitOps Workflows_, window=browser]
-* https://link[_Cloud-Native Development with Dev Spaces_, window=browser]
+* https://link[_Application Platform Delivery Foundations_, window=browser]
+* https://link[_Software Factory & Developer Experience_, window=browser]
+* https://link[_Software Factory & Developer Spaces_, window=browser]
 * https://link[_Software Factory and CI/CD_, window=browser]
-* https://link[_Application Modernization_, window=browser]
-* _Developer Hub and Platform Engineering_(_This course_)
+* _Application Modernization_(_This course_)
 * https://link[_Trusted Software Supply Chain (TSSC)_, window=browser]
 
 == What's in this course?
