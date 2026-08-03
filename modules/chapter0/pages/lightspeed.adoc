@@ -98,22 +98,9 @@ By combining AI with MTA's migration intelligence, organizations can:
 
 == Check Your Understanding
 
-.Quiz Time! (Click to expand)
-[%collapsible]
-====
-
-What is the primary role of Red Hat Developer Lightspeed when used with MTA?
-
-A. Replace MTA's analysis engine.
-
-B. Generate AI-assisted code recommendations using MTA's migration analysis.
-
-C. Automatically migrate every application without developer involvement.
-
-*Answer*
-
-**B** — Developer Lightspeed uses MTA's migration findings together with AI to generate contextual code suggestions that developers can review and apply.
-====
+++++
+<iframe type="text/javascript" src="_attachments/lightspeed-quiz.html" style="width: 100%; max-width: 1024px; height: 800px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+++++
 
 == Key Takeaway
 

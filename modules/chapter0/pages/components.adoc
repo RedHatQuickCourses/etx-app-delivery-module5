@@ -115,19 +115,6 @@ It provides a repeatable modernization framework that helps organizations assess
 
 == Check Your Understanding
 
-.Quiz Time! (Click to expand)
-[%collapsible]
-====
-
-Which MTA capability helps organizations modernize applications consistently across multiple teams?
-
-A. Running every migration manually
-
-B. Sharing migration knowledge, reusable rules, and standardized analysis
-
-C. Allowing every team to define its own migration process
-
-*Answer*
-
-**B** — MTA enables organizations to standardize modernization by combining application analysis, reusable migration rules, shared knowledge, and portfolio management.
-====
+++++
+<iframe type="text/javascript" src="_attachments/components-quiz.html" style="width: 100%; max-width: 1024px; height: 800px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+++++
