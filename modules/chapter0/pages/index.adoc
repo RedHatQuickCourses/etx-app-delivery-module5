@@ -140,21 +140,6 @@ Migration Toolkit for Applications does not automatically rewrite applications. 
 
 == Check Your Understanding
 
-.Quiz Time! (Click to expand)
-[%collapsible]
-====
-
-Which statement best describes the purpose of Migration Toolkit for Applications?
-
-A. Automatically converts any application into a microservice.
-
-B. Analyzes existing applications, identifies migration issues, and provides guidance for modernization.
-
-C. Replaces CI/CD pipelines during software delivery.
-
-D. Deploys applications directly to OpenShift.
-
-*Answer*
-
-**B** — MTA analyzes applications, identifies migration issues, estimates modernization effort, and provides recommendations to help development teams modernize applications.
-====
+++++
+<iframe type="text/javascript" src="_attachments/index-quiz.html" style="width: 100%; max-width: 1024px; height: 800px" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" frameborder="0"></iframe>
+++++
