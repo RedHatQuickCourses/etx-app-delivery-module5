@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lab 1: Application Modernization with MTA :: Developer Hub and Platform Engineering</title>
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Developer Hub and Platform Engineering</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Application Modernization</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Application Modernization</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">MTA Overview</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="index.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components.html">MTA at Scale</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lightspeed.html">Developer Lightspeed for MTA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <span class="nav-text">Hands-on Lab</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="scenerio.html">Lab Scenario</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab1.html"> Application Modernization with MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab2.html">Migrate Application with Developer Lightspeed</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="summary.html">Summary and What&#8217;s Next?</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Application Modernization</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Application Modernization</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Application Modernization</a></li>
+    <li><a href="day2-lab2-mta.html">Application Modernization (MTA)</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lab 1: Application Modernization with MTA</h1>
+<div class="sect1">
+<h2 id="_install_mta"><a class="anchor" href="#_install_mta"></a>Install MTA</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_install_via_operatorhub"><a class="anchor" href="#_install_via_operatorhub"></a>Install via OperatorHub</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the OpenShift Web Console, go to menu:Ecosystem[Software Catalog]</p>
+</li>
+<li>
+<p>Search for <strong>Migration Toolkit for Applications</strong></p>
+</li>
+<li>
+<p>Click btn:[Install]</p>
+</li>
+<li>
+<p>Accept the defaults and click btn:[Install]</p>
+</li>
+<li>
+<p>Wait for the operator to reach the <code>Succeeded</code> phase</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Verify from the CLI:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get csv -n openshift-mta | grep mta</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deploy_the_mta_web_console"><a class="anchor" href="#_deploy_the_mta_web_console"></a>Deploy the MTA Web Console</h3>
+<div class="paragraph">
+<p>Create a Tackle CR to deploy the MTA web console:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc apply -f - &lt;&lt;'EOF'
+apiVersion: tackle.konveyor.io/v1alpha1
+kind: Tackle
+metadata:
+  name: mta
+  namespace: openshift-mta
+spec: {}
+EOF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wait for the pods to be ready:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get pods -n openshift-mta -w</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Get the MTA console route:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get route -n openshift-mta -o jsonpath='{range .items[*]}https://{.spec.host}{"\n"}{end}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Open the URL in your browser and login with the MTA credentials:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Username: <code>admin</code></p>
+</li>
+<li>
+<p>Password: <code>Passw0rd!</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analyze_the_application"><a class="anchor" href="#_analyze_the_application"></a>Analyze the Application</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_create_an_application_in_mta"><a class="anchor" href="#_create_an_application_in_mta"></a>Create an Application in MTA</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the MTA web console, go to menu:Applications[Application inventory]</p>
+</li>
+<li>
+<p>Click btn:[Create new]</p>
+</li>
+<li>
+<p>Fill in the application details:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong>: <code>parasol-legacy</code></p>
+</li>
+<li>
+<p><strong>Source repository</strong>: Your GitLab repository URL for the legacy application</p>
+</li>
+<li>
+<p><strong>Branch</strong>: <code>main</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click btn:[Create]</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_run_the_analysis"><a class="anchor" href="#_run_the_analysis"></a>Run the Analysis</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the application and click btn:[Analyze]</p>
+</li>
+<li>
+<p>Configure the analysis:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Source</strong>: Source code</p>
+</li>
+<li>
+<p><strong>Target</strong>: Quarkus</p>
+</li>
+<li>
+<p><strong>Scope</strong>: Application and internal dependencies</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click btn:[Run]</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The analysis scans the source code, dependencies, and configuration files against MTA&#8217;s rule sets.
+This may take a few minutes depending on the size of the application.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_review_the_analysis_report"><a class="anchor" href="#_review_the_analysis_report"></a>Review the Analysis Report</h3>
+<div class="paragraph">
+<p>Once the analysis completes:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click on the application name to view the report</p>
+</li>
+<li>
+<p>Review the categories:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Mandatory</strong>&#8201;&#8212;&#8201;Changes required for the migration to succeed</p>
+</li>
+<li>
+<p><strong>Optional</strong>&#8201;&#8212;&#8201;Improvements that are recommended but not required</p>
+</li>
+<li>
+<p><strong>Information</strong>&#8201;&#8212;&#8201;Context and documentation links</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Note the <strong>Story Points</strong>&#8201;&#8212;&#8201;an effort estimate for the migration</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Common findings when migrating to Quarkus:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Replace <code>javax.<strong></code> imports with <code>jakarta.</strong></code></p>
+</li>
+<li>
+<p>Replace Spring-specific annotations with CDI equivalents</p>
+</li>
+<li>
+<p>Update persistence configuration from <code>persistence.xml</code> to <code>application.properties</code></p>
+</li>
+<li>
+<p>Replace JAX-RS application class with Quarkus RESTEasy Reactive</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cli_analysis_alternative"><a class="anchor" href="#_cli_analysis_alternative"></a>CLI Analysis (Alternative)</h3>
+<div class="paragraph">
+<p>You can also run analysis from the command line inside your Dev Spaces workspace:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mta-cli analyze \
+  --input /projects/parasol-legacy \
+  --output /tmp/mta-report \
+  --target quarkus</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Open <code>/tmp/mta-report/index.html</code> in the IDE&#8217;s preview to review results.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_modernize_the_application"><a class="anchor" href="#_modernize_the_application"></a>Modernize the Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Apply the changes identified by MTA.
+Work through the mandatory issues first:</p>
+</div>
+<div class="sect2">
+<h3 id="_update_dependencies"><a class="anchor" href="#_update_dependencies"></a>Update Dependencies</h3>
+<div class="paragraph">
+<p>Update <code>pom.xml</code> to use Quarkus BOM and extensions:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencyManagement&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;io.quarkus.platform&lt;/groupId&gt;
+      &lt;artifactId&gt;quarkus-bom&lt;/artifactId&gt;
+      &lt;version&gt;${quarkus.platform.version}&lt;/version&gt;
+      &lt;type&gt;pom&lt;/type&gt;
+      &lt;scope&gt;import&lt;/scope&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/dependencyManagement&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_imports_and_annotations"><a class="anchor" href="#_update_imports_and_annotations"></a>Update Imports and Annotations</h3>
+<div class="paragraph">
+<p>Replace <code>javax</code> with <code>jakarta</code> package imports:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">// Before
+import javax.inject.Inject;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+// After
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_configuration"><a class="anchor" href="#_update_configuration"></a>Update Configuration</h3>
+<div class="paragraph">
+<p>Move configuration from XML files to <code>application.properties</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.http.port=8080
+
+# Disable Dev Services (use external services from Supporting Services lab)
+%dev.quarkus.datasource.devservices.enabled=false
+%dev.quarkus.kafka.devservices.enabled=false
+
+# Development configuration (connects to external services in cluster)
+%dev.quarkus.datasource.db-kind=postgresql
+%dev.quarkus.datasource.username=${POSTGRESQL_USER:parasol}
+%dev.quarkus.datasource.password=${POSTGRESQL_PASSWORD:parasol}
+%dev.quarkus.datasource.jdbc.url=jdbc:postgresql://${POSTGRESQL_HOST:parasol-db.etx-app-dev.svc.cluster.local}:5432/${POSTGRESQL_DATABASE:parasol}
+%dev.kafka.bootstrap.servers=${KAFKA_BOOTSTRAP_SERVERS:parasol-kafka-kafka-bootstrap.etx-app-dev.svc.cluster.local:9092}
+
+# Production configuration
+quarkus.datasource.db-kind=postgresql
+%prod.quarkus.datasource.username=${POSTGRESQL_USER}
+%prod.quarkus.datasource.password=${POSTGRESQL_PASSWORD}
+%prod.quarkus.datasource.jdbc.url=jdbc:postgresql://${POSTGRESQL_HOST:parasol-db}:5432/${POSTGRESQL_DATABASE:parasol}
+%prod.kafka.bootstrap.servers=${KAFKA_BOOTSTRAP_SERVERS:parasol-kafka-kafka-bootstrap:9092}
+
+# Hibernate
+quarkus.hibernate-orm.database.generation=update</code></pre>
+</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Use the <code>%dev.</code> prefix for development-only settings and <code>%prod.</code> prefix for production-only settings. Dev Services are <strong>disabled</strong>&#8201;&#8212;&#8201;both development and production connect to external PostgreSQL and Kafka services deployed in <a href="#day2-lab1-supporting-services.adoc" class="xref unresolved">Deploy Supporting Services</a>. The DevSpaces devfile provides these environment variables automatically.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+The PostgreSQL database deployed in the Supporting Services lab is shared across workspaces. The <code>update</code> mode shown above safely updates the schema without dropping existing tables. If you use <code>drop-and-create</code> instead, it will <strong>delete and recreate the entire database schema on every application startup</strong>, which may affect other workspaces or applications using the same database. Only use <code>drop-and-create</code> for isolated testing environments or deploy a separate database instance for applications that need destructive schema regeneration.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_validate_the_build"><a class="anchor" href="#_validate_the_build"></a>Validate the Build</h3>
+<div class="paragraph">
+<p>Build and test the modernized application in your Dev Spaces workspace:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./mvnw clean package -DskipTests=false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Start the application in dev mode to verify it runs:</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./mvnw compile quarkus:dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Quarkus Dev Services will start a PostgreSQL container automatically.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integrate_with_the_ci_pipeline"><a class="anchor" href="#_integrate_with_the_ci_pipeline"></a>Integrate with the CI Pipeline</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Push the modernized application into the CI pipeline from Lab 1:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Commit and push the modernized source code to GitLab:</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">git add .
+git commit -m "feat: modernize application to Quarkus"
+git push</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>The GitLab webhook triggers the Tekton pipeline automatically</p>
+</li>
+<li>
+<p>Monitor the pipeline run:</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">tkn pipelinerun logs -f -n &lt;your_namespace&gt;</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Verify the pipeline completes all tasks:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Source clone</p>
+</li>
+<li>
+<p>Maven build and test</p>
+</li>
+<li>
+<p>Vault credential retrieval</p>
+</li>
+<li>
+<p>Container image build and push</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Confirm Argo CD syncs the updated image:</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get application etx-app-dev -n etx-app-dev \
+  -o jsonpath='{.status.sync.status}'</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Verify the modernized application is running:</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get pods -n etx-app-dev
+oc get route etx-app-base-app -n etx-app-dev -o jsonpath='{.spec.host}'</code></pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Open the route URL to confirm the modernized application is accessible and functional.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary"><a class="anchor" href="#_summary"></a>Summary</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Installed MTA and analyzed a legacy Java application</p>
+</li>
+<li>
+<p>Identified mandatory and optional migration issues with effort estimates</p>
+</li>
+<li>
+<p>Modernized the application to use Quarkus and Jakarta EE APIs</p>
+</li>
+<li>
+<p>Integrated the modernized application into the existing CI/CD pipeline</p>
+</li>
+<li>
+<p>Verified end-to-end deployment through the GitOps workflow</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next Steps</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Proceed to <a href="#day2-lab2-dh1-install-configure.adoc" class="xref unresolved">Install and configure Red Hat Developer Hub</a>.</p>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>
