@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Lab Environment :: Developer Hub and Platform Engineering</title>
     <link rel="prev" href="../index.html">
-    <link rel="next" href="../chapter0/index.html">
+    <link rel="next" href="../section1/index.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
     <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/custom.css">
     <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
     <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
     <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
@@ -59,36 +60,30 @@
 <ul class="nav-list">
   <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
-    <span class="nav-text">MTA Overview</span>
+    <a class="nav-link" href="../section1/index.html">MTA Overview</a>
 <ul class="nav-list">
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter0/index.html">Introduction</a>
+    <a class="nav-link" href="../section1/intro.html">Introduction</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter0/components.html">MTA at Scale</a>
+    <a class="nav-link" href="../section1/components.html">MTA at Scale</a>
   </li>
   <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter0/lightspeed.html">Developer Lightspeed for MTA</a>
+    <a class="nav-link" href="../section1/lightspeed.html">Developer Lightspeed for MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../section1/scenerio.html">Lab Scenario</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../section1/lab1.html">Lab 1: Application Modernization with MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../section1/lab2.html">Lab 2: Modernize an Application with Developer Lightspeed</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../section1/lab-summary.html">Lab Summary</a>
   </li>
 </ul>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <button class="nav-item-toggle"></button>
-    <span class="nav-text">Hands-on Lab</span>
-<ul class="nav-list">
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter0/scenerio.html">Lab Scenario</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter0/lab1.html"> Application Modernization with MTA</a>
-  </li>
-  <li class="nav-item" data-depth="2">
-    <a class="nav-link" href="../chapter0/lab2.html">Migrate Application with Developer Lightspeed</a>
-  </li>
-</ul>
-  </li>
-  <li class="nav-item" data-depth="1">
-    <a class="nav-link" href="../chapter0/summary.html">Summary and What&#8217;s Next?</a>
   </li>
 </ul>
   </li>
@@ -134,74 +129,164 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
-<p>Click the <a href="https://demo.redhat.com/">RHDP</a> link above, log in to RHDP, and click <code>Order</code> to request a new <a href="https://catalog.demo.redhat.com/catalog/babylon-catalog-dev?item=babylon-catalog-dev/openshift-cnv.app-platform-factory-cnv.dev&amp;utm_source=webapp&amp;utm_medium=share-link">Service Enablement: App Platform Software Factory</a>. On the order page for the catalog item, do the following:</p>
+<p>Before starting the hands-on exercises, provision the required lab environments from the Red Hat Demo Platform (RHDP).</p>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Activity</strong>: Select <code>Practice/Enablement</code></p>
-</li>
-<li>
-<p><strong>Purpose</strong>: Select <code>Learning about the Product</code></p>
-</li>
-<li>
-<p><strong>Salesforce ID</strong>: If you have an opportunity ID, enter it into this field, otherwise select <code>Project</code>, and then enter "Learning about RHCL" in the text field. You will see a warning message that a Salesforce ID is required, but you can safely ignore it.</p>
-</li>
-<li>
-<p><strong>Features</strong>: Select <code>Enable Let&#8217;s Encrypt</code></p>
-</li>
-<li>
-<p><strong>Region</strong>: Select the AWS region closest to your location</p>
-</li>
-<li>
-<p><strong>User count</strong>: <code>1</code></p>
-</li>
-<li>
-<p><strong>Control Plane Count</strong>: <code>1</code></p>
-</li>
-<li>
-<p><strong>OpenShift Version</strong>: <code>4.16</code></p>
-</li>
-<li>
-<p><strong>Control Plane Instance Type</strong>: <code>m6a.4xlarge</code></p>
-</li>
-<li>
-<p>Select the checkbox at the bottom of the page to confirm that lab costs will be charged to your cost center, and click <code>Order</code>.</p>
-</li>
-</ul>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-The lab environment will take an hour to provision. You can check the status and details of the OpenShift cluster from the <code>Services</code> page of RHDP. The classroom is available for 48 hours initially. You can extend the duration of classroom availability by clicking <code>Help &gt; Get Technical Help</code> in RHDP, and then requesting an extension by opening a ServiceNow ticket with the RHDP team.
-</td>
-</tr>
-</table>
+<div class="paragraph">
+<p>This learning path uses two OpenShift clusters that represent different stages of a software delivery pipeline. Both environments should be provisioned before you begin the labs.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_rhdp_portal_links"><a class="anchor" href="#_rhdp_portal_links"></a>RHDP Portal Links</h2>
+<h2 id="_provision_the_lab_environments"><a class="anchor" href="#_provision_the_lab_environments"></a>Provision the Lab Environments</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Provision the following RHDP catalog items:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://demo.redhat.com/">RedHat Associates</a></p>
+<p><a href="https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/openshift-cnv.app-platform-factory-cnv.prod&amp;utm_source=webapp&amp;utm_medium=share-link"><strong>Service Enablement: App Platform Software Factory</strong></a></p>
 </li>
 <li>
-<p><a href="https://partner.demo.redhat.com/">RedHat Partners</a></p>
+<p><a href="https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/openshift-cnv.app-platform-runtime-cnv.prod&amp;utm_source=webapp&amp;utm_medium=share-link"><strong>Service Enablement: App Platform Runtime</strong></a></p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Provisioning each environment typically takes about an hour. Once complete, the cluster URLs and credentials are available from the <strong>My Services</strong> page in RHDP.</p>
+</div>
+<div class="imageblock unresolved">
+<div class="content">
+<a class="image" href="_images/info.png"><img src="info.png" alt="info" width="500"></a>
+</div>
+<div class="title">Figure 1. Sample <strong>RHDP My Services</strong> Screenshot(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_openshift_clusters"><a class="anchor" href="#_openshift_clusters"></a>OpenShift Clusters</h2>
+<div class="sectionbody">
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 50%;">
+<col style="width: 25%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Environment</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+<th class="tableblock halign-left valign-top">Used In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Application Platform Software Factory</strong> (Primary Cluster)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Development platform where you&#8217;ll build the internal developer platform, configure CI/CD, and deploy applications.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Modules 2(current), 3, 4, and 5</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Application Platform Runtime</strong> (Secondary Cluster)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Runtime environment used to demonstrate GitOps-based promotion between environments.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Module 3</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>The required namespaces have already been created and are ready for use.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="lab-credentials"><a class="anchor" href="#lab-credentials"></a>Internal Lab Account Credentials</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Use the following accounts throughout the learning path.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 25%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Username</th>
+<th class="tableblock halign-left valign-top">Password</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platform-admin</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openshift</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Platform administrator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platform-developer</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openshift</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application developer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>platform-user</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>openshift</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Standard user</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Unless instructed otherwise, authenticate to GitLab, Quay, Vault, and other integrated services using <strong>Keycloak Single Sign-On (SSO)</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_platform_services"><a class="anchor" href="#_platform_services"></a>Platform Services</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following services are pre-configured and available throughout the labs.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 66.6667%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Service</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red Hat Build of Keycloak</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides centralized authentication and Single Sign-On (SSO).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GitLab</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hosts the application source code and Git repositories.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Red Hat Quay</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stores container images built during the labs.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OpenShift GitOps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Continuously synchronizes applications and platform resources from Git.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HashiCorp Vault</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Securely stores secrets used by applications and CI/CD pipelines.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>All service URLs are available from the <strong>RHDP Lab Information</strong> page.</p>
 </div>
 </div>
 </div>
 <nav class="pagination">
   <span class="prev"><a href="../index.html">Application Modernization</a></span>
-  <span class="next"><a href="../chapter0/index.html">Introduction</a></span>
+  <span class="next"><a href="../section1/index.html">MTA Overview</a></span>
 </nav>
 </article>
   </div>

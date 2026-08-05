@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Scaling Application Modernization with MTA :: Developer Hub and Platform Engineering</title>
+    <link rel="prev" href="intro.html">
+    <link rel="next" href="lightspeed.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/custom.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Developer Hub and Platform Engineering</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Application Modernization</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Application Modernization</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MTA Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro.html">Introduction</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="components.html">MTA at Scale</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lightspeed.html">Developer Lightspeed for MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="scenerio.html">Lab Scenario</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab1.html">Lab 1: Application Modernization with MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab2.html">Lab 2: Modernize an Application with Developer Lightspeed</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab-summary.html">Lab Summary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Application Modernization</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Application Modernization</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Application Modernization</a></li>
+    <li><a href="index.html">MTA Overview</a></li>
+    <li><a href="components.html">MTA at Scale</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Scaling Application Modernization with MTA</h1>
+<div class="sect1">
+<h2 id="_the_challenge"><a class="anchor" href="#_the_challenge"></a>The Challenge</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the previous lesson, you learned how Migration Toolkit for Applications (MTA) analyzes individual applications and recommends an appropriate modernization strategy.</p>
+</div>
+<div class="paragraph">
+<p>While modernizing a single application is relatively straightforward, enterprise organizations often need to modernize hundreds—or even thousands—of applications across multiple business units and development teams.</p>
+</div>
+<div class="paragraph">
+<p>This raises several important questions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Which applications should be modernized first?</p>
+</li>
+<li>
+<p>Which applications depend on each other?</p>
+</li>
+<li>
+<p>How much effort will each migration require?</p>
+</li>
+<li>
+<p>Which modernization strategy should be used?</p>
+</li>
+<li>
+<p>How can multiple teams modernize applications consistently?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Without a standardized approach, migration projects become difficult to prioritize, estimate, and coordinate.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Successful application modernization is not just about migrating individual applications—it requires managing an entire application portfolio with consistent processes, shared knowledge, and repeatable engineering practices.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_scaling_modernization_across_the_enterprise"><a class="anchor" href="#_scaling_modernization_across_the_enterprise"></a>Scaling Modernization Across the Enterprise</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Migration Toolkit for Applications (MTA) provides organizations with a portfolio-level view of their application landscape.</p>
+</div>
+<div class="paragraph">
+<p>Instead of analyzing applications one at a time, architects and platform teams can evaluate an entire portfolio, identify modernization priorities, estimate migration effort, and coordinate work across multiple teams.</p>
+</div>
+<div class="paragraph">
+<p>This enables organizations to transform modernization from isolated projects into a repeatable engineering process.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_application_migration_factory"><a class="anchor" href="#_the_application_migration_factory"></a>The Application Migration Factory</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <strong>Application Migration Factory</strong> provides a standardized workflow for modernizing applications at scale.</p>
+</div>
+<div class="paragraph">
+<p>Rather than every migration team inventing its own process, organizations follow a common workflow that combines discovery, assessment, analysis, migration guidance, and shared knowledge.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/flow.png"><img src="_images/flow.png" alt="flow" width="900"></a>
+</div>
+<div class="title">Figure 1. Application Migration Factory (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>The workflow is made up of several key stages.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Stage</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application Inventory</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maintains a centralized inventory of enterprise applications, including metadata, business domains, technology stacks, and dependencies.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application Assessment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Evaluates modernization readiness, estimates migration effort, identifies risks, and recommends an appropriate modernization strategy.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application Analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Scans application source code and binaries using migration rules to identify compatibility issues and required code changes.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Knowledge Base</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Captures reusable migration guidance, best practices, design decisions, and organization-specific documentation for future projects.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Migration Teams</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows multiple development teams to modernize applications in parallel while following standardized engineering practices.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_portfolio_assessment"><a class="anchor" href="#_portfolio_assessment"></a>Portfolio Assessment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>One of MTA&#8217;s strengths is helping organizations understand their application portfolio before migration begins.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/inventory.png"><img src="_images/inventory.png" alt="inventory" width="700"></a>
+</div>
+<div class="title">Figure 2. Application Inventory (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>Applications can be categorized using:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Business domains</p>
+</li>
+<li>
+<p>Technology stacks</p>
+</li>
+<li>
+<p>Tags and metadata</p>
+</li>
+<li>
+<p>Dependencies</p>
+</li>
+<li>
+<p>Business criticality</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This information helps architects determine which applications should be modernized first and which migrations require additional planning.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_assessing_migration_readiness"><a class="anchor" href="#_assessing_migration_readiness"></a>Assessing Migration Readiness</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before development teams begin modernization, MTA evaluates each application and estimates the migration effort.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/report.png"><img src="_images/report.png" alt="report" width="700"></a>
+</div>
+<div class="title">Figure 3. Application Assessment Report (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>Assessment reports help organizations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Estimate modernization effort</p>
+</li>
+<li>
+<p>Identify migration risks</p>
+</li>
+<li>
+<p>Detect unsupported technologies</p>
+</li>
+<li>
+<p>Recommend the most appropriate modernization strategy</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This allows teams to prioritize migrations based on both technical complexity and business value.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_automated_application_analysis"><a class="anchor" href="#_automated_application_analysis"></a>Automated Application Analysis</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once priorities have been established, MTA performs a detailed analysis of application source code.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/analysis.png"><img src="_images/analysis.png" alt="analysis" width="700"></a>
+</div>
+<div class="title">Figure 4. Application Analysis (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>Using predefined migration rules, MTA automatically:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Detects incompatible technologies</p>
+</li>
+<li>
+<p>Identifies required code changes</p>
+</li>
+<li>
+<p>Estimates migration effort</p>
+</li>
+<li>
+<p>Generates detailed migration reports</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Instead of manually reviewing thousands of source files, developers receive actionable guidance that accelerates modernization.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_migration_rules"><a class="anchor" href="#_custom_migration_rules"></a>Custom Migration Rules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Every organization has its own internal frameworks, libraries, coding standards, and architectural guidelines.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/rules.png"><img src="_images/rules.png" alt="rules" width="700"></a>
+</div>
+<div class="title">Figure 5. Custom Migration Rules (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>MTA allows architects to extend the built-in rule engine with custom migration rules that can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Detect organization-specific technologies</p>
+</li>
+<li>
+<p>Recommend internal modernization patterns</p>
+</li>
+<li>
+<p>Link directly to internal documentation</p>
+</li>
+<li>
+<p>Reuse migration knowledge across projects</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Over time, these rules become an internal migration "cookbook" that improves every future modernization effort.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_value"><a class="anchor" href="#_business_value"></a>Business Value</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>By standardizing modernization across the enterprise, organizations gain:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Consistent migration processes across teams</p>
+</li>
+<li>
+<p>Portfolio-wide visibility into modernization efforts</p>
+</li>
+<li>
+<p>Better prioritization based on business value and complexity</p>
+</li>
+<li>
+<p>More accurate migration effort estimates</p>
+</li>
+<li>
+<p>Reusable migration knowledge and best practices</p>
+</li>
+<li>
+<p>Faster modernization through automation and shared guidance</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Migration Toolkit for Applications is more than a code analysis tool.</p>
+</div>
+<div class="paragraph">
+<p>It provides a repeatable modernization framework that helps organizations inventory, assess, prioritize, analyze, and modernize large application portfolios using consistent engineering practices.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reflection"><a class="anchor" href="#_reflection"></a>Reflection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<details class="reflection-box">
+<summary class="title">Think about your own organization (Click to expand)</summary>
+<div class="content">
+<div class="imageblock text-left">
+<div class="content">
+<img src="../_images/mini-illustration-lightbulb-red-RH.Small_square_transparent.png" alt="mini illustration lightbulb red RH.Small square transparent" width="50">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Approximately how many applications does your organization maintain?</p>
+</li>
+<li>
+<p>Which applications would you modernize first, and why?</p>
+</li>
+<li>
+<p>How are migration priorities determined today?</p>
+</li>
+<li>
+<p>Could migration knowledge be shared across multiple teams?</p>
+</li>
+<li>
+<p>How would a standardized Migration Factory improve modernization efforts?</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<div class="key-card">
+<div class="paragraph">
+<div class="title">Key Takeaway</div>
+<p>Scaling application modernization requires more than analyzing individual applications. Migration Toolkit for Applications enables organizations to assess entire application portfolios, standardize migration practices, share reusable knowledge, and coordinate modernization across multiple teams.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="intro.html">Introduction</a></span>
+  <span class="next"><a href="lightspeed.html">Developer Lightspeed for MTA</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>

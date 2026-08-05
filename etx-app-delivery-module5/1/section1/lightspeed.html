@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Accelerating Modernization with AI :: Developer Hub and Platform Engineering</title>
+    <link rel="prev" href="components.html">
+    <link rel="next" href="scenerio.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/custom.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Developer Hub and Platform Engineering</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Application Modernization</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Application Modernization</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MTA Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components.html">MTA at Scale</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="lightspeed.html">Developer Lightspeed for MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="scenerio.html">Lab Scenario</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab1.html">Lab 1: Application Modernization with MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab2.html">Lab 2: Modernize an Application with Developer Lightspeed</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab-summary.html">Lab Summary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Application Modernization</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Application Modernization</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Application Modernization</a></li>
+    <li><a href="index.html">MTA Overview</a></li>
+    <li><a href="lightspeed.html">Developer Lightspeed for MTA</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Accelerating Modernization with AI</h1>
+<div class="sect1">
+<h2 id="_the_challenge"><a class="anchor" href="#_the_challenge"></a>The Challenge</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In the previous lesson, you learned how Migration Toolkit for Applications (MTA) analyzes applications, identifies migration issues, and provides recommendations for modernization.</p>
+</div>
+<div class="paragraph">
+<p>While MTA explains <strong>what</strong> needs to change, developers still need to manually implement many of those changes.</p>
+</div>
+<div class="paragraph">
+<p>For large enterprise applications, this often involves updating hundreds—or even thousands—of similar code patterns.</p>
+</div>
+<div class="paragraph">
+<p>Common questions developers face include:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>How should this migration issue be fixed?</p>
+</li>
+<li>
+<p>What is the recommended replacement for this deprecated API?</p>
+</li>
+<li>
+<p>Can repetitive code changes be automated?</p>
+</li>
+<li>
+<p>How can modernization remain consistent across multiple teams?</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Applying migration recommendations manually can significantly increase modernization effort and project timelines.</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Migration analysis identifies the work that needs to be done. AI helps developers complete that work faster by generating contextual code recommendations—but developers remain responsible for reviewing and validating every suggested change.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ai_assisted_application_modernization"><a class="anchor" href="#_ai_assisted_application_modernization"></a>AI-Assisted Application Modernization</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Red Hat Developer Lightspeed extends Migration Toolkit for Applications by using Artificial Intelligence to generate migration code suggestions based on MTA&#8217;s analysis.</p>
+</div>
+<div class="paragraph">
+<p>Instead of manually interpreting migration reports and implementing every recommendation, developers receive AI-assisted code suggestions directly within their development environment.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/l1.png"><img src="_images/l1.png" alt="l1" width="800"></a>
+</div>
+<div class="title">Figure 1. AI-Assisted Application Modernization (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>By combining migration intelligence with generative AI, developers can modernize applications more quickly while maintaining control over the final implementation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_developer_lightspeed_works"><a class="anchor" href="#_how_developer_lightspeed_works"></a>How Developer Lightspeed Works</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Developer Lightspeed combines multiple sources of information to generate migration recommendations that are specific to your application.</p>
+</div>
+<div class="paragraph">
+<p>Rather than acting as a generic coding assistant, it uses both enterprise migration knowledge and AI reasoning to produce context-aware suggestions.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Input</th>
+<th class="tableblock halign-left valign-top">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Large Language Model (LLM)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides AI-powered reasoning and code generation capabilities.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">MTA Migration Analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Supplies migration issues, rule violations, and recommended modernization targets.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Migration Rules</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Provides enterprise migration guidance for supported runtimes and frameworks.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application Context</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Uses the application&#8217;s existing source code and dependencies to generate relevant code suggestions.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>Because recommendations are based on both AI and migration analysis, the generated code is more accurate and aligned with modernization goals.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ai_powered_modernization_workflow"><a class="anchor" href="#_ai_powered_modernization_workflow"></a>AI-Powered Modernization Workflow</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Modernizing an application with MTA and Developer Lightspeed follows a simple workflow.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/ai.png"><img src="_images/ai.png" alt="ai" width="900"></a>
+</div>
+<div class="title">Figure 2. AI-Powered Modernization Workflow (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>The workflow consists of the following stages.</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 25%;">
+<col style="width: 75%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Stage</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Checkout Code</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Open the existing application source code from the Git repository.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Configure Migration Target</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Select the desired modernization target, such as Quarkus or Jakarta EE.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Run Static Analysis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Migration Toolkit for Applications analyzes the application and identifies migration issues.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Request Contextual Fix</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Developer Lightspeed generates AI-assisted recommendations for selected migration issues.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generate Patch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The AI produces a suggested code patch using MTA findings and application context.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Review and Commit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Developers review, modify if necessary, and commit the accepted changes.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p>This workflow allows developers to combine automated migration analysis with AI-assisted implementation while retaining full control over the resulting code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_value"><a class="anchor" href="#_business_value"></a>Business Value</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Using Developer Lightspeed together with Migration Toolkit for Applications enables organizations to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Reduce repetitive manual migration work</p>
+</li>
+<li>
+<p>Generate code recommendations tailored to each application</p>
+</li>
+<li>
+<p>Apply migration fixes directly from the IDE</p>
+</li>
+<li>
+<p>Improve consistency across modernization projects</p>
+</li>
+<li>
+<p>Reuse migration knowledge across similar applications</p>
+</li>
+<li>
+<p>Increase developer productivity while maintaining human oversight</p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Developer Lightspeed does not automatically modify application code.</p>
+</div>
+<div class="paragraph">
+<p>It assists developers by generating context-aware migration suggestions, while developers remain responsible for reviewing, validating, and accepting the proposed changes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_ai_matters"><a class="anchor" href="#_why_ai_matters"></a>Why AI Matters</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Enterprise modernization often involves thousands of repetitive code changes spread across multiple applications.</p>
+</div>
+<div class="paragraph">
+<p>By combining AI with MTA&#8217;s migration intelligence, organizations can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Accelerate modernization projects</p>
+</li>
+<li>
+<p>Reduce migration effort</p>
+</li>
+<li>
+<p>Improve consistency across teams</p>
+</li>
+<li>
+<p>Help developers focus on implementing business functionality instead of repetitive migration tasks</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Rather than replacing developers, AI acts as an intelligent modernization assistant that helps teams deliver modernization projects more efficiently.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reflection"><a class="anchor" href="#_reflection"></a>Reflection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p></p>
+</div>
+<details class="reflection-box">
+<summary class="title">Think about your own organization (Click to expand)</summary>
+<div class="content">
+<div class="imageblock text-left">
+<div class="content">
+<img src="../_images/mini-illustration-lightbulb-red-RH.Small_square_transparent.png" alt="mini illustration lightbulb red RH.Small square transparent" width="50">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Which modernization tasks are repetitive within your organization?</p>
+</li>
+<li>
+<p>Could AI-generated migration suggestions reduce manual effort?</p>
+</li>
+<li>
+<p>Where would human review still be essential before accepting AI-generated code?</p>
+</li>
+<li>
+<p>How could AI help accelerate large-scale modernization projects?</p>
+</li>
+</ul>
+</div>
+</div>
+</details>
+<div class="key-card">
+<div class="paragraph">
+<div class="title">Key Takeaway</div>
+<p>Migration Toolkit for Applications identifies <strong>what</strong> needs to change, while Red Hat Developer Lightspeed helps developers implement those changes by generating AI-assisted, context-aware code recommendations. Together, they accelerate application modernization while keeping developers in control of the final code.</p>
+</div>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="components.html">MTA at Scale</a></span>
+  <span class="next"><a href="scenerio.html">Lab Scenario</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>

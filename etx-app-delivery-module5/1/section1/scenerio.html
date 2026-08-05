@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lab Scenario :: Developer Hub and Platform Engineering</title>
+    <link rel="prev" href="lightspeed.html">
+    <link rel="next" href="lab1.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/custom.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Developer Hub and Platform Engineering</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Application Modernization</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Application Modernization</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MTA Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components.html">MTA at Scale</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lightspeed.html">Developer Lightspeed for MTA</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="scenerio.html">Lab Scenario</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab1.html">Lab 1: Application Modernization with MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab2.html">Lab 2: Modernize an Application with Developer Lightspeed</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab-summary.html">Lab Summary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Application Modernization</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Application Modernization</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Application Modernization</a></li>
+    <li><a href="index.html">MTA Overview</a></li>
+    <li><a href="scenerio.html">Lab Scenario</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lab Scenario</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this module, you&#8217;ll modernize an existing enterprise Java application using <strong>Migration Toolkit for Applications (MTA)</strong> and <strong>Red Hat Developer Lightspeed</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Instead of developing a new cloud-native application, you&#8217;ll analyze an existing application, identify migration issues, apply AI-assisted modernization recommendations, and verify that the migrated application runs successfully on a modern Red Hat runtime.</p>
+</div>
+<div class="paragraph">
+<p>By the end of this module, you will be able to:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Analyze an existing enterprise application using Migration Toolkit for Applications (MTA)</p>
+</li>
+<li>
+<p>Identify migration issues and required code changes</p>
+</li>
+<li>
+<p>Use Red Hat Developer Lightspeed to generate AI-assisted migration recommendations</p>
+</li>
+<li>
+<p>Modernize the application from Java EE (<code>javax</code>) to Jakarta EE (<code>jakarta</code>)</p>
+</li>
+<li>
+<p>Verify that the migrated application builds successfully on JBoss EAP 8</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_business_scenario"><a class="anchor" href="#_business_scenario"></a>Business Scenario</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You are part of a platform engineering team responsible for modernizing the organization&#8217;s business-critical <strong>Coolstore</strong> retail application.</p>
+</div>
+<div class="paragraph">
+<p>The application currently runs as a containerized workload on <strong>JBoss EAP 7</strong> in OpenShift. While it continues to operate reliably, it depends on legacy <strong>Java EE (<code>javax</code>)</strong> APIs, making it incompatible with modern <strong>Jakarta EE</strong>-based runtimes.</p>
+</div>
+<div class="paragraph">
+<p>To align with current enterprise standards and supported Red Hat runtimes, the organization has decided to migrate the application to <strong>JBoss EAP 8</strong>. The primary migration effort involves replacing legacy <code>javax</code> APIs with their <code>jakarta</code> equivalents while preserving existing business functionality.</p>
+</div>
+<div class="paragraph">
+<p>Rather than manually reviewing thousands of source files, your team will use <strong>Migration Toolkit for Applications (MTA)</strong> to analyze the application and identify the required migration changes. You will then use <strong>Red Hat Developer Lightspeed</strong> to generate AI-assisted code recommendations that accelerate the modernization effort.</p>
+</div>
+<div class="paragraph">
+<p>Throughout the remaining labs in this course, you&#8217;ll follow a modernization workflow similar to that used in enterprise application migration projects—from assessment and analysis through AI-assisted code modernization and validation.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This learning path demonstrates a common enterprise modernization scenario by migrating an application from <strong>JBoss EAP 7</strong> to <strong>JBoss EAP 8</strong>. Although JBoss EAP 8 is the migration target in these labs, the same MTA assessment and AI-assisted modernization workflow can also be applied when migrating applications to other supported runtimes, such as <strong>Red Hat build of Quarkus</strong> or <strong>Red Hat build of Spring Boot</strong>.</p>
+</div>
+<div class="paragraph">
+<p>For more information about migrating to JBoss EAP 8, see the <a href="https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/8.0/html-single/migration_guide/index#review-the-jakarta-ee-10-features_preparing-for-migration-to-jboss-eap-8">JBoss EAP 8 Migration Guide</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="lightspeed.html">Developer Lightspeed for MTA</a></span>
+  <span class="next"><a href="lab1.html">Lab 1: Application Modernization with MTA</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>

@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lab 1: Application Modernization with Migration Toolkit for Applications :: Developer Hub and Platform Engineering</title>
+    <link rel="prev" href="scenerio.html">
+    <link rel="next" href="lab2.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/custom.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Developer Hub and Platform Engineering</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Application Modernization</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Application Modernization</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/index.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MTA Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components.html">MTA at Scale</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lightspeed.html">Developer Lightspeed for MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="scenerio.html">Lab Scenario</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="lab1.html">Lab 1: Application Modernization with MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab2.html">Lab 2: Modernize an Application with Developer Lightspeed</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab-summary.html">Lab Summary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Application Modernization</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Application Modernization</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Application Modernization</a></li>
+    <li><a href="index.html">MTA Overview</a></li>
+    <li><a href="lab1.html">Lab 1: Application Modernization with MTA</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lab 1: Application Modernization with Migration Toolkit for Applications</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lab, you&#8217;ll install Migration Toolkit for Applications (MTA), deploy the MTA web console, and analyze a legacy enterprise Java application to identify the changes required to migrate it from JBoss EAP 7 to JBoss EAP 8.</p>
+</div>
+<div class="paragraph">
+<p>By the end of this lab, you will have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Registered for the Red Hat Model-as-a-Service (MaaS) platform</p>
+</li>
+<li>
+<p>Installed the Migration Toolkit for Applications Operator</p>
+</li>
+<li>
+<p>Deployed the MTA web console with AI-assisted modernization enabled</p>
+</li>
+<li>
+<p>Imported the Coolstore application into MTA</p>
+</li>
+<li>
+<p>Analyzed the application and reviewed the generated migration report</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_register_with_the_red_hat_maas_platform"><a class="anchor" href="#_register_with_the_red_hat_maas_platform"></a>Register with the Red Hat MaaS Platform</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Migration Toolkit for Applications integrates with Red Hat Developer Lightspeed to provide AI-assisted migration recommendations. Before deploying MTA, create an API key for the Red Hat Model-as-a-Service (MaaS) platform.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the Red Hat MaaS portal:</p>
+<div class="paragraph">
+<p><a href="https://maas-rhdp-frontend.apps.maas.redhatworkshops.io/login/" target="_blank" rel="noopener">Red Hat MaaS Portal</a></p>
+</div>
+</li>
+<li>
+<p>Sign in using your Red Hat account.</p>
+</li>
+<li>
+<p>From the navigation menu, select <strong>Models</strong>.</p>
+</li>
+<li>
+<p>Choose <strong>granite-3-2-8b-instruct</strong> and click <b class="button">Subscribe</b>.</p>
+</li>
+<li>
+<p>Navigate to <strong>API Keys</strong>.</p>
+</li>
+<li>
+<p>Click <b class="button">Create API Key</b> and provide the following values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong>: <code>MTA-Dev</code></p>
+</li>
+<li>
+<p><strong>Description</strong>: <code>AI-assisted modernization for MTA</code></p>
+</li>
+<li>
+<p><strong>Model</strong>: <code>granite-3-2-8b-instruct</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <b class="button">Create API Key</b>.</p>
+</li>
+<li>
+<p>Copy the generated API key and save it. You&#8217;ll use it later when deploying the MTA web console.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_install_migration_toolkit_for_applications"><a class="anchor" href="#_install_migration_toolkit_for_applications"></a>Install Migration Toolkit for Applications</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Install the Migration Toolkit for Applications Operator from OperatorHub.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the OpenShift web console.</p>
+</li>
+<li>
+<p>Navigate to <span class="menuseq"><b class="menu">Ecosystem</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">OperatorHub</b></span>.</p>
+</li>
+<li>
+<p>Search for <strong>Migration Toolkit for Applications</strong>.</p>
+</li>
+<li>
+<p>Click <b class="button">Install</b>.</p>
+</li>
+<li>
+<p>Accept the default installation options and click <b class="button">Install</b>.</p>
+</li>
+<li>
+<p>Wait until the operator reaches the <strong>Succeeded</strong> state.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/mta_install.png"><img src="_images/mta_install.png" alt="mta install" width="500"></a>
+</div>
+<div class="title">Figure 1. Installing the MTA Operator (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Do not create the <code>Tackle</code> custom resource during installation. You&#8217;ll deploy it manually in the next exercise.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Verify the installation.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get csv -n openshift-mta</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deploy_the_mta_web_console"><a class="anchor" href="#_deploy_the_mta_web_console"></a>Deploy the MTA Web Console</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The MTA web console is deployed by creating a <code>Tackle</code> custom resource. Before deploying it, create a Secret containing your MaaS API key.</p>
+</div>
+<div class="paragraph">
+<p>Create the secret.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create secret generic kai-api-keys \
+  -n openshift-mta \
+  --from-literal=OPENAI_API_BASE='https://maas-rhdp-frontend.apps.maas.redhatworkshops.io/v1' \
+  --from-literal=OPENAI_API_KEY='&lt;YOUR_MTA_API_KEY&gt;'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create the following <code>Tackle</code> custom resource.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">&lt;entire Tackle YAML here&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Apply the manifest.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc apply -f mta-tackle.yaml</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Wait until all MTA pods are running.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get pods -n openshift-mta -w</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Verify that pods similar to the following are running:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>kai-api</code></p>
+</li>
+<li>
+<p><code>kai-db</code></p>
+</li>
+<li>
+<p><code>llm-proxy</code></p>
+</li>
+<li>
+<p><code>mta-hub</code></p>
+</li>
+<li>
+<p><code>mta-ui</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Retrieve the MTA route.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get route -n openshift-mta</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Open the MTA web console in your browser.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">https://mta-openshift-mta.{openshift_cluster_ingress_domain}</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/mta-ui.png"><img src="_images/mta-ui.png" alt="mta ui" width="600"></a>
+</div>
+<div class="title">Figure 2. Migration Toolkit for Applications Web Console (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>Sign in using your OpenShift credentials.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configure_gitlab_access"><a class="anchor" href="#_configure_gitlab_access"></a>Configure GitLab Access</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Before importing the application, configure GitLab credentials so MTA can access the application source code.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In the MTA web console, navigate to <span class="menuseq"><b class="menu">Administration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Credentials</b></span>.</p>
+</li>
+<li>
+<p>Click <b class="button">Create new</b>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/new.png"><img src="_images/new.png" alt="new" width="450"></a>
+</div>
+<div class="title">Figure 3. Create New Credential (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+<li>
+<p>Provide the following values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong>: <code>gitlab</code></p>
+</li>
+<li>
+<p><strong>Type</strong>: <code>Source Control</code></p>
+</li>
+<li>
+<p><strong>Authentication</strong>: <code>Username/Password</code></p>
+</li>
+<li>
+<p><strong>Default Credential</strong>: Enabled</p>
+</li>
+<li>
+<p><strong>Username</strong>: <code>platform-admin</code></p>
+</li>
+<li>
+<p><strong>Password</strong>: <code>openshift</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <b class="button">Create</b>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/mta-creds.png"><img src="_images/mta-creds.png" alt="mta creds" width="450"></a>
+</div>
+<div class="title">Figure 4. GitLab Credential (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_import_the_coolstore_application"><a class="anchor" href="#_import_the_coolstore_application"></a>Import the Coolstore Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create an application entry for the Coolstore application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Navigate to <span class="menuseq"><b class="menu">Migration</b>&#160;<i class="fa fa-angle-right caret"></i> <b class="menuitem">Application Inventory</b></span>.</p>
+</li>
+<li>
+<p>Click <b class="button">Create new</b>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/migration.png"><img src="_images/migration.png" alt="migration" width="450"></a>
+</div>
+<div class="title">Figure 5. Application Inventory (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+<li>
+<p>Enter the following values:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong>: <code>coolstore</code></p>
+</li>
+<li>
+<p><strong>Manual Tags</strong>: <code>Runtime/EAP</code></p>
+</li>
+<li>
+<p><strong>Source Repository</strong>: <code>{gitlab_url}/mta-apps/coolstore.git</code></p>
+</li>
+<li>
+<p><strong>Branch</strong>: <code>main</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Click <b class="button">Create</b>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/migration2.png"><img src="_images/migration2.png" alt="migration2" width="450"></a>
+</div>
+<div class="title">Figure 6. Create Application (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analyze_the_application"><a class="anchor" href="#_analyze_the_application"></a>Analyze the Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Run an application analysis targeting JBoss EAP 8.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the <strong>coolstore</strong> application.</p>
+</li>
+<li>
+<p>Click <b class="button">Analyze</b>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/coolstore.png"><img src="_images/coolstore.png" alt="coolstore" width="450"></a>
+</div>
+<div class="title">Figure 7. Start Analysis (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+<li>
+<p>Configure the analysis using the following options:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Mode</strong>: Manual Selection</p>
+</li>
+<li>
+<p><strong>Target Runtime</strong>: JBoss EAP 8</p>
+</li>
+<li>
+<p><strong>Scope</strong>: Application and internal dependencies only</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Accept the remaining defaults and click <b class="button">Run</b>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/manual.png"><img src="_images/manual.png" alt="manual" width="450"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/analysis2.png"><img src="_images/analysis2.png" alt="analysis2" width="450"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/jboss.png"><img src="_images/jboss.png" alt="jboss" width="450"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/scope.png"><img src="_images/scope.png" alt="scope" width="450"></a>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/run.png"><img src="_images/run.png" alt="run" width="450"></a>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>The analysis scans the application&#8217;s source code, dependencies, and configuration files using the built-in MTA migration rules.</p>
+</div>
+<div class="paragraph">
+<p>Wait for the analysis to complete.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/complete.png"><img src="_images/complete.png" alt="complete" width="500"></a>
+</div>
+<div class="title">Figure 8. Analysis Complete (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_review_the_analysis_report"><a class="anchor" href="#_review_the_analysis_report"></a>Review the Analysis Report</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Once the analysis completes, review the migration report.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the <strong>coolstore</strong> application.</p>
+</li>
+<li>
+<p>Select the <strong>Issues</strong> tab.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/issues.png"><img src="_images/issues.png" alt="issues" width="500"></a>
+</div>
+<div class="title">Figure 9. Analysis Report (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>Review the reported issues:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Mandatory</strong> — Changes required for the migration to succeed.</p>
+</li>
+<li>
+<p><strong>Optional</strong> — Recommended improvements.</p>
+</li>
+<li>
+<p><strong>Information</strong> — Additional guidance and documentation.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/category.png"><img src="_images/category.png" alt="category" width="600"></a>
+</div>
+<div class="title">Figure 10. Migration Issue Categories (<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The migration report identifies the code changes required to move the application from Java EE (<code>javax</code>) to Jakarta EE (<code>jakarta</code>). In the next lab, you&#8217;ll use Red Hat Developer Lightspeed to generate AI-assisted code recommendations for resolving these issues.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="scenerio.html">Lab Scenario</a></span>
+  <span class="next"><a href="lab2.html">Lab 2: Modernize an Application with Developer Lightspeed</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>
