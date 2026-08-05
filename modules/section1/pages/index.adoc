@@ -1,0 +1,23 @@
+= Application Modernization with MTA
+:navtitle: Application Modernization
+
+++++
+<div class="module-card">
+<div class="module-header">
+++++
+
+image::ROOT:mini-illustration-book-red-RH.Large_square_transparent.png[width=40,align=left]
+
+**What's in this section?**
+
+++++
+</div>
+++++
+
+In this section, you learn how to modernize existing enterprise Java applications using Red Hat Migration Toolkit for Applications (MTA) and Red Hat Developer Lightspeed.
+
+You analyze the **Coolstore application**, identify migration issues, and use AI-assisted recommendations to modernize the application from **JBoss EAP 7** to **JBoss EAP 8**. Along the way, you'll deploy the MTA platform, perform migration analysis, apply code changes in OpenShift Dev Spaces, and validate the modernized application.
+
+++++
+</div>
+++++

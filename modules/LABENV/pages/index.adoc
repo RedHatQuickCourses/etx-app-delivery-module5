@@ -1,21 +1,85 @@
 = Lab Environment
+:navtitle: Lab Environment
 
-Click the https://demo.redhat.com/[RHDP] link above, log in to RHDP, and click `Order` to request a new https://catalog.demo.redhat.com/catalog/babylon-catalog-dev?item=babylon-catalog-dev/openshift-cnv.app-platform-factory-cnv.dev&utm_source=webapp&utm_medium=share-link[Service Enablement: App Platform Software Factory]. On the order page for the catalog item, do the following:
+Before starting the hands-on exercises, provision the required lab environments from the Red Hat Demo Platform (RHDP).
 
-* *Activity*: Select `Practice/Enablement`
-* *Purpose*: Select `Learning about the Product`
-* *Salesforce ID*: If you have an opportunity ID, enter it into this field, otherwise select `Project`, and then enter "Learning about RHCL" in the text field. You will see a warning message that a Salesforce ID is required, but you can safely ignore it.
-* *Features*: Select `Enable Let's Encrypt`
-* *Region*: Select the AWS region closest to your location
-* *User count*: `1`
-* *Control Plane Count*: `1`
-* *OpenShift Version*: `4.16`
-* *Control Plane Instance Type*: `m6a.4xlarge`
+This learning path uses two OpenShift clusters that represent different stages of a software delivery pipeline. Both environments should be provisioned before you begin the labs.
 
-* Select the checkbox at the bottom of the page to confirm that lab costs will be charged to your cost center, and click `Order`.
+== Provision the Lab Environments
 
-NOTE: The lab environment will take an hour to provision. You can check the status and details of the OpenShift cluster from the `Services` page of RHDP. The classroom is available for 48 hours initially. You can extend the duration of classroom availability by clicking `Help > Get Technical Help` in RHDP, and then requesting an extension by opening a ServiceNow ticket with the RHDP team.
+Provision the following RHDP catalog items:
 
-== RHDP Portal Links
-* https://demo.redhat.com/[RedHat Associates]
-* https://partner.demo.redhat.com/[RedHat Partners]
+* https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/openshift-cnv.app-platform-factory-cnv.prod&utm_source=webapp&utm_medium=share-link[**Service Enablement: App Platform Software Factory**]
+* https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/openshift-cnv.app-platform-runtime-cnv.prod&utm_source=webapp&utm_medium=share-link[**Service Enablement: App Platform Runtime**]
+
+Provisioning each environment typically takes about an hour. Once complete, the cluster URLs and credentials are available from the **My Services** page in RHDP.
+
+.Sample **RHDP My Services** Screenshot(_Click the image to view it in full size in a new browser tab_)
+image::info.png[link={imagesdir}/info.png, width=500]
+
+== OpenShift Clusters
+
+[cols="1,2,1",options="header"]
+|===
+|Environment |Purpose |Used In
+
+|*Application Platform Software Factory* (Primary Cluster)
+|Development platform where you'll build the internal developer platform, configure CI/CD, and deploy applications.
+|Modules 2(current), 3, 4, and 5
+
+|*Application Platform Runtime* (Secondary Cluster)
+|Runtime environment used to demonstrate GitOps-based promotion between environments.
+|Module 3
+|===
+
+The required namespaces have already been created and are ready for use.
+
+[#lab-credentials]
+== Internal Lab Account Credentials
+
+Use the following accounts throughout the learning path.
+
+[cols="1,1,2",options="header"]
+|===
+|Username |Password |Purpose
+
+|`platform-admin`
+|`openshift`
+|Platform administrator
+
+|`platform-developer`
+|`openshift`
+|Application developer
+
+|`platform-user`
+|`openshift`
+|Standard user
+|===
+
+Unless instructed otherwise, authenticate to GitLab, Quay, Vault, and other integrated services using **Keycloak Single Sign-On (SSO)**.
+
+== Platform Services
+
+The following services are pre-configured and available throughout the labs.
+
+[cols="1,2",options="header"]
+|===
+|Service |Purpose
+
+|Red Hat Build of Keycloak
+|Provides centralized authentication and Single Sign-On (SSO).
+
+|GitLab
+|Hosts the application source code and Git repositories.
+
+|Red Hat Quay
+|Stores container images built during the labs.
+
+|OpenShift GitOps
+|Continuously synchronizes applications and platform resources from Git.
+
+|HashiCorp Vault
+|Securely stores secrets used by applications and CI/CD pipelines.
+|===
+
+All service URLs are available from the **RHDP Lab Information** page.

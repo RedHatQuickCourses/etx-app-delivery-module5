@@ -1,0 +1,33 @@
+= Lab Scenario
+:navtitle: Lab Scenario
+
+In this module, you'll modernize an existing enterprise Java application using *Migration Toolkit for Applications (MTA)* and *Red Hat Developer Lightspeed*.
+
+Instead of developing a new cloud-native application, you'll analyze an existing application, identify migration issues, apply AI-assisted modernization recommendations, and verify that the migrated application runs successfully on a modern Red Hat runtime.
+
+By the end of this module, you will be able to:
+
+* Analyze an existing enterprise application using Migration Toolkit for Applications (MTA)
+* Identify migration issues and required code changes
+* Use Red Hat Developer Lightspeed to generate AI-assisted migration recommendations
+* Modernize the application from Java EE (`javax`) to Jakarta EE (`jakarta`)
+* Verify that the migrated application builds successfully on JBoss EAP 8
+
+== Business Scenario
+
+You are part of a platform engineering team responsible for modernizing the organization's business-critical *Coolstore* retail application.
+
+The application currently runs as a containerized workload on *JBoss EAP 7* in OpenShift. While it continues to operate reliably, it depends on legacy *Java EE (`javax`)* APIs, making it incompatible with modern *Jakarta EE*-based runtimes.
+
+To align with current enterprise standards and supported Red Hat runtimes, the organization has decided to migrate the application to *JBoss EAP 8*. The primary migration effort involves replacing legacy `javax` APIs with their `jakarta` equivalents while preserving existing business functionality.
+
+Rather than manually reviewing thousands of source files, your team will use *Migration Toolkit for Applications (MTA)* to analyze the application and identify the required migration changes. You will then use *Red Hat Developer Lightspeed* to generate AI-assisted code recommendations that accelerate the modernization effort.
+
+Throughout the remaining labs in this course, you'll follow a modernization workflow similar to that used in enterprise application migration projects—from assessment and analysis through AI-assisted code modernization and validation.
+
+[NOTE]
+====
+This learning path demonstrates a common enterprise modernization scenario by migrating an application from *JBoss EAP 7* to *JBoss EAP 8*. Although JBoss EAP 8 is the migration target in these labs, the same MTA assessment and AI-assisted modernization workflow can also be applied when migrating applications to other supported runtimes, such as *Red Hat build of Quarkus* or *Red Hat build of Spring Boot*.
+
+For more information about migrating to JBoss EAP 8, see the https://docs.redhat.com/en/documentation/red_hat_jboss_enterprise_application_platform/8.0/html-single/migration_guide/index#review-the-jakarta-ee-10-features_preparing-for-migration-to-jboss-eap-8[JBoss EAP 8 Migration Guide].
+====

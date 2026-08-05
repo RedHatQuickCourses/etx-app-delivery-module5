@@ -1,0 +1,25 @@
+= 📋 Lab Summary
+:navtitle: 📋 Lab Summary
+
+You now have the following components configured and ready:
+
+* **Migration Toolkit for Applications (MTA)** – Installed on OpenShift and configured to analyze enterprise applications.
+* **MTA Web Console** – Deployed and used to assess applications, manage inventories, and generate migration reports.
+* **Red Hat MaaS Integration** – Connected to provide AI-powered modernization capabilities through Developer Lightspeed.
+* **GitLab Integration** – Configured to import application source code for analysis.
+* **Application Inventory** – The Coolstore application registered and assessed for modernization.
+* **MTA Extension** – Installed and configured in OpenShift Dev Spaces.
+* **MTA Hub Integration** – Connected from the IDE to enable migration analysis and AI-assisted recommendations.
+* **Migration Profile** – Created to migrate the Coolstore application from JBoss EAP 7 to JBoss EAP 8.
+* **Developer Lightspeed** – Used to generate context-aware migration recommendations and code updates.
+* **Solution Server** – Captured accepted migration solutions for reuse across future modernization projects.
+* **Modernized Coolstore Application** – Updated to use Jakarta EE APIs and validated for JBoss EAP 8.
+
+Your application modernization environment now provides:
+
+* **Application Assessment** – Analyze existing applications and identify migration issues.
+* **Migration Intelligence** – Generate detailed reports with recommended modernization actions.
+* **AI-Assisted Code Modernization** – Apply context-aware migration recommendations directly from the IDE.
+* **Knowledge Reuse** – Store and reuse accepted migration solutions across multiple applications.
+* **Build Validation** – Verify that the modernized application successfully compiles for the target runtime.
+* **Scalable Modernization** – Combine MTA analysis and Developer Lightspeed to modernize enterprise applications using a repeatable, AI-assisted workflow.

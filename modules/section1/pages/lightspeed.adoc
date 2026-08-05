@@ -1,0 +1,155 @@
+= Accelerating Modernization with AI
+:navtitle: AI-Powered Modernization
+
+== The Challenge
+
+In the previous lesson, you learned how Migration Toolkit for Applications (MTA) analyzes applications, identifies migration issues, and provides recommendations for modernization.
+
+While MTA explains *what* needs to change, developers still need to manually implement many of those changes.
+
+For large enterprise applications, this often involves updating hundreds—or even thousands—of similar code patterns.
+
+Common questions developers face include:
+
+* How should this migration issue be fixed?
+* What is the recommended replacement for this deprecated API?
+* Can repetitive code changes be automated?
+* How can modernization remain consistent across multiple teams?
+
+Applying migration recommendations manually can significantly increase modernization effort and project timelines.
+
+[IMPORTANT]
+====
+Migration analysis identifies the work that needs to be done. AI helps developers complete that work faster by generating contextual code recommendations—but developers remain responsible for reviewing and validating every suggested change.
+====
+
+== AI-Assisted Application Modernization
+
+Red Hat Developer Lightspeed extends Migration Toolkit for Applications by using Artificial Intelligence to generate migration code suggestions based on MTA's analysis.
+
+Instead of manually interpreting migration reports and implementing every recommendation, developers receive AI-assisted code suggestions directly within their development environment.
+
+.AI-Assisted Application Modernization (_Click the image to view it in full size in a new browser tab_)
+image::l1.png[link={imagesdir}/l1.png,width=800]
+
+By combining migration intelligence with generative AI, developers can modernize applications more quickly while maintaining control over the final implementation.
+
+== How Developer Lightspeed Works
+
+Developer Lightspeed combines multiple sources of information to generate migration recommendations that are specific to your application.
+
+Rather than acting as a generic coding assistant, it uses both enterprise migration knowledge and AI reasoning to produce context-aware suggestions.
+
+[cols="1,3",options="header"]
+|===
+|Input
+|Purpose
+
+|Large Language Model (LLM)
+|Provides AI-powered reasoning and code generation capabilities.
+
+|MTA Migration Analysis
+|Supplies migration issues, rule violations, and recommended modernization targets.
+
+|Migration Rules
+|Provides enterprise migration guidance for supported runtimes and frameworks.
+
+|Application Context
+|Uses the application's existing source code and dependencies to generate relevant code suggestions.
+|===
+
+Because recommendations are based on both AI and migration analysis, the generated code is more accurate and aligned with modernization goals.
+
+== AI-Powered Modernization Workflow
+
+Modernizing an application with MTA and Developer Lightspeed follows a simple workflow.
+
+.AI-Powered Modernization Workflow (_Click the image to view it in full size in a new browser tab_)
+image::ai.png[link={imagesdir}/ai.png,width=900]
+
+The workflow consists of the following stages.
+
+[cols="1,3",options="header"]
+|===
+|Stage
+|Description
+
+|Checkout Code
+|Open the existing application source code from the Git repository.
+
+|Configure Migration Target
+|Select the desired modernization target, such as Quarkus or Jakarta EE.
+
+|Run Static Analysis
+|Migration Toolkit for Applications analyzes the application and identifies migration issues.
+
+|Request Contextual Fix
+|Developer Lightspeed generates AI-assisted recommendations for selected migration issues.
+
+|Generate Patch
+|The AI produces a suggested code patch using MTA findings and application context.
+
+|Review and Commit
+|Developers review, modify if necessary, and commit the accepted changes.
+|===
+
+This workflow allows developers to combine automated migration analysis with AI-assisted implementation while retaining full control over the resulting code.
+
+== Business Value
+
+Using Developer Lightspeed together with Migration Toolkit for Applications enables organizations to:
+
+* Reduce repetitive manual migration work
+* Generate code recommendations tailored to each application
+* Apply migration fixes directly from the IDE
+* Improve consistency across modernization projects
+* Reuse migration knowledge across similar applications
+* Increase developer productivity while maintaining human oversight
+
+[NOTE]
+====
+Developer Lightspeed does not automatically modify application code.
+
+It assists developers by generating context-aware migration suggestions, while developers remain responsible for reviewing, validating, and accepting the proposed changes.
+====
+
+== Why AI Matters
+
+Enterprise modernization often involves thousands of repetitive code changes spread across multiple applications.
+
+By combining AI with MTA's migration intelligence, organizations can:
+
+* Accelerate modernization projects
+* Reduce migration effort
+* Improve consistency across teams
+* Help developers focus on implementing business functionality instead of repetitive migration tasks
+
+Rather than replacing developers, AI acts as an intelligent modernization assistant that helps teams deliver modernization projects more efficiently.
+
+== Reflection
+
+{empty}
+
+[.reflection-box%collapsible]
+.Think about your own organization (Click to expand)
+====
+
+image::ROOT:mini-illustration-lightbulb-red-RH.Small_square_transparent.png[width=50,align=left]
+
+* Which modernization tasks are repetitive within your organization?
+* Could AI-generated migration suggestions reduce manual effort?
+* Where would human review still be essential before accepting AI-generated code?
+* How could AI help accelerate large-scale modernization projects?
+====
+
+++++
+<div class="key-card">
+++++
+
+.Key Takeaway
+
+Migration Toolkit for Applications identifies *what* needs to change, while Red Hat Developer Lightspeed helps developers implement those changes by generating AI-assisted, context-aware code recommendations. Together, they accelerate application modernization while keeping developers in control of the final code.
+
+++++
+</div>
+++++

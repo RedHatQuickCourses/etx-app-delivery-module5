@@ -1,6 +1,6 @@
 {
-  "totalSeconds": 866,
-  "pageCount": 9,
+  "totalSeconds": 804,
+  "pageCount": 10,
   "pages": [
     {
       "module": "ROOT",
@@ -10,42 +10,47 @@
     {
       "module": "LABENV",
       "page": "index.adoc",
-      "seconds": 68
+      "seconds": 82
     },
     {
-      "module": "chapter0",
+      "module": "section1",
       "page": "index.adoc",
-      "seconds": 188
+      "seconds": 25
     },
     {
-      "module": "chapter0",
+      "module": "section1",
+      "page": "intro.adoc",
+      "seconds": 108
+    },
+    {
+      "module": "section1",
       "page": "components.adoc",
-      "seconds": 160
+      "seconds": 78
     },
     {
-      "module": "chapter0",
+      "module": "section1",
       "page": "lightspeed.adoc",
-      "seconds": 104
+      "seconds": 83
     },
     {
-      "module": "chapter0",
+      "module": "section1",
       "page": "scenerio.adoc",
-      "seconds": 81
+      "seconds": 96
     },
     {
-      "module": "chapter0",
+      "module": "section1",
       "page": "lab1.adoc",
-      "seconds": 105
+      "seconds": 115
     },
     {
-      "module": "chapter0",
+      "module": "section1",
       "page": "lab2.adoc",
-      "seconds": 69
+      "seconds": 55
     },
     {
-      "module": "chapter0",
-      "page": "summary.adoc",
-      "seconds": 1
+      "module": "section1",
+      "page": "lab-summary.adoc",
+      "seconds": 72
     }
   ]
 }

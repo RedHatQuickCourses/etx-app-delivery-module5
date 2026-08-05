@@ -1,0 +1,175 @@
+= Scaling Application Modernization with MTA
+:navtitle: MTA at Scale
+
+== The Challenge
+
+In the previous lesson, you learned how Migration Toolkit for Applications (MTA) analyzes individual applications and recommends an appropriate modernization strategy.
+
+While modernizing a single application is relatively straightforward, enterprise organizations often need to modernize hundreds—or even thousands—of applications across multiple business units and development teams.
+
+This raises several important questions:
+
+* Which applications should be modernized first?
+* Which applications depend on each other?
+* How much effort will each migration require?
+* Which modernization strategy should be used?
+* How can multiple teams modernize applications consistently?
+
+Without a standardized approach, migration projects become difficult to prioritize, estimate, and coordinate.
+
+[IMPORTANT]
+====
+Successful application modernization is not just about migrating individual applications—it requires managing an entire application portfolio with consistent processes, shared knowledge, and repeatable engineering practices.
+====
+
+== Scaling Modernization Across the Enterprise
+
+Migration Toolkit for Applications (MTA) provides organizations with a portfolio-level view of their application landscape.
+
+Instead of analyzing applications one at a time, architects and platform teams can evaluate an entire portfolio, identify modernization priorities, estimate migration effort, and coordinate work across multiple teams.
+
+This enables organizations to transform modernization from isolated projects into a repeatable engineering process.
+
+== The Application Migration Factory
+
+The *Application Migration Factory* provides a standardized workflow for modernizing applications at scale.
+
+Rather than every migration team inventing its own process, organizations follow a common workflow that combines discovery, assessment, analysis, migration guidance, and shared knowledge.
+
+.Application Migration Factory (_Click the image to view it in full size in a new browser tab_)
+image::flow.png[link={imagesdir}/flow.png,width=900]
+
+The workflow is made up of several key stages.
+
+[cols="1,3",options="header"]
+|===
+|Stage
+|Purpose
+
+|Application Inventory
+|Maintains a centralized inventory of enterprise applications, including metadata, business domains, technology stacks, and dependencies.
+
+|Application Assessment
+|Evaluates modernization readiness, estimates migration effort, identifies risks, and recommends an appropriate modernization strategy.
+
+|Application Analysis
+|Scans application source code and binaries using migration rules to identify compatibility issues and required code changes.
+
+|Knowledge Base
+|Captures reusable migration guidance, best practices, design decisions, and organization-specific documentation for future projects.
+
+|Migration Teams
+|Allows multiple development teams to modernize applications in parallel while following standardized engineering practices.
+|===
+
+== Portfolio Assessment
+
+One of MTA's strengths is helping organizations understand their application portfolio before migration begins.
+
+.Application Inventory (_Click the image to view it in full size in a new browser tab_)
+image::inventory.png[link={imagesdir}/inventory.png,width=700]
+
+Applications can be categorized using:
+
+* Business domains
+* Technology stacks
+* Tags and metadata
+* Dependencies
+* Business criticality
+
+This information helps architects determine which applications should be modernized first and which migrations require additional planning.
+
+== Assessing Migration Readiness
+
+Before development teams begin modernization, MTA evaluates each application and estimates the migration effort.
+
+.Application Assessment Report (_Click the image to view it in full size in a new browser tab_)
+image::report.png[link={imagesdir}/report.png,width=700]
+
+Assessment reports help organizations:
+
+* Estimate modernization effort
+* Identify migration risks
+* Detect unsupported technologies
+* Recommend the most appropriate modernization strategy
+
+This allows teams to prioritize migrations based on both technical complexity and business value.
+
+== Automated Application Analysis
+
+Once priorities have been established, MTA performs a detailed analysis of application source code.
+
+.Application Analysis (_Click the image to view it in full size in a new browser tab_)
+image::analysis.png[link={imagesdir}/analysis.png,width=700]
+
+Using predefined migration rules, MTA automatically:
+
+* Detects incompatible technologies
+* Identifies required code changes
+* Estimates migration effort
+* Generates detailed migration reports
+
+Instead of manually reviewing thousands of source files, developers receive actionable guidance that accelerates modernization.
+
+== Custom Migration Rules
+
+Every organization has its own internal frameworks, libraries, coding standards, and architectural guidelines.
+
+.Custom Migration Rules (_Click the image to view it in full size in a new browser tab_)
+image::rules.png[link={imagesdir}/rules.png,width=700]
+
+MTA allows architects to extend the built-in rule engine with custom migration rules that can:
+
+* Detect organization-specific technologies
+* Recommend internal modernization patterns
+* Link directly to internal documentation
+* Reuse migration knowledge across projects
+
+Over time, these rules become an internal migration "cookbook" that improves every future modernization effort.
+
+== Business Value
+
+By standardizing modernization across the enterprise, organizations gain:
+
+* Consistent migration processes across teams
+* Portfolio-wide visibility into modernization efforts
+* Better prioritization based on business value and complexity
+* More accurate migration effort estimates
+* Reusable migration knowledge and best practices
+* Faster modernization through automation and shared guidance
+
+[NOTE]
+====
+Migration Toolkit for Applications is more than a code analysis tool.
+
+It provides a repeatable modernization framework that helps organizations inventory, assess, prioritize, analyze, and modernize large application portfolios using consistent engineering practices.
+====
+
+== Reflection
+
+{empty}
+
+[.reflection-box%collapsible]
+.Think about your own organization (Click to expand)
+====
+
+image::ROOT:mini-illustration-lightbulb-red-RH.Small_square_transparent.png[width=50,align=left]
+
+* Approximately how many applications does your organization maintain?
+* Which applications would you modernize first, and why?
+* How are migration priorities determined today?
+* Could migration knowledge be shared across multiple teams?
+* How would a standardized Migration Factory improve modernization efforts?
+====
+
+++++
+<div class="key-card">
+++++
+
+.Key Takeaway
+
+Scaling application modernization requires more than analyzing individual applications. Migration Toolkit for Applications enables organizations to assess entire application portfolios, standardize migration practices, share reusable knowledge, and coordinate modernization across multiple teams.
+
+++++
+</div>
+++++

@@ -1,0 +1,217 @@
+= Lab 1: Application Modernization with Migration Toolkit for Applications
+:navtitle: Application Modernization (MTA)
+:experimental:
+
+In this lab, you'll install Migration Toolkit for Applications (MTA), deploy the MTA web console, and analyze a legacy enterprise Java application to identify the changes required to migrate it from JBoss EAP 7 to JBoss EAP 8.
+
+By the end of this lab, you will have:
+
+* Registered for the Red Hat Model-as-a-Service (MaaS) platform
+* Installed the Migration Toolkit for Applications Operator
+* Deployed the MTA web console with AI-assisted modernization enabled
+* Imported the Coolstore application into MTA
+* Analyzed the application and reviewed the generated migration report
+
+== Register with the Red Hat MaaS Platform
+
+Migration Toolkit for Applications integrates with Red Hat Developer Lightspeed to provide AI-assisted migration recommendations. Before deploying MTA, create an API key for the Red Hat Model-as-a-Service (MaaS) platform.
+
+. Open the Red Hat MaaS portal:
++
+link:https://maas-rhdp-frontend.apps.maas.redhatworkshops.io/login/[Red Hat MaaS Portal^]
++
+. Sign in using your Red Hat account.
+. From the navigation menu, select **Models**.
+. Choose **granite-3-2-8b-instruct** and click btn:[Subscribe].
+. Navigate to **API Keys**.
+. Click btn:[Create API Key] and provide the following values:
++
+* *Name*: `MTA-Dev`
+* *Description*: `AI-assisted modernization for MTA`
+* *Model*: `granite-3-2-8b-instruct`
++
+. Click btn:[Create API Key].
+. Copy the generated API key and save it. You'll use it later when deploying the MTA web console.
+
+== Install Migration Toolkit for Applications
+
+Install the Migration Toolkit for Applications Operator from OperatorHub.
+
+. Open the OpenShift web console.
+. Navigate to menu:Ecosystem[OperatorHub].
+. Search for *Migration Toolkit for Applications*.
+. Click btn:[Install].
+. Accept the default installation options and click btn:[Install].
+. Wait until the operator reaches the *Succeeded* state.
++
+.Installing the MTA Operator (_Click the image to view it in full size in a new browser tab_)
+image::mta_install.png[link={imagesdir}/mta_install.png,width=500]
++
+NOTE: Do not create the `Tackle` custom resource during installation. You'll deploy it manually in the next exercise.
+
+Verify the installation.
+
+[source,bash,role=execute]
+----
+oc get csv -n openshift-mta
+----
+
+== Deploy the MTA Web Console
+
+The MTA web console is deployed by creating a `Tackle` custom resource. Before deploying it, create a Secret containing your MaaS API key.
+
+Create the secret.
+
+[source,bash,role=execute]
+----
+oc create secret generic kai-api-keys \
+  -n openshift-mta \
+  --from-literal=OPENAI_API_BASE='https://maas-rhdp-frontend.apps.maas.redhatworkshops.io/v1' \
+  --from-literal=OPENAI_API_KEY='<YOUR_MTA_API_KEY>'
+----
+
+Create the following `Tackle` custom resource.
+
+[source,yaml]
+----
+<entire Tackle YAML here>
+----
+
+Apply the manifest.
+
+[source,bash,role=execute]
+----
+oc apply -f mta-tackle.yaml
+----
+
+Wait until all MTA pods are running.
+
+[source,bash,role=execute]
+----
+oc get pods -n openshift-mta -w
+----
+
+Verify that pods similar to the following are running:
+
+* `kai-api`
+* `kai-db`
+* `llm-proxy`
+* `mta-hub`
+* `mta-ui`
+
+Retrieve the MTA route.
+
+[source,bash,role=execute]
+----
+oc get route -n openshift-mta
+----
+
+Open the MTA web console in your browser.
+
+[source,text,subs="attributes+"]
+----
+https://mta-openshift-mta.{openshift_cluster_ingress_domain}
+----
+
+.Migration Toolkit for Applications Web Console (_Click the image to view it in full size in a new browser tab_)
+image::mta-ui.png[link={imagesdir}/mta-ui.png,width=600]
+
+Sign in using your OpenShift credentials.
+
+== Configure GitLab Access
+
+Before importing the application, configure GitLab credentials so MTA can access the application source code.
+
+. In the MTA web console, navigate to menu:Administration[Credentials].
+. Click btn:[Create new].
++
+.Create New Credential (_Click the image to view it in full size in a new browser tab_)
+image::new.png[link={imagesdir}/new.png,width=450]
++
+. Provide the following values:
++
+* *Name*: `gitlab`
+* *Type*: `Source Control`
+* *Authentication*: `Username/Password`
+* *Default Credential*: Enabled
+* *Username*: `platform-admin`
+* *Password*: `openshift`
++
+. Click btn:[Create].
++
+.GitLab Credential (_Click the image to view it in full size in a new browser tab_)
+image::mta-creds.png[link={imagesdir}/mta-creds.png,width=450]
+
+== Import the Coolstore Application
+
+Create an application entry for the Coolstore application.
+
+. Navigate to menu:Migration[Application Inventory].
+. Click btn:[Create new].
++
+.Application Inventory (_Click the image to view it in full size in a new browser tab_)
+image::migration.png[link={imagesdir}/migration.png,width=450]
++
+. Enter the following values:
++
+* *Name*: `coolstore`
+* *Manual Tags*: `Runtime/EAP`
+* *Source Repository*: `{gitlab_url}/mta-apps/coolstore.git`
+* *Branch*: `main`
++
+. Click btn:[Create].
++
+.Create Application (_Click the image to view it in full size in a new browser tab_)
+image::migration2.png[link={imagesdir}/migration2.png,width=450]
+
+== Analyze the Application
+
+Run an application analysis targeting JBoss EAP 8.
+
+. Select the **coolstore** application.
+. Click btn:[Analyze].
++
+.Start Analysis (_Click the image to view it in full size in a new browser tab_)
+image::coolstore.png[link={imagesdir}/coolstore.png,width=450]
++
+. Configure the analysis using the following options:
++
+* *Mode*: Manual Selection
+* *Target Runtime*: JBoss EAP 8
+* *Scope*: Application and internal dependencies only
++
+. Accept the remaining defaults and click btn:[Run].
++
+image::manual.png[link={imagesdir}/manual.png,width=450]
+image::analysis2.png[link={imagesdir}/analysis2.png,width=450]
+image::jboss.png[link={imagesdir}/jboss.png,width=450]
+image::scope.png[link={imagesdir}/scope.png,width=450]
+image::run.png[link={imagesdir}/run.png,width=450]
+
+The analysis scans the application's source code, dependencies, and configuration files using the built-in MTA migration rules.
+
+Wait for the analysis to complete.
+
+.Analysis Complete (_Click the image to view it in full size in a new browser tab_)
+image::complete.png[link={imagesdir}/complete.png,width=500]
+
+== Review the Analysis Report
+
+Once the analysis completes, review the migration report.
+
+. Open the **coolstore** application.
+. Select the **Issues** tab.
++
+.Analysis Report (_Click the image to view it in full size in a new browser tab_)
+image::issues.png[link={imagesdir}/issues.png,width=500]
++
+Review the reported issues:
+
+* *Mandatory* — Changes required for the migration to succeed.
+* *Optional* — Recommended improvements.
+* *Information* — Additional guidance and documentation.
++
+.Migration Issue Categories (_Click the image to view it in full size in a new browser tab_)
+image::category.png[link={imagesdir}/category.png,width=600]
+
+IMPORTANT: The migration report identifies the code changes required to move the application from Java EE (`javax`) to Jakarta EE (`jakarta`). In the next lab, you'll use Red Hat Developer Lightspeed to generate AI-assisted code recommendations for resolving these issues.
