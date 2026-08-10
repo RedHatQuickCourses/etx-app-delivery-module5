@@ -1,5 +1,6 @@
 = Modernizing Applications with Migration Toolkit for Applications
-:navtitle: MTA Overview
+:navtitle: Modernizing Applications with MTA
+
 
 == The Challenge
 

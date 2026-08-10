@@ -1,0 +1,13 @@
+= Summary and What's Next?
+
+_Congratulations! You have successfully established the foundation of your **Application Modernization with MTA**._
+
+In this module, you learned how to modernize enterprise Java applications using Red Hat Migration Toolkit for Applications (MTA), Red Hat Developer Lightspeed, and Red Hat OpenShift Dev Spaces.
+
+You explored MTA's approach to application modernization at scale, configured and deployed MTA, and analyzed the Coolstore application for migration from JBoss EAP 7 to JBoss EAP 8. You reviewed migration findings, including the **Java EE (javax) to Jakarta EE (jakarta)** changes required for the migration.
+
+You then used the **MTA extension in Red Hat OpenShift Dev Spaces with Developer Lightspeed and Agent Mode to apply AI-assisted migration** recommendations directly in the IDE, re-analyze the application, and validate the modernized application.
+
+// In the next modules, you'll use this environment to implement automated software delivery pipelines, GitOps workflows, developer self-service capabilities, and trusted software supply chain practices.
+
+

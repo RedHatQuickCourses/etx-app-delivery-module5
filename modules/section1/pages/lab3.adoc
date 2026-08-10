@@ -1,0 +1,86 @@
+= Lab 3: Deploy MTA with Developer Lightspeed
+:navtitle: Lab 3: Deploy MTA with Developer Lightspeed
+:experimental:
+
+In this lab, you'll deploy the Migration Toolkit for Applications (MTA) web console and configure it to use Developer Lightspeed for AI-assisted application modernization.
+
+By the end of this lab, you will have:
+
+* Configured the MaaS API key for MTA
+* Deployed the MTA web console
+* Verified that the MTA components are running
+* Accessed the MTA web console
+
+== Deploy the MTA Web Console
+
+The MTA web console is deployed by creating a Tackle custom resource. Before deploying it, create a Secret containing the **MaaS API** key created in the previous lab.
+
+[source,bash,role=execute]
+----
+oc create secret generic kai-api-keys \
+  -n openshift-mta \
+  --from-literal=OPENAI_API_BASE='https://maas-rhdp-frontend.apps.maas.redhatworkshops.io/v1' \
+  --from-literal=OPENAI_API_KEY='<YOUR_MTA_API_KEY>'
+----
+
+Create the Tackle custom resource to deploy the MTA web console.
+
+[source,bash,role=execute]
+----
+cat <<EOF | oc apply -f -
+apiVersion: tackle.konveyor.io/v1alpha1
+kind: Tackle
+metadata:
+  name: mta
+  namespace: openshift-mta
+spec:
+  feature_auth_required: 'false'
+  feature_isolate_namespace: "false"
+  maven_data_volume_size: "10Gi"
+  analyzer_container_limits_cpu: "1"
+  analyzer_container_limits_memory: "4Gi"
+  analyzer_container_requests_cpu: "500m"
+  analyzer_container_requests_memory: "2Gi"
+  hub_container_limits_cpu: "2"
+  hub_container_limits_memory: "4Gi"
+  hub_container_requests_cpu: "500m"
+  hub_container_requests_memory: "2Gi"
+  kai_llm_proxy_enabled: true
+  kai_solution_server_enabled: true
+  kai_llm_provider: openai
+  kai_llm_model: granite-3-2-8b-instruct
+  kai_llm_baseurl: "https://maas-rhdp.apps.maas.redhatworkshops.io/v1"
+  kai_solution_server_container_limits_cpu: "1"
+  kai_solution_server_container_limits_memory: "2Gi"
+  kai_solution_server_container_requests_cpu: "500m"
+  kai_solution_server_container_requests_memory: "1Gi"
+  kai_llm_proxy_container_limits_cpu: "1"
+  kai_llm_proxy_container_limits_memory: "2Gi"
+  kai_llm_proxy_container_requests_cpu: "500m"
+  kai_llm_proxy_container_requests_memory: "1Gi"
+EOF
+----
+
+Wait until all MTA pods are running.
+
+[source,bash,role=execute]
+----
+oc get pods -n openshift-mta -w
+----
+
+Verify that the following MTA components are running:
+* `kai-api`
+* `kai-db`
+* `llm-proxy`
+* `mta-hub`
+* `mta-ui`
+
+Retrieve the MTA route and open the web console in your browser.
+
+[source,bash,role=execute]
+----
+oc get route -n openshift-mta
+----
+
+.Migration Toolkit for Applications Web Console(_Click the image to view it in full size in a new browser tab_)
+image::mta-ui.png[link={imagesdir}/mta-ui.png,width=600]

@@ -1,0 +1,176 @@
+= Lab 7: Install the MTA Extension in Dev Spaces
+:navtitle: Lab 7: Install the MTA Extension in Dev Spaces
+:experimental:
+
+In this lab, you'll install and configure the Migration Toolkit for Applications (MTA) extension in your Dev Spaces workspace. You'll prepare the Coolstore application for migration analysis from JBoss EAP 7 to JBoss EAP 8 and enable AI-assisted remediation directly in the IDE.
+
+By the end of this lab, you will have:
+
+* Created a Dev Spaces workspace for the Coolstore application
+* Installed the Language Support for Java extension
+* Installed the MTA extension
+* Connected the MTA extension to the MTA web console
+* Created a migration profile for JBoss EAP 7 to JBoss EAP 8
+
+== Install the MTA Extension in Dev Spaces
+
+The Coolstore application needs to be migrated from JBoss EAP 7 to JBoss EAP 8. You'll start by preparing your Dev Spaces workspace and installing the MTA extension to bring migration analysis and AI-assisted remediation directly into the IDE.
+
+=== Access your Dev Spaces workspace
+
+. Retrive the GITLAB_URL as you shall be needing it in upcoming step.
++
+[source,role="execute",subs="attributes+"]
+----
+GITLAB_URL="https://$(oc get route -n gitlab -l app=webservice -o jsonpath='{.items[0].spec.host}')"
+echo "$GITLAB_URL"
+----
+
+. Retrieve the Openshift Dev Spaces dashboard URL and navigate to it using your browser.
++
+[source,role="execute",subs="attributes+"]
+----
+oc get checluster devspaces \
+  -n openshift-devspaces \
+  -o jsonpath='{.status.cheURL}{"\n"}'
+----
++
+Log in with your OpenShift credentials if prompted
++
+.Red Hat Openshift Login Page(_Click the image to view it in full size in a new browser tab_)
+image::login.png[link={imagesdir}/login.png,width=600]
+
+Create a Dev Spaces workspace using the Coolstore application repository.
+
+. Open Dev Spaces and sign in using your OpenShift credentials if prompted.
++
+.Red Hat OpenShift Login Page(Click the image to view it in full size in a new browser tab)
+image::login.png[link={imagesdir}/login.png,width=600]
+
+. Click btn:[Add workspace] to create a new workspace.
++
+.Create New Workspace(Click the image to view it in full size in a new browser tab)
+image::add.png[link={imagesdir}/add.png,width=600]
+
+. Enter the following GitLab repository URL and click btn:[Create and Open]:
++
+${GITLAB_URL}/mta-apps/coolstore.git
++
+.GitLab Repository for Coolstore(Click the image to view it in full size in a new browser tab)
+image::url.png[link={imagesdir}/url.png,width=600]
+
+. Wait until the workspace is fully started and ready.
++
+.Workspace Creation Process(Click the image to view it in full size in a new browser tab)
+image::wip.png[link={imagesdir}/wip.png,width=600]
+
+Install the Java language support extension required to work with the Coolstore application.
+
+. In your Dev Spaces workspace, from the lower-left corner, select the btn:[Settings (gear) icon], and then select Extensions to open the Extensions Marketplace.
++
+.Extensions in VS Code(Click the image to view it in full size in a new browser tab)
+image::mta-extension.png[align="center"]
+
+. In the Extensions search bar, search for Language Support for Java(TM) and install the extension.
++
+.Language Support for Java Extension(Click the image to view it in full size in a new browser tab)
+image::mta-extension-java.png[align="center"]
+
+. From the Status Bar, click the btn:[Java Lightweight Mode] icon and switch the Java Language Server to Standard Mode.
++
+.Switch to Standard Mode(Click the image to view it in full size in a new browser tab)
+image::mode.png[align="center"]
+
+. Wait for the code to compile and verify that the status shows Java: Ready.
++
+.Sample Java: Ready State(Click the image to view it in full size in a new browser tab)
+image::ready.png[align="center"]
+
+=== Install the MTA Extension
+
+NOTE: You may see two Migration Toolkit for Applications extensions. Select the extension shown in the screenshot with the new MTA logo.
+
+. Install the MTA extension.
+
+. Once the installation is complete, verify that the MTA extension icon appears in the left-hand Activity Bar. Select this icon to open the MTA Analysis view.
++
+.MTA Extension Icon(Click the image to view it in full size in a new browser tab)
+image::installed-mta.png[align="center"]
+
+. Verify that the MTA Analysis view displays the following options:
++
+Open Analysis Panel
+Manage Profiles
++
+.MTA Extension Installed(Click the image to view it in full size in a new browser tab)
+image::mta-welcome.png[align="center"]
+
+== Configure the MTA Extension
+
+Connect the MTA extension to the MTA web console and create a migration profile for the Coolstore application.
+
+. Retrive the OPENSHIFT_CLUSTER_INGRESS_DOMAIN from below command as you will need it in upcoming steps.
++
+[source,role="execute",subs="attributes+"]
+----
+OPENSHIFT_CLUSTER_INGRESS_DOMAIN=$(oc get ingresses.config.openshift.io cluster -o jsonpath='{.spec.domain}')
+echo ${OPENSHIFT_CLUSTER_INGRESS_DOMAIN}
+----
+
+. Open the Analysis Panel by clicking btn:[Open Analysis Panel]
++
+.Analysis Panel(_Click the image to view it in full size in a new browser tab_)
+image::mta-analysis-panel.png[align="center"]
+
+. From the top-right corner of the Visual Studio Code window, select the **Settings** option to access the MTA configuration panel.
++
+.MTA Settings(_Click the image to view it in full size in a new browser tab_)
+image::mta-settings-view.png[align="center"]
+
+. Click btn:[Configure Hub Settings] under *Hub Configuration*
++
+.Hub Configuration(_Click the image to view it in full size in a new browser tab_)
+image::mta-hub-configure.png[align="center"]
++
+In the settings screen, fill in the details, make sure to substitute **OPENSHIFT_CLUSTER_INGRESS_DOMAIN** you retreive from **Step 1**.
++
+* **Enable Hub**: Checked
+* **Hub URL**: `https://mta-openshift-mta.${OPENSHIFT_CLUSTER_INGRESS_DOMAIN}
+* **Insecure connection**: Checked
+* **Enable authentication**: Checked
+* **Select**: btn:[Credentials]
+* **Username**: `platform-admin`
+* **Password**: `openshift`
+* **Solution Server**: Enabled
+* **Profile Sync**: Enabled
++
+Click btn:[Save]
++
+.Hub Settings(_Click the image to view it in full size in a new browser tab_)
+image::hub.png[align="center"]
+
+. Close **MTA Hub Configuration** tab and open the **MTA Analysis Panel** tab.
+
+. Click btn:[Edit in Profile Manager] to create a new profile
++
+.Edit in Profile Manager Settings(_Click the image to view it in full size in a new browser tab_)
+image::profile.png[align="center", width=500]
+
+. Click btn:[New Profile] 
++
+.New Profile(_Click the image to view it in full size in a new browser tab_)
+image::profile2.png[align="center", width=500]
++
+Fill in the details:
++
+* **Profile Name**: `coolstore`
+* **Target Technologies**: Select `eap8`
+* **Source Technologies**: Select `eap7`
+* **Use Default Rules**: Checked
++
+.New Profile(_Click the image to view it in full size in a new browser tab_)
+image::mta-profile-save.png[align="center"]
+
+. Final setting should look as below
+.Final Settings(_Click the image to view it in full size in a new browser tab_)
+image::final.png[align="center"]

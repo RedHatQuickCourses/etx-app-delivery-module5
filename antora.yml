@@ -1,7 +1,8 @@
 name: etx-app-delivery-module5
-title: Application Modernization
+title: Application Modernization with MTA
 version: 1
 nav:
 - modules/ROOT/nav.adoc
 - modules/LABENV/nav.adoc
 - modules/section1/nav.adoc
+- modules/quiz/nav.adoc

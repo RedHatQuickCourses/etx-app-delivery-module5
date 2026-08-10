@@ -1,0 +1,33 @@
+= Lab 4: Configure GitLab Access
+:navtitle: Lab 4: Configure GitLab Access
+:experimental:
+
+In this lab, you'll configure GitLab credentials in Migration Toolkit for Applications (MTA) so it can access the application source code for analysis and modernization.
+
+By the end of this lab, you will have:
+
+* Configured GitLab credentials in MTA
+* Enabled MTA to access the application source code
+
+== Configure GitLab Access
+
+Before importing the application, configure GitLab credentials so MTA can access the application source code.
+
+. In the MTA web console, navigate to btn:[Administration] -> btn:[Credentials] -> btn:[Create new].
++
+.Create New Credential(*Click the image to view it in full size in a new browser tab*)
+image::new.png[link={imagesdir}/new.png,width=450]
+
+. Enter the following values:
++
+* *Name*: `gitlab`
+* *Type*: `Source Control`
+* *Authentication*: `Username/Password`
+* *Default Credential*: Enabled
+* *Username*: `platform-admin`
+* *Password*: `openshift`
+
+. Click btn:[Create].
++
+.GitLab Credential(*Click the image to view it in full size in a new browser tab*)
+image::mta-creds.png[link={imagesdir}/mta-creds.png,width=450]

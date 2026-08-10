@@ -1,9 +1,15 @@
 = Lab Environment
 :navtitle: Lab Environment
 
-Before starting the hands-on exercises, provision the required lab environments from the Red Hat Demo Platform (RHDP).
+Before starting the hands-on exercises, provision the required lab environments from the https://demo.redhat.com/[Red Hat Demo Platform (RHDP)].
 
 This learning path uses two OpenShift clusters that represent different stages of a software delivery pipeline. Both environments should be provisioned before you begin the labs.
+
+[NOTE]
+====
+* RHDP for RedHat associates: https://demo.redhat.com/
+* RHDP for RedHat partners: https://partner.demo.redhat.com/
+====
 
 == Provision the Lab Environments
 
@@ -19,17 +25,22 @@ image::info.png[link={imagesdir}/info.png, width=500]
 
 == OpenShift Clusters
 
-[cols="1,2,1",options="header"]
+[cols="1,2,2",options="header"]
 |===
 |Environment |Purpose |Used In
 
-|*Application Platform Software Factory* (Primary Cluster)
+|*Service Enablement: App Platform Software Factory* (Primary Cluster)
 |Development platform where you'll build the internal developer platform, configure CI/CD, and deploy applications.
-|Modules 2(current), 3, 4, and 5
+a|
+* https://redhatquickcourses.github.io/etx-app-delivery-module2/etx-app-delivery-module2/1/index.html[Software Factory Foundations with OpenShift Dev Spaces]
+* https://redhatquickcourses.github.io/etx-app-delivery-module3/etx-app-delivery-module3/1/index.html[Module 3]
+* https://redhatquickcourses.github.io/etx-app-delivery-module4/etx-app-delivery-module4/1/index.html[Module 4]
+* https://redhatquickcourses.github.io/etx-app-delivery-module5/etx-app-delivery-module5/1/index.html[Module 5]
 
-|*Application Platform Runtime* (Secondary Cluster)
+|*Service Enablement: App Platform Runtime* (Secondary Cluster)
 |Runtime environment used to demonstrate GitOps-based promotion between environments.
-|Module 3
+a|
+* https://redhatquickcourses.github.io/etx-app-delivery-module3/etx-app-delivery-module3/1/index.html[Module 3]
 |===
 
 The required namespaces have already been created and are ready for use.
@@ -82,4 +93,4 @@ The following services are pre-configured and available throughout the labs.
 |Securely stores secrets used by applications and CI/CD pipelines.
 |===
 
-All service URLs are available from the **RHDP Lab Information** page.
+All service URLs are available from the **https://demo.redhat.com/[Red Hat Demo Platform (RHDP)] Lab Information** in **My Services** section page.

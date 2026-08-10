@@ -1,4 +1,4 @@
-= Scaling Application Modernization with MTA
+= Modernizing Applications at Scale with MTA
 :navtitle: MTA at Scale
 
 == The Challenge

@@ -1,5 +1,5 @@
-= Accelerating Modernization with AI
-:navtitle: AI-Powered Modernization
+= Developer Lightspeed for MTA
+:navtitle: Developer Lightspeed for MTA
 
 == The Challenge
 
@@ -25,7 +25,7 @@ Migration analysis identifies the work that needs to be done. AI helps developer
 
 == AI-Assisted Application Modernization
 
-Red Hat Developer Lightspeed extends Migration Toolkit for Applications by using Artificial Intelligence to generate migration code suggestions based on MTA's analysis.
+**Red Hat Developer Lightspeed** extends Migration Toolkit for Applications by using Artificial Intelligence to generate migration code suggestions based on MTA's analysis.
 
 Instead of manually interpreting migration reports and implementing every recommendation, developers receive AI-assisted code suggestions directly within their development environment.
 

@@ -1,0 +1,228 @@
+= Lab 2: Modernize an Application with Developer Lightspeed
+:navtitle: Modernize an Application with Developer Lightspeed
+:experimental:
+
+== Overview
+
+Red Hat Developer Lightspeed brings generative AI capabilities directly into your development environment, helping you understand migration patterns, generate code snippets, and receive context-aware recommendations as you modernize the Coolstore application.
+
+In the previous lab, you analyzed Coolstore in the MTA web console. In this module, you configure the Migration Toolkit for Applications extension in OpenShift Dev Spaces, connect it to the MTA Hub, and use Agent Mode to apply AI-assisted migration changes from EAP 7 to EAP 8.
+
+== Learning objectives
+
+By the end of this module, you'll be able to:
+
+* Install and configure the Migration Toolkit for Applications extension in OpenShift Dev Spaces
+* Connect the MTA extension to the MTA Hub deployed in the previous lab
+* Create an analysis profile and run Agent Mode analysis on the Coolstore application
+* Apply AI-assisted code changes with Developer Lightspeed to migrate from EAP 7 to EAP 8
+
+== Install the MTA extension in Dev Spaces
+
+The Coolstore application needs to be migrated from EAP 7 to EAP 8.
+You'll start by installing the MTA extension in your Dev Spaces workspace to bring migration analysis and AI-assisted remediation directly into the IDE.
+
+=== Access your Dev Spaces workspace
+
+. Retrive the GITLAB_URL as you shall be needing it in upcoming step.
++
+[source,role="execute",subs="attributes+"]
+----
+GITLAB_URL="https://$(oc get route -n gitlab -l app=webservice -o jsonpath='{.items[0].spec.host}')"
+echo "$GITLAB_URL"
+----
+
+. Retrieve the Openshift Dev Spaces dashboard URL and navigate to it using your browser.
++
+[source,role="execute",subs="attributes+"]
+----
+oc get checluster devspaces \
+  -n openshift-devspaces \
+  -o jsonpath='{.status.cheURL}{"\n"}'
+----
++
+Log in with your OpenShift credentials if prompted
++
+.Red Hat Openshift Login Page(_Click the image to view it in full size in a new browser tab_)
+image::login.png[link={imagesdir}/login.png,width=600]
+
+. Create a `coolstore` workspace by clicking btn:[Add workspace] 
++
+.Create new workspace(_Click the image to view it in full size in a new browser tab_)
+image::add.png[link={imagesdir}/add.png,width=600]
+
+. Create workspace from the GitLab repository: **${GITLAB_URL}/mta-apps/coolstore.git** and click btn:[Create and Open]
++
+.GITLAB repository for coolstore(_Click the image to view it in full size in a new browser tab_)
+image::url.png[link={imagesdir}/url.png,width=600]
+
+. Wait until the workspace is completely up and working.
++
+.Workspace creation process(_Click the image to view it in full size in a new browser tab_)
+image::wip.png[link={imagesdir}/wip.png,width=600]
+
+=== Install the Language Support for Java extension
+
+. In you Dev Spaces workspace, from the **lower-left** corner, select the btn:[Settings (gear) icon], and then choose btn:[Extensions] to open the Extensions Marketplace.
++
+.Extension in Vscode(_Click the image to view it in full size in a new browser tab_)
+image::mta-extension.png[align="center"]
+
+. In the Extensions search bar, search for **Language Support for Java\(TM)** and install the extension.
++
+.Language Support for Java Extension(_Click the image to view it in full size in a new browser tab_)
+image::mta-extension-java.png[align="center"]
+
+. From the Status Bar, click the btn:[Java Lightweight Mode] icon to switch **Java Language Server** to **Standard Mode**
++
+.Switch to Standard Mode(_Click the image to view it in full size in a new browser tab_)
+image::mode.png[align="center"]
+
+. Once you click, the code will be compiled and the status should show **Java: Ready**
++
+.Sample Java: Ready state(_Click the image to view it in full size in a new browser tab_)
+image::ready.png[align="center"]
+
+=== Install the MTA extension
+
+. From the lower-left corner, select the **Settings (gear) icon**, and then choose **Extensions** to open the Extensions Marketplace.
++
+image::mta-extension.png[align="center"]
+. In the Extensions search bar, search for **Migration Toolkit for Applications (MTA)** and install the extension.
++
+image::mta-extension-search.png[align="center"]
+[NOTE]
+====
+You may see 2 Migration Toolkit for Applications extensions.  Ensure it is the one listed above in the screen shot with the new logo.
+====
+
+. Once the installation is complete, verify that the **MTA extension icon** appears in the left-hand Activity Bar. Select this icon to open the MTA analysis view.
++
+.MTA extension icon(_Click the image to view it in full size in a new browser tab_)
+image::installed-mta.png[align="center"]
+
+. You should see the MTA Analysis view with options to:
++
+* Open Analysis Panel
+* Manage Profiles
++
+.MTA extension installed(_Click the image to view it in full size in a new browser tab_)
+image::mta-welcome.png[align="center"]
+
+=== Configure the MTA Extension
+
+. Retrive the OPENSHIFT_CLUSTER_INGRESS_DOMAIN from below command as you will need it in upcoming steps.
++
+[source,role="execute",subs="attributes+"]
+----
+OPENSHIFT_CLUSTER_INGRESS_DOMAIN=$(oc get ingresses.config.openshift.io cluster -o jsonpath='{.spec.domain}')
+echo ${OPENSHIFT_CLUSTER_INGRESS_DOMAIN}
+----
+
+. Open the Analysis Panel by clicking btn:[Open Analysis Panel]
++
+.Analysis Panel(_Click the image to view it in full size in a new browser tab_)
+image::mta-analysis-panel.png[align="center"]
+
+. From the top-right corner of the Visual Studio Code window, select the **Settings** option to access the MTA configuration panel.
++
+.MTA Settings(_Click the image to view it in full size in a new browser tab_)
+image::mta-settings-view.png[align="center"]
+
+. Click btn:[Configure Hub Settings] under *Hub Configuration*
++
+.Hub Configuration(_Click the image to view it in full size in a new browser tab_)
+image::mta-hub-configure.png[align="center"]
++
+In the settings screen, fill in the details, make sure to substitute **OPENSHIFT_CLUSTER_INGRESS_DOMAIN** you retreive from above commands:
++
+* **Enable Hub**: Checked
+* **Hub URL**: `https://mta-openshift-mta.${OPENSHIFT_CLUSTER_INGRESS_DOMAIN}
+* **Insecure connection**: Checked
+* **Enable authentication**: Checked
+* **Select**: btn:[Credentials]
+* **Username**: `platform-admin`
+* **Password**: `openshift`
+* **Solution Server**: Enabled
+* **Profile Sync**: Enabled
++
+Click btn:[Save]
++
+.Hub Settings(_Click the image to view it in full size in a new browser tab_)
+image::hub.png[align="center"]
+
+. Close **MTA Hub Configuration** tab and open the **MTA Analysis Panel** tab.
+
+. Click btn:[Edit in Profile Manager] to create a new profile
++
+.Edit in Profile Manager Settings(_Click the image to view it in full size in a new browser tab_)
+image::profile.png[align="center", width=500]
+
+. Click btn:[New Profile] 
++
+.New Profile(_Click the image to view it in full size in a new browser tab_)
+image::profile2.png[align="center", width=500]
++
+Fill in the details:
++
+* **Profile Name**: `coolstore`
+* **Target Technologies**: Select `eap8`
+* **Source Technologies**: Select `eap7`
+* **Use Default Rules**: Checked
++
+.New Profile(_Click the image to view it in full size in a new browser tab_)
+image::mta-profile-save.png[align="center"]
+
+. Final setting should look as below
+.Final Settings(_Click the image to view it in full size in a new browser tab_)
+image::final.png[align="center"]
+
+=== Analyze the Application
+
+. Return to the **MTA Analysis View**, confirm that **Agent Mode** is enabled, and select **Start** to activate the newly created profile.
++
+image::mta-enable-agent.png[align="center"]
+
+. Select **Run Analysis** to begin the application analysis. MTA, in combination with Developer Lightspeed and the configured GenAI model, analyzes the entire source codebase. Wait until the analysis reaches **100% completion**.
++
+.Run Analysis(_Click the image to view it in full size in a new browser tab_)
+image::run_analysis.png[align="center"]
+
+. Review the analysis results, which highlight reported issues and provide guided recommendations for migrating the application from EAP 7 to EAP 8.
++
+image::mta-analysis-results.png[align="center"]
+
+. Click through the analysis results and review the recommendations for migrating the application from EAP 7 to EAP 8.
+
+. Select the `javax groupId has been replaced by jakarta.platform` reported issue and follow the accompanying Arcade video, which demonstrates how Developer Lightspeed proposes code changes directly within the source files.
++
+++++
+<!--ARCADE EMBED START--><div style="position: relative; padding-bottom: calc(56.25% + 41px); height: 0px; width: 100%;"><iframe src="https://demo.arcade.software/t3XzB4yORwqLdF8wDzpZ?embed&embed_mobile=tab&embed_desktop=inline&show_copy_link=true" title="MTA with Developer Lightspeed" frameborder="0" loading="lazy" webkitallowfullscreen mozallowfullscreen allowfullscreen allow="clipboard-write" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; color-scheme: light;" ></iframe></div><!--ARCADE EMBED END-->
+++++
++
+. As suggestions appear, accept or reject each change. Developer Lightspeed refines its recommendations based on your selections and may propose additional updates as needed.
++
+[NOTE]
+====
+Applying recommended changes can introduce additional impacts in other parts of the codebase. By using the **Agent Mode** option, Developer Lightspeed is able to identify and suggest these follow-on changes. Without **Agent Mode** enabled, such dependent updates may not be detected or reflected.
+====
+
+. Repeat the analysis process and observe how the total number of reported issues decreases as the first issue is resolved, and note how the analysis results are updated accordingly to reflect the applied changes.
+
+. Go to the terminal and run the following:
+
+[source,role="execute",subs="attributes+"]
+----
+./mvn clean package
+----
+
+. Verify the code compiles successfully
++
+[NOTE]
+====
+There could be AI-introduced errors in the `pom.xml` file. A separate repository has been created that contains the fully migrated code. You may refer to the following migrated repository for comparison and verification, or to correct your implementation if required. ${GITLAB_URL}/mta-apps/coolstore-migrated.git
+====
+
+. The accepted solutions are captured in the **Solution Server** of the MTA Hub and will be used to generate code changes for future applications. This is a powerful feature that allows you to reuse the same solutions for multiple applications.
+
+. Once the analysis is complete, all issues are resolved, and `./mvn clean package` succeeds, you have completed the migration exercise for this lab.

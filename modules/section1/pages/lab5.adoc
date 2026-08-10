@@ -1,0 +1,30 @@
+= Lab 5: Import the Coolstore Application
+:navtitle: Lab 5: Import the Coolstore Application
+:experimental:
+
+In this lab, you'll add the Coolstore application to the Migration Toolkit for Applications (MTA) Application Inventory and configure its GitLab source repository for analysis.
+
+By the end of this lab, you will have:
+
+* Created a Coolstore application entry in MTA
+* Connected the application to its GitLab source repository
+* Configured the application branch and runtime tag
+
+== Import the Coolstore Application
+
+Create an application entry for the Coolstore application in the MTA Application Inventory.
+
+. In the MTA web console, navigate to btn:[Migration] -> btn:[Application Inventory] -> btn:[Create new].
++
+.Application Inventory(_Click the image to view it in full size in a new browser tab_)
+image::migration.png[link={imagesdir}/migration.png,width=450]
+
+. Enter the following values and click btn:[Create].
++
+* *Name*: `coolstore`
+* *Manual Tags*: `Runtime/EAP`
+* *Source Repository*: `{gitlab_url}/mta-apps/coolstore.git`
+* *Branch*: `main`
++
+.Create Application(_Click the image to view it in full size in a new browser tab_)
+image::migration2.png[link={imagesdir}/migration2.png,width=450]

@@ -1,0 +1,23 @@
+= MTA with Red Hat OpenShift Dev Spaces
+:navtitle: MTA with Red Hat OpenShift Dev Spaces
+
+++++
+<div class="module-card">
+<div class="module-header">
+++++
+
+image::ROOT:mini-illustration-book-red-RH.Large_square_transparent.png[width=40,align=left]
+
+**What's in this section?**
+
+++++
+</div>
+++++
+
+In this section, you'll use Red Hat OpenShift Dev Spaces as the development environment for modernizing the Coolstore application with Migration Toolkit for Applications (MTA).
+
+You'll install and configure the MTA extension in Dev Spaces, connect it to the MTA web console, create a migration profile for JBoss EAP 7 to JBoss EAP 8, and use Red Hat Developer Lightspeed to analyze the application and apply AI-assisted migration recommendations directly in the IDE.
+
+++++
+</div>
+++++

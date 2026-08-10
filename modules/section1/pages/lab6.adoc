@@ -1,0 +1,75 @@
+= Lab 6: Analyze the Coolstore Application
+:navtitle: Lab 6: Analyze the Coolstore Application
+:experimental:
+
+In this lab, you'll analyze the Coolstore application with Migration Toolkit for Applications (MTA), targeting JBoss EAP 8. You'll review the migration findings and identify the changes required to modernize the application.
+
+By the end of this lab, you will have:
+
+* Analyzed the Coolstore application for JBoss EAP 8
+* Reviewed the generated migration report
+* Identified issues requiring migration changes
+* Understood the javax to jakarta migration requirements
+
+== Analyze the Application
+
+Run an application analysis targeting JBoss EAP 8.
+
+. Select the coolstore application.
+
+. Click btn:[Analyze].
++
+.Start Analysis(Click the image to view it in full size in a new browser tab)
+image::coolstore.png[link={imagesdir}/coolstore.png,width=450]
+
+. Configure the analysis using the following options:
++
+Mode: Manual Selection
+Target Runtime: JBoss EAP 8
+Scope: Application and internal dependencies only
++
+.Mode settings(Click the image to view it in full size in a new browser tab)
+image::manual.png[link={imagesdir}/manual.png,width=450]
++
+.Analysis settings(Click the image to view it in full size in a new browser tab)
+image::analysis2.png[link={imagesdir}/analysis2.png,width=450]
++
+.Set targets settings(Click the image to view it in full size in a new browser tab)
+image::jboss.png[link={imagesdir}/jboss.png,width=450]
++
+.Scope settings(Click the image to view it in full size in a new browser tab)
+image::scope.png[link={imagesdir}/scope.png,width=450]
+
+. Accept the remaining defaults and click btn:[Run].
++
+.Review Analysis details(Click the image to view it in full size in a new browser tab)
+image::run.png[link={imagesdir}/run.png,width=450]
+
+The analysis scans the application's source code, dependencies, and configuration files using the built-in MTA migration rules.
+
+. Wait for the analysis to complete.
++
+.Analysis Complete(Click the image to view it in full size in a new browser tab)
+image::complete.png[link={imagesdir}/complete.png,width=500]
+
+== Review the Analysis Report
+
+Once the analysis completes, review the migration findings.
+
+. Open the coolstore application.
+
+. Select the Issues tab.
++
+.Analysis Report(Click the image to view it in full size in a new browser tab)
+image::issues.png[link={imagesdir}/issues.png,width=500]
+
+. Review the reported issues:
++
+* Mandatory — Changes required for the migration to succeed.
+* Potential — Recommended improvements.
+* Information — Additional guidance and documentation.
+
+.Migration Issue Categories(Click the image to view it in full size in a new browser tab)
+image::category.png[link={imagesdir}/category.png,width=600]
+
+IMPORTANT: The migration report identifies code changes required to migrate the application from Java EE (javax) to Jakarta EE (jakarta). In the next lab, you'll use Red Hat Developer Lightspeed to generate AI-assisted recommendations for addressing these issues.

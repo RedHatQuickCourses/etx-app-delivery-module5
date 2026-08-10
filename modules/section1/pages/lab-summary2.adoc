@@ -1,0 +1,21 @@
+= Lab Summary
+:navtitle: Lab Summary
+:experimental:
+
+In this section, you used **Red Hat OpenShift Dev Spaces**, the **Migration Toolkit for Applications (MTA) extension**, and **Red Hat Developer Lightspeed** to modernize the Coolstore application from **JBoss EAP 7** to **JBoss EAP 8**.
+
+You first created and prepared a Dev Spaces workspace, installed the required Java language support and MTA extension, and connected the extension to the MTA web console. You then created a migration profile targeting JBoss EAP 8.
+
+Next, you used **Developer Lightspeed** with **Agent Mode** to analyze the application, review AI-assisted migration recommendations, and apply the recommended code changes directly in the IDE. You re-ran the analysis to verify the migration issues were resolved and built the migrated application successfully.
+
+By completing this section, you have:
+
+* Set up a Dev Spaces workspace for the Coolstore application
+* Installed and configured the MTA extension
+* Connected Dev Spaces to the MTA web console
+* Created an EAP 7 to EAP 8 migration profile
+* Used Developer Lightspeed and Agent Mode for AI-assisted migration
+* Applied and verified migration code changes
+* Successfully built the modernized application
+
+You have now completed the end-to-end application modernization workflow using **MTA, Developer Lightspeed, and OpenShift Dev Spaces**.
