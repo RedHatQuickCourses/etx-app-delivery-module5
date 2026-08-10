@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MTA Overview :: Application Modernization with MTA</title>
-    <link rel="prev" href="../LABENV/lab-env-overview.html">
-    <link rel="next" href="intro.html">
+    <title>Lab 3: Deploy MTA with Developer Lightspeed :: Application Modernization with MTA</title>
+    <link rel="prev" href="lab2.html">
+    <link rel="next" href="lab4.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/custom.css">
@@ -58,7 +58,7 @@
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="index.html">MTA Overview</a>
 <ul class="nav-list">
@@ -77,7 +77,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="lab2.html">Lab 2: Install MTA</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="lab3.html">Lab 3: Deploy MTA with Developer Lightspeed</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -154,6 +154,7 @@
   <ul>
     <li><a href="../index.html">Application Modernization with MTA</a></li>
     <li><a href="index.html">MTA Overview</a></li>
+    <li><a href="lab3.html">Lab 3: Deploy MTA with Developer Lightspeed</a></li>
   </ul>
 </nav>
 </div>
@@ -162,28 +163,121 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">MTA Overview</h1>
-<div class="module-card">
-<div class="module-header">
-<div class="imageblock text-left">
+<h1 class="page">Lab 3: Deploy MTA with Developer Lightspeed</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lab, you&#8217;ll deploy the Migration Toolkit for Applications (MTA) web console and configure it to use Developer Lightspeed for AI-assisted application modernization.</p>
+</div>
+<div class="paragraph">
+<p>By the end of this lab, you will have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Configured the MaaS API key for MTA</p>
+</li>
+<li>
+<p>Deployed the MTA web console</p>
+</li>
+<li>
+<p>Verified that the MTA components are running</p>
+</li>
+<li>
+<p>Accessed the MTA web console</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deploy_the_mta_web_console"><a class="anchor" href="#_deploy_the_mta_web_console"></a>Deploy the MTA Web Console</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The MTA web console is deployed by creating a Tackle custom resource. Before deploying it, create a Secret containing the <strong>MaaS API</strong> key created in the previous lab.</p>
+</div>
+<div class="listingblock execute">
 <div class="content">
-<img src="../_images/mini-illustration-book-red-RH.Large_square_transparent.png" alt="mini illustration book red RH.Large square transparent" width="40">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc create secret generic kai-api-keys \
+  -n openshift-mta \
+  --from-literal=OPENAI_API_BASE='https://maas-rhdp-frontend.apps.maas.redhatworkshops.io/v1' \
+  --from-literal=OPENAI_API_KEY='&lt;YOUR_MTA_API_KEY&gt;'</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p><strong>What&#8217;s in this section?</strong></p>
+<p>Create the Tackle custom resource to deploy the MTA web console.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">cat &lt;&lt;EOF | oc apply -f -
+apiVersion: tackle.konveyor.io/v1alpha1
+kind: Tackle
+metadata:
+  name: mta
+  namespace: openshift-mta
+spec:
+  feature_auth_required: 'false'
+  feature_isolate_namespace: "false"
+  maven_data_volume_size: "10Gi"
+  analyzer_container_limits_cpu: "1"
+  analyzer_container_limits_memory: "4Gi"
+  analyzer_container_requests_cpu: "500m"
+  analyzer_container_requests_memory: "2Gi"
+  hub_container_limits_cpu: "2"
+  hub_container_limits_memory: "4Gi"
+  hub_container_requests_cpu: "500m"
+  hub_container_requests_memory: "2Gi"
+  kai_llm_proxy_enabled: true
+  kai_solution_server_enabled: true
+  kai_llm_provider: openai
+  kai_llm_model: granite-3-2-8b-instruct
+  kai_llm_baseurl: "https://maas-rhdp.apps.maas.redhatworkshops.io/v1"
+  kai_solution_server_container_limits_cpu: "1"
+  kai_solution_server_container_limits_memory: "2Gi"
+  kai_solution_server_container_requests_cpu: "500m"
+  kai_solution_server_container_requests_memory: "1Gi"
+  kai_llm_proxy_container_limits_cpu: "1"
+  kai_llm_proxy_container_limits_memory: "2Gi"
+  kai_llm_proxy_container_requests_cpu: "500m"
+  kai_llm_proxy_container_requests_memory: "1Gi"
+EOF</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In this section, you&#8217;ll learn how to modernize enterprise Java applications using Red Hat Migration Toolkit for Applications (MTA) and Red Hat Developer Lightspeed.</p>
+<p>Wait until all MTA pods are running.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get pods -n openshift-mta -w</code></pre>
+</div>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll explore how MTA supports application modernization at scale, assess migration requirements, and analyze the Coolstore application for migration from JBoss EAP 7 to JBoss EAP 8. You&#8217;ll then use AI-assisted recommendations in Red Hat OpenShift Dev Spaces to identify and apply migration changes and validate the modernized application.</p>
+<p>Verify that the following MTA components are running:
+* <code>kai-api</code>
+* <code>kai-db</code>
+* <code>llm-proxy</code>
+* <code>mta-hub</code>
+* <code>mta-ui</code></p>
+</div>
+<div class="paragraph">
+<p>Retrieve the MTA route and open the web console in your browser.</p>
+</div>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">oc get route -n openshift-mta</code></pre>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/mta-ui.png"><img src="_images/mta-ui.png" alt="mta ui" width="600"></a>
+</div>
+<div class="title">Figure 1. Migration Toolkit for Applications Web Console(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../LABENV/lab-env-overview.html">Lab Environment</a></span>
-  <span class="next"><a href="intro.html">Modernizing Applications with MTA</a></span>
+  <span class="prev"><a href="lab2.html">Lab 2: Install MTA</a></span>
+  <span class="next"><a href="lab4.html">Lab 4: Configure GitLab Access</a></span>
 </nav>
 </article>
   </div>

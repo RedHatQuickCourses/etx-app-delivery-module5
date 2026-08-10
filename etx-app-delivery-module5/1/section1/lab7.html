@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lab 7: Install the MTA Extension in Dev Spaces :: Application Modernization with MTA</title>
+    <link rel="prev" href="lightspeed.html">
+    <link rel="next" href="lab8.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/custom.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Application Modernization with MTA</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/REPLACEREPONAME/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Application Modernization with MTA</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Application Modernization with MTA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/lab-env-overview.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MTA Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro.html">Modernizing Applications with MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components.html">MTA at Scale</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="scenerio.html">Lab Scenario</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab1.html">Lab 1: MTA Prerequisites</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab2.html">Lab 2: Install MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab3.html">Lab 3: Deploy MTA with Developer Lightspeed</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab4.html">Lab 4: Configure GitLab Access</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab5.html">Lab 5: Import the Coolstore Application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab6.html">Lab 6: Analyze the Coolstore Application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab-summary.html">Lab Summary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index2.html">MTA with Red Hat Openshift Dev Spaces</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lightspeed.html">Developer Lightspeed for MTA</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="lab7.html">Lab 7: Install the MTA Extension in Dev Spaces</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab8.html">Lab 8: Analyze and Modernize the Application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab-summary2.html">Lab Summary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../quiz/index.html">Knowledge Check</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../quiz/next.html">Summary and What&#8217;s next?</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Application Modernization with MTA</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Application Modernization with MTA</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Application Modernization with MTA</a></li>
+    <li><a href="index2.html">MTA with Red Hat Openshift Dev Spaces</a></li>
+    <li><a href="lab7.html">Lab 7: Install the MTA Extension in Dev Spaces</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lab 7: Install the MTA Extension in Dev Spaces</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lab, you&#8217;ll install and configure the Migration Toolkit for Applications (MTA) extension in your Dev Spaces workspace. You&#8217;ll prepare the Coolstore application for migration analysis from JBoss EAP 7 to JBoss EAP 8 and enable AI-assisted remediation directly in the IDE.</p>
+</div>
+<div class="paragraph">
+<p>By the end of this lab, you will have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Created a Dev Spaces workspace for the Coolstore application</p>
+</li>
+<li>
+<p>Installed the Language Support for Java extension</p>
+</li>
+<li>
+<p>Installed the MTA extension</p>
+</li>
+<li>
+<p>Connected the MTA extension to the MTA web console</p>
+</li>
+<li>
+<p>Created a migration profile for JBoss EAP 7 to JBoss EAP 8</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_install_the_mta_extension_in_dev_spaces"><a class="anchor" href="#_install_the_mta_extension_in_dev_spaces"></a>Install the MTA Extension in Dev Spaces</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Coolstore application needs to be migrated from JBoss EAP 7 to JBoss EAP 8. You&#8217;ll start by preparing your Dev Spaces workspace and installing the MTA extension to bring migration analysis and AI-assisted remediation directly into the IDE.</p>
+</div>
+<div class="sect2">
+<h3 id="_access_your_dev_spaces_workspace"><a class="anchor" href="#_access_your_dev_spaces_workspace"></a>Access your Dev Spaces workspace</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Retrive the GITLAB_URL as you shall be needing it in upcoming step.</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">GITLAB_URL="https://$(oc get route -n gitlab -l app=webservice -o jsonpath='{.items[0].spec.host}')"
+echo "$GITLAB_URL"</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Retrieve the Openshift Dev Spaces dashboard URL and navigate to it using your browser.</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">oc get checluster devspaces \
+  -n openshift-devspaces \
+  -o jsonpath='{.status.cheURL}{"\n"}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Log in with your OpenShift credentials if prompted</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/login.png"><img src="_images/login.png" alt="login" width="600"></a>
+</div>
+<div class="title">Figure 1. Red Hat Openshift Login Page(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Create a Dev Spaces workspace using the Coolstore application repository.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Dev Spaces and sign in using your OpenShift credentials if prompted.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/login.png"><img src="_images/login.png" alt="login" width="600"></a>
+</div>
+<div class="title">Figure 2. Red Hat OpenShift Login Page(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>Click <b class="button">Add workspace</b> to create a new workspace.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/add.png"><img src="_images/add.png" alt="add" width="600"></a>
+</div>
+<div class="title">Figure 3. Create New Workspace(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>Enter the following GitLab repository URL and click <b class="button">Create and Open</b>:</p>
+<div class="paragraph">
+<p>${GITLAB_URL}/mta-apps/coolstore.git</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/url.png"><img src="_images/url.png" alt="url" width="600"></a>
+</div>
+<div class="title">Figure 4. GitLab Repository for Coolstore(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>Wait until the workspace is fully started and ready.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/wip.png"><img src="_images/wip.png" alt="wip" width="600"></a>
+</div>
+<div class="title">Figure 5. Workspace Creation Process(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Install the Java language support extension required to work with the Coolstore application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>In your Dev Spaces workspace, from the lower-left corner, select the <b class="button">Settings (gear) icon</b>, and then select Extensions to open the Extensions Marketplace.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta-extension.png" alt="mta extension">
+</div>
+<div class="title">Figure 6. Extensions in VS Code(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>In the Extensions search bar, search for Language Support for Java&#8482; and install the extension.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta-extension-java.png" alt="mta extension java">
+</div>
+<div class="title">Figure 7. Language Support for Java Extension(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>From the Status Bar, click the <b class="button">Java Lightweight Mode</b> icon and switch the Java Language Server to Standard Mode.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mode.png" alt="mode">
+</div>
+<div class="title">Figure 8. Switch to Standard Mode(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>Wait for the code to compile and verify that the status shows Java: Ready.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/ready.png" alt="ready">
+</div>
+<div class="title">Figure 9. Sample Java: Ready State(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_install_the_mta_extension"><a class="anchor" href="#_install_the_mta_extension"></a>Install the MTA Extension</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You may see two Migration Toolkit for Applications extensions. Select the extension shown in the screenshot with the new MTA logo.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install the MTA extension.</p>
+</li>
+<li>
+<p>Once the installation is complete, verify that the MTA extension icon appears in the left-hand Activity Bar. Select this icon to open the MTA Analysis view.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/installed-mta.png" alt="installed mta">
+</div>
+<div class="title">Figure 10. MTA Extension Icon(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>Verify that the MTA Analysis view displays the following options:</p>
+<div class="paragraph">
+<p>Open Analysis Panel
+Manage Profiles</p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta-welcome.png" alt="mta welcome">
+</div>
+<div class="title">Figure 11. MTA Extension Installed(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configure_the_mta_extension"><a class="anchor" href="#_configure_the_mta_extension"></a>Configure the MTA Extension</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Connect the MTA extension to the MTA web console and create a migration profile for the Coolstore application.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Retrive the OPENSHIFT_CLUSTER_INGRESS_DOMAIN from below command as you will need it in upcoming steps.</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">OPENSHIFT_CLUSTER_INGRESS_DOMAIN=$(oc get ingresses.config.openshift.io cluster -o jsonpath='{.spec.domain}')
+echo ${OPENSHIFT_CLUSTER_INGRESS_DOMAIN}</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Open the Analysis Panel by clicking <b class="button">Open Analysis Panel</b></p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta-analysis-panel.png" alt="mta analysis panel">
+</div>
+<div class="title">Figure 12. Analysis Panel(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+<li>
+<p>From the top-right corner of the Visual Studio Code window, select the <strong>Settings</strong> option to access the MTA configuration panel.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta-settings-view.png" alt="mta settings view">
+</div>
+<div class="title">Figure 13. MTA Settings(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+<li>
+<p>Click <b class="button">Configure Hub Settings</b> under <strong>Hub Configuration</strong></p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta-hub-configure.png" alt="mta hub configure">
+</div>
+<div class="title">Figure 14. Hub Configuration(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>In the settings screen, fill in the details, make sure to substitute <strong>OPENSHIFT_CLUSTER_INGRESS_DOMAIN</strong> you retreive from <strong>Step 1</strong>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Enable Hub</strong>: Checked</p>
+</li>
+<li>
+<p><strong>Hub URL</strong>: `https://mta-openshift-mta.${OPENSHIFT_CLUSTER_INGRESS_DOMAIN}</p>
+</li>
+<li>
+<p><strong>Insecure connection</strong>: Checked</p>
+</li>
+<li>
+<p><strong>Enable authentication</strong>: Checked</p>
+</li>
+<li>
+<p><strong>Select</strong>: <b class="button">Credentials</b></p>
+</li>
+<li>
+<p><strong>Username</strong>: <code>platform-admin</code></p>
+</li>
+<li>
+<p><strong>Password</strong>: <code>openshift</code></p>
+</li>
+<li>
+<p><strong>Solution Server</strong>: Enabled</p>
+</li>
+<li>
+<p><strong>Profile Sync</strong>: Enabled</p>
+<div class="paragraph">
+<p>Click <b class="button">Save</b></p>
+</div>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/hub.png" alt="hub">
+</div>
+<div class="title">Figure 15. Hub Settings(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Close <strong>MTA Hub Configuration</strong> tab and open the <strong>MTA Analysis Panel</strong> tab.</p>
+</li>
+<li>
+<p>Click <b class="button">Edit in Profile Manager</b> to create a new profile</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/profile.png" alt="profile" width="500">
+</div>
+<div class="title">Figure 16. Edit in Profile Manager Settings(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+<li>
+<p>Click <b class="button">New Profile</b></p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/profile2.png" alt="profile2" width="500">
+</div>
+<div class="title">Figure 17. New Profile(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+<div class="paragraph">
+<p>Fill in the details:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Profile Name</strong>: <code>coolstore</code></p>
+</li>
+<li>
+<p><strong>Target Technologies</strong>: Select <code>eap8</code></p>
+</li>
+<li>
+<p><strong>Source Technologies</strong>: Select <code>eap7</code></p>
+</li>
+<li>
+<p><strong>Use Default Rules</strong>: Checked</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta-profile-save.png" alt="mta profile save">
+</div>
+<div class="title">Figure 18. New Profile(<em>Click the image to view it in full size in a new browser tab</em>)</div>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Final setting should look as below
+.Final Settings(<em>Click the image to view it in full size in a new browser tab</em>)
+image::final.png[align="center"]</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="lightspeed.html">Developer Lightspeed for MTA</a></span>
+  <span class="next"><a href="lab8.html">Lab 8: Analyze and Modernize the Application</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>

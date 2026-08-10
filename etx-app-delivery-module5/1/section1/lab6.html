@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MTA Overview :: Application Modernization with MTA</title>
-    <link rel="prev" href="../LABENV/lab-env-overview.html">
-    <link rel="next" href="intro.html">
+    <title>Lab 6: Analyze the Coolstore Application :: Application Modernization with MTA</title>
+    <link rel="prev" href="lab5.html">
+    <link rel="next" href="lab-summary.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/custom.css">
@@ -58,7 +58,7 @@
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="index.html">MTA Overview</a>
 <ul class="nav-list">
@@ -86,7 +86,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="lab5.html">Lab 5: Import the Coolstore Application</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="lab6.html">Lab 6: Analyze the Coolstore Application</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -154,6 +154,7 @@
   <ul>
     <li><a href="../index.html">Application Modernization with MTA</a></li>
     <li><a href="index.html">MTA Overview</a></li>
+    <li><a href="lab6.html">Lab 6: Analyze the Coolstore Application</a></li>
   </ul>
 </nav>
 </div>
@@ -162,28 +163,175 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">MTA Overview</h1>
-<div class="module-card">
-<div class="module-header">
-<div class="imageblock text-left">
+<h1 class="page">Lab 6: Analyze the Coolstore Application</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lab, you&#8217;ll analyze the Coolstore application with Migration Toolkit for Applications (MTA), targeting JBoss EAP 8. You&#8217;ll review the migration findings and identify the changes required to modernize the application.</p>
+</div>
+<div class="paragraph">
+<p>By the end of this lab, you will have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Analyzed the Coolstore application for JBoss EAP 8</p>
+</li>
+<li>
+<p>Reviewed the generated migration report</p>
+</li>
+<li>
+<p>Identified issues requiring migration changes</p>
+</li>
+<li>
+<p>Understood the javax to jakarta migration requirements</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analyze_the_application"><a class="anchor" href="#_analyze_the_application"></a>Analyze the Application</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Run an application analysis targeting JBoss EAP 8.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Select the coolstore application.</p>
+</li>
+<li>
+<p>Click <b class="button">Analyze</b>.</p>
+<div class="imageblock">
 <div class="content">
-<img src="../_images/mini-illustration-book-red-RH.Large_square_transparent.png" alt="mini illustration book red RH.Large square transparent" width="40">
+<a class="image" href="_images/coolstore.png"><img src="_images/coolstore.png" alt="coolstore" width="450"></a>
 </div>
+<div class="title">Figure 1. Start Analysis(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>Configure the analysis using the following options:</p>
+<div class="paragraph">
+<p>Mode: Manual Selection
+Target Runtime: JBoss EAP 8
+Scope: Application and internal dependencies only</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/manual.png"><img src="_images/manual.png" alt="manual" width="450"></a>
+</div>
+<div class="title">Figure 2. Mode settings(Click the image to view it in full size in a new browser tab)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/analysis2.png"><img src="_images/analysis2.png" alt="analysis2" width="450"></a>
+</div>
+<div class="title">Figure 3. Analysis settings(Click the image to view it in full size in a new browser tab)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/jboss.png"><img src="_images/jboss.png" alt="jboss" width="450"></a>
+</div>
+<div class="title">Figure 4. Set targets settings(Click the image to view it in full size in a new browser tab)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/scope.png"><img src="_images/scope.png" alt="scope" width="450"></a>
+</div>
+<div class="title">Figure 5. Scope settings(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>Accept the remaining defaults and click <b class="button">Run</b>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/run.png"><img src="_images/run.png" alt="run" width="450"></a>
+</div>
+<div class="title">Figure 6. Review Analysis details(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p><strong>What&#8217;s in this section?</strong></p>
+<p>The analysis scans the application&#8217;s source code, dependencies, and configuration files using the built-in MTA migration rules.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Wait for the analysis to complete.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/complete.png"><img src="_images/complete.png" alt="complete" width="500"></a>
+</div>
+<div class="title">Figure 7. Analysis Complete(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+</ol>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_review_the_analysis_report"><a class="anchor" href="#_review_the_analysis_report"></a>Review the Analysis Report</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>In this section, you&#8217;ll learn how to modernize enterprise Java applications using Red Hat Migration Toolkit for Applications (MTA) and Red Hat Developer Lightspeed.</p>
+<p>Once the analysis completes, review the migration findings.</p>
 </div>
-<div class="paragraph">
-<p>You&#8217;ll explore how MTA supports application modernization at scale, assess migration requirements, and analyze the Coolstore application for migration from JBoss EAP 7 to JBoss EAP 8. You&#8217;ll then use AI-assisted recommendations in Red Hat OpenShift Dev Spaces to identify and apply migration changes and validate the modernized application.</p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the coolstore application.</p>
+</li>
+<li>
+<p>Select the Issues tab.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/issues.png"><img src="_images/issues.png" alt="issues" width="500"></a>
+</div>
+<div class="title">Figure 8. Analysis Report(Click the image to view it in full size in a new browser tab)</div>
+</div>
+</li>
+<li>
+<p>Review the reported issues:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Mandatory — Changes required for the migration to succeed.</p>
+</li>
+<li>
+<p>Potential — Recommended improvements.</p>
+</li>
+<li>
+<p>Information — Additional guidance and documentation.</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/category.png"><img src="_images/category.png" alt="category" width="600"></a>
+</div>
+<div class="title">Figure 9. Migration Issue Categories(Click the image to view it in full size in a new browser tab)</div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+The migration report identifies code changes required to migrate the application from Java EE (javax) to Jakarta EE (jakarta). In the next lab, you&#8217;ll use Red Hat Developer Lightspeed to generate AI-assisted recommendations for addressing these issues.
+</td>
+</tr>
+</table>
+</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../LABENV/lab-env-overview.html">Lab Environment</a></span>
-  <span class="next"><a href="intro.html">Modernizing Applications with MTA</a></span>
+  <span class="prev"><a href="lab5.html">Lab 5: Import the Coolstore Application</a></span>
+  <span class="next"><a href="lab-summary.html">Lab Summary</a></span>
 </nav>
 </article>
   </div>

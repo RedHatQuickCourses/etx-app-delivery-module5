@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>MTA Overview :: Application Modernization with MTA</title>
-    <link rel="prev" href="../LABENV/lab-env-overview.html">
-    <link rel="next" href="intro.html">
+    <title>Lab 8: Analyze and Modernize the Application :: Application Modernization with MTA</title>
+    <link rel="prev" href="lab7.html">
+    <link rel="next" href="lab-summary2.html">
     <meta name="generator" content="Antora 3.2.0-alpha.12">
     <link rel="stylesheet" href="../../../_/css/site.css">
     <link rel="stylesheet" href="../../../_/css/custom.css">
@@ -58,7 +58,7 @@
   </li>
   <li class="nav-item" data-depth="0">
 <ul class="nav-list">
-  <li class="nav-item is-current-page" data-depth="1">
+  <li class="nav-item" data-depth="1">
     <button class="nav-item-toggle"></button>
     <a class="nav-link" href="index.html">MTA Overview</a>
 <ul class="nav-list">
@@ -104,7 +104,7 @@
   <li class="nav-item" data-depth="2">
     <a class="nav-link" href="lab7.html">Lab 7: Install the MTA Extension in Dev Spaces</a>
   </li>
-  <li class="nav-item" data-depth="2">
+  <li class="nav-item is-current-page" data-depth="2">
     <a class="nav-link" href="lab8.html">Lab 8: Analyze and Modernize the Application</a>
   </li>
   <li class="nav-item" data-depth="2">
@@ -153,7 +153,8 @@
 <nav class="breadcrumbs" aria-label="breadcrumbs">
   <ul>
     <li><a href="../index.html">Application Modernization with MTA</a></li>
-    <li><a href="index.html">MTA Overview</a></li>
+    <li><a href="index2.html">MTA with Red Hat Openshift Dev Spaces</a></li>
+    <li><a href="lab8.html">Lab 8: Analyze and Modernize the Application</a></li>
   </ul>
 </nav>
 </div>
@@ -162,28 +163,131 @@
   <div class="toc-menu"></div>
 </aside>
 <article class="doc">
-<h1 class="page">MTA Overview</h1>
-<div class="module-card">
-<div class="module-header">
-<div class="imageblock text-left">
+<h1 class="page">Lab 8: Analyze and Modernize the Application</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lab, you&#8217;ll use the MTA extension with Developer Lightspeed and Agent Mode to analyze the Coolstore application and apply AI-assisted recommendations to migrate it from JBoss EAP 7 to JBoss EAP 8.</p>
+</div>
+<div class="paragraph">
+<p>By the end of this lab, you will have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Analyzed the Coolstore application using the configured MTA profile</p>
+</li>
+<li>
+<p>Reviewed AI-assisted migration recommendations</p>
+</li>
+<li>
+<p>Applied recommended code changes using Developer Lightspeed</p>
+</li>
+<li>
+<p>Re-analyzed the application and verified the updated results</p>
+</li>
+<li>
+<p>Built the migrated application successfully</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analyze_the_application"><a class="anchor" href="#_analyze_the_application"></a>Analyze the Application</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Return to the <strong>MTA Analysis View</strong>, confirm that <strong>Agent Mode</strong> is enabled, and select <b class="button">Start</b> to activate the newly created profile.</p>
+<div class="imageblock text-center">
 <div class="content">
-<img src="../_images/mini-illustration-book-red-RH.Large_square_transparent.png" alt="mini illustration book red RH.Large square transparent" width="40">
+<img src="_images/mta-enable-agent.png" alt="mta enable agent">
 </div>
+</div>
+</li>
+<li>
+<p>Select <b class="button">Run Analysis</b> to begin the application analysis. MTA, together with Developer Lightspeed and the configured GenAI model, analyzes the application source code. Wait until the analysis reaches <strong>100% completion</strong>.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/run_analysis.png" alt="run analysis">
+</div>
+<div class="title">Figure 1. Run Analysis(<strong>Click the image to view it in full size in a new browser tab</strong>)</div>
+</div>
+</li>
+<li>
+<p>Review the analysis results. The results identify migration issues and provide guided recommendations for migrating the application from EAP 7 to EAP 8.</p>
+<div class="imageblock text-center">
+<div class="content">
+<img src="_images/mta-analysis-results.png" alt="mta analysis results">
+</div>
+<div class="title">Figure 2. Analysis Results(<strong>Click the image to view it in full size in a new browser tab</strong>)</div>
+</div>
+</li>
+<li>
+<p>Select the reported issue <strong><code>javax groupId has been replaced by jakarta.platform</code></strong> and review the accompanying Arcade video. The video demonstrates how Developer Lightspeed proposes code changes directly within the source files.</p>
+</li>
+</ol>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+Applying recommended changes can introduce additional impacts in other parts of the codebase. When <strong>Agent Mode</strong> is enabled, Developer Lightspeed can identify and suggest these follow-on changes. Without <strong>Agent Mode</strong>, these dependent updates may not be detected or reflected in the analysis.
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Apply the recommended changes and repeat the analysis. Observe how the total number of reported issues decreases as issues are resolved, and review the updated analysis results.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_build_the_migrated_application"><a class="anchor" href="#_build_the_migrated_application"></a>Build the Migrated Application</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the terminal and run the following command:</p>
+<div class="listingblock execute">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-none hljs">./mvn clean package</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+AI-generated changes may introduce errors in the <code>pom.xml</code> file. A separate repository (i.e <code><strong>${GITLAB_URL}/mta-apps/coolstore-migrated.git</strong></code>) containing the fully migrated application is available for comparison and verification. You can also use it to correct your implementation if required
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ol>
 </div>
 <div class="paragraph">
-<p><strong>What&#8217;s in this section?</strong></p>
-</div>
-</div>
-<div class="paragraph">
-<p>In this section, you&#8217;ll learn how to modernize enterprise Java applications using Red Hat Migration Toolkit for Applications (MTA) and Red Hat Developer Lightspeed.</p>
+<p>Accepted solutions can be captured in the <strong>Solution Server</strong> of the MTA Hub and can be reused to generate code changes for future applications. This allows migration solutions to be applied consistently across multiple applications.</p>
 </div>
 <div class="paragraph">
-<p>You&#8217;ll explore how MTA supports application modernization at scale, assess migration requirements, and analyze the Coolstore application for migration from JBoss EAP 7 to JBoss EAP 8. You&#8217;ll then use AI-assisted recommendations in Red Hat OpenShift Dev Spaces to identify and apply migration changes and validate the modernized application.</p>
+<p>Once the analysis is complete, all issues are resolved, and <code>./mvn clean package</code> succeeds, you have completed the application migration exercise.</p>
+</div>
 </div>
 </div>
 <nav class="pagination">
-  <span class="prev"><a href="../LABENV/lab-env-overview.html">Lab Environment</a></span>
-  <span class="next"><a href="intro.html">Modernizing Applications with MTA</a></span>
+  <span class="prev"><a href="lab7.html">Lab 7: Install the MTA Extension in Dev Spaces</a></span>
+  <span class="next"><a href="lab-summary2.html">Lab Summary</a></span>
 </nav>
 </article>
   </div>

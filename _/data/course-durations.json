@@ -1,6 +1,6 @@
 {
-  "totalSeconds": 804,
-  "pageCount": 10,
+  "totalSeconds": 1081,
+  "pageCount": 20,
   "pages": [
     {
       "module": "ROOT",
@@ -9,8 +9,8 @@
     },
     {
       "module": "LABENV",
-      "page": "index.adoc",
-      "seconds": 82
+      "page": "lab-env-overview.adoc",
+      "seconds": 93
     },
     {
       "module": "section1",
@@ -29,28 +29,78 @@
     },
     {
       "module": "section1",
+      "page": "scenerio.adoc",
+      "seconds": 60
+    },
+    {
+      "module": "section1",
+      "page": "lab1.adoc",
+      "seconds": 32
+    },
+    {
+      "module": "section1",
+      "page": "lab2.adoc",
+      "seconds": 27
+    },
+    {
+      "module": "section1",
+      "page": "lab3.adoc",
+      "seconds": 34
+    },
+    {
+      "module": "section1",
+      "page": "lab4.adoc",
+      "seconds": 25
+    },
+    {
+      "module": "section1",
+      "page": "lab5.adoc",
+      "seconds": 25
+    },
+    {
+      "module": "section1",
+      "page": "lab6.adoc",
+      "seconds": 51
+    },
+    {
+      "module": "section1",
+      "page": "lab-summary.adoc",
+      "seconds": 61
+    },
+    {
+      "module": "section1",
+      "page": "index2.adoc",
+      "seconds": 25
+    },
+    {
+      "module": "section1",
       "page": "lightspeed.adoc",
       "seconds": 83
     },
     {
       "module": "section1",
-      "page": "scenerio.adoc",
-      "seconds": 96
+      "page": "lab7.adoc",
+      "seconds": 97
     },
     {
       "module": "section1",
-      "page": "lab1.adoc",
-      "seconds": 115
+      "page": "lab8.adoc",
+      "seconds": 65
     },
     {
       "module": "section1",
-      "page": "lab2.adoc",
-      "seconds": 55
+      "page": "lab-summary2.adoc",
+      "seconds": 59
     },
     {
-      "module": "section1",
-      "page": "lab-summary.adoc",
-      "seconds": 72
+      "module": "quiz",
+      "page": "index.adoc",
+      "seconds": 6
+    },
+    {
+      "module": "quiz",
+      "page": "next.adoc",
+      "seconds": 37
     }
   ]
 }
