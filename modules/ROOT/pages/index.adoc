@@ -6,11 +6,11 @@
 Welcome to this quick course on the _**Application Modernization with MTA**_.
 This course is the `fifth` in a series of `six` courses about **Application Platform Delivery**:
 
-* https://redhatquickcourses.github.io/etx-app-delivery-module1/etx-app-delivery-module1/1/index.html[_Application Platform Delivery Foundations_, window=browser]
+* https://redhatquickcourses.github.io/etx-app-delivery-module1/etx-app-delivery-module1/1/index.html[_Introduction to Application Platforms and Platform Engineering_, window=browser] 
 * https://redhatquickcourses.github.io/etx-app-delivery-module2/etx-app-delivery-module2/1/index.html[_Software Factory Foundations with OpenShift Dev Spaces_, window=browser]
-* https://redhatquickcourses.github.io/etx-app-delivery-module3/etx-app-delivery-module3/1/index.html[_Software Factory & Developer Spaces_, window=browser]
-* https://redhatquickcourses.github.io/etx-app-delivery-module4/etx-app-delivery-module4/1/index.html[_Software Factory and CI/CD_, window=browser]
-* _Application Modernization with MTA_(_This course_)
+* https://redhatquickcourses.github.io/etx-app-delivery-module3/etx-app-delivery-module3/1/index.html[_Software Delivery with OpenShift Pipelines and GitOps_, window=browser]
+* https://redhatquickcourses.github.io/etx-app-delivery-module4/etx-app-delivery-module4/1/index.html[_DevEx with Red Hat Developer Hub_, window=browser]
+* https://redhatquickcourses.github.io/etx-app-delivery-module5/etx-app-delivery-module5/1/index.html[_Application Modernization with MTA_] (_This course_)
 * https://redhatquickcourses.github.io/etx-app-delivery-module6/etx-app-delivery-module6/1/index.html[_Trusted Software Supply Chain (TSSC)_, window=browser]
 
 == What's in this course?
