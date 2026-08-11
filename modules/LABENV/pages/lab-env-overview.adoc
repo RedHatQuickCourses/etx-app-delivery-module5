@@ -28,19 +28,18 @@ image::info.png[link={imagesdir}/info.png, width=500]
 [cols="1,2,2",options="header"]
 |===
 |Environment |Purpose |Used In
-
 |*Service Enablement: App Platform Software Factory* (Primary Cluster)
 |Development platform where you'll build the internal developer platform, configure CI/CD, and deploy applications.
 a|
-* https://redhatquickcourses.github.io/etx-app-delivery-module2/etx-app-delivery-module2/1/index.html[Software Factory Foundations with OpenShift Dev Spaces]
-* https://redhatquickcourses.github.io/etx-app-delivery-module3/etx-app-delivery-module3/1/index.html[Module 3]
-* https://redhatquickcourses.github.io/etx-app-delivery-module4/etx-app-delivery-module4/1/index.html[Module 4]
-* https://redhatquickcourses.github.io/etx-app-delivery-module5/etx-app-delivery-module5/1/index.html[Module 5]
+* https://redhatquickcourses.github.io/etx-app-delivery-module2/etx-app-delivery-module2/1/index.html[_Software Factory Foundations with OpenShift Dev Spaces_]
+* https://redhatquickcourses.github.io/etx-app-delivery-module3/etx-app-delivery-module3/1/index.html[_Software Delivery with OpenShift Pipelines and GitOps_]
+* https://redhatquickcourses.github.io/etx-app-delivery-module4/etx-app-delivery-module4/1/index.html[_DevEx with Red Hat Developer Hub_]
+* https://redhatquickcourses.github.io/etx-app-delivery-module5/etx-app-delivery-module5/1/index.html[_Application Modernization with MTA_]
 
 |*Service Enablement: App Platform Runtime* (Secondary Cluster)
 |Runtime environment used to demonstrate GitOps-based promotion between environments.
 a|
-* https://redhatquickcourses.github.io/etx-app-delivery-module3/etx-app-delivery-module3/1/index.html[Module 3]
+* https://redhatquickcourses.github.io/etx-app-delivery-module3/etx-app-delivery-module3/1/index.html[_Software Delivery with OpenShift Pipelines and GitOps_]
 |===
 
 The required namespaces have already been created and are ready for use.
