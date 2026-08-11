@@ -1,5 +1,5 @@
 {
-  "totalSeconds": 1081,
+  "totalSeconds": 1089,
   "pageCount": 20,
   "pages": [
     {
@@ -100,7 +100,7 @@
     {
       "module": "quiz",
       "page": "next.adoc",
-      "seconds": 37
+      "seconds": 45
     }
   ]
 }
