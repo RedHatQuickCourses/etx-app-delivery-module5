@@ -11,7 +11,7 @@ This course is the `fifth` in a series of `six` courses about **Application Plat
 * https://redhatquickcourses.github.io/etx-app-delivery-module3/etx-app-delivery-module3/1/index.html[_Software Delivery with OpenShift Pipelines and GitOps_, window=browser]
 * https://redhatquickcourses.github.io/etx-app-delivery-module4/etx-app-delivery-module4/1/index.html[_DevEx with Red Hat Developer Hub_, window=browser]
 * https://redhatquickcourses.github.io/etx-app-delivery-module5/etx-app-delivery-module5/1/index.html[_Application Modernization with MTA_] (_This course_)
-* https://redhatquickcourses.github.io/etx-app-delivery-module6/etx-app-delivery-module6/1/index.html[_Trusted Software Supply Chain (TSSC)_, window=browser]
+* _Trusted Software Supply Chain (TSSC)_ (Coming Soon)
 
 == What's in this course?
 

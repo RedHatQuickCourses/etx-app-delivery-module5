@@ -1,18 +1,6 @@
 = Lab Environment
 :navtitle: Lab Environment
 
-Before starting the hands-on exercises, provision the required lab environments from the https://demo.redhat.com/[Red Hat Demo Platform (RHDP)].
-
-This learning path uses two OpenShift clusters that represent different stages of a software delivery pipeline. Both environments should be provisioned before you begin the labs.
-
-[NOTE]
-====
-* RHDP for RedHat associates: https://demo.redhat.com/
-* RHDP for RedHat partners: https://partner.demo.redhat.com/
-====
-
-== Lab Environments
-
 **No new lab environment is required for this module.** Continue using the **same RHDP lab environment** that you provisioned in **https://redhatquickcourses.github.io/etx-app-delivery-module2/etx-app-delivery-module2/1/index.html[_Software Factory Foundations with OpenShift Dev Spaces_, window=browser]**. 
 
 The environment includes the https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/openshift-cnv.app-platform-factory-cnv.prod&utm_source=webapp&utm_medium=share-link[**Service Enablement: App Platform Software Factory**] and https://catalog.demo.redhat.com/catalog/babylon-catalog-prod?item=babylon-catalog-prod/openshift-cnv.app-platform-runtime-cnv.prod&utm_source=webapp&utm_medium=share-link[**Service Enablement: App Platform Runtime**] labs required for this module.
@@ -20,7 +8,6 @@ The environment includes the https://catalog.demo.redhat.com/catalog/babylon-cat
 Do **not** provision, delete, reset, or reprovision the environment. The labs in this module build on the applications, configurations, and platform resources created in **https://redhatquickcourses.github.io/etx-app-delivery-module2/etx-app-delivery-module2/1/index.html[_Software Factory Foundations with OpenShift Dev Spaces_, window=browser]**.
 
 The cluster URLs and credentials are available from the **My Services** page in RHDP.
-
 
 == OpenShift Clusters
 
