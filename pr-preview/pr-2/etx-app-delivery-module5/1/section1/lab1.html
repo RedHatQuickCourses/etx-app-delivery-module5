@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Lab 1: Migration Toolkit for Applications Prerequisites :: Application Modernization with MTA</title>
+    <link rel="prev" href="scenerio.html">
+    <link rel="next" href="lab2.html">
+    <meta name="generator" content="Antora 3.2.0-alpha.12">
+    <link rel="stylesheet" href="../../../_/css/site.css">
+    <link rel="stylesheet" href="../../../_/css/custom.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/tabs.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/collapsible.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/reading-time.css">
+    <link rel="stylesheet" href="../../../_/css/vendor/audio-transcript.css">
+    <script>var uiRootPath = '../../../_'</script>
+  </head>
+  <body class="article">
+<header class="header">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="https://www.redhat.com" target="_blank"><img src="../../../_/img/redhat-logo.png" height="40px" alt="Red Hat"></a>
+      <a class="navbar-item" style="font-size: 24px; color: white" href="../../..">Application Modernization with MTA</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="https://github.com/RedHatQuickCourses/etx-app-delivery-module5/issues" target="_blank">Report Issues</a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="etx-app-delivery-module5" data-version="1">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../index.html">Application Modernization with MTA</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../index.html">Application Modernization with MTA</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../LABENV/lab-env-overview.html">Lab Environment</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index.html">MTA Overview</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="intro.html">Modernizing Applications with MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="components.html">MTA at Scale</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="scenerio.html">Lab Scenario</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="2">
+    <a class="nav-link" href="lab1.html">Lab 1: MTA Prerequisites</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab2.html">Lab 2: Install MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab3.html">Lab 3: Deploy MTA with Developer Lightspeed</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab4.html">Lab 4: Configure GitLab Access</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab5.html">Lab 5: Import the Coolstore Application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab6.html">Lab 6: Analyze the Coolstore Application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab-summary.html">Lab Summary</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <button class="nav-item-toggle"></button>
+    <a class="nav-link" href="index2.html">MTA with Red Hat Openshift Dev Spaces</a>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lightspeed.html">Developer Lightspeed for MTA</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab7.html">Lab 7: Install the MTA Extension in Dev Spaces</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab8.html">Lab 8: Analyze and Modernize the Application</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="lab-summary2.html">Lab Summary</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../quiz/index.html">Knowledge Check</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="../quiz/next.html">Summary and What&#8217;s next?</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Application Modernization with MTA</span>
+    <span class="version">1</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <a class="title" href="../index.html">Application Modernization with MTA</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../index.html">1</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="../index.html">Application Modernization with MTA</a></li>
+    <li><a href="index.html">MTA Overview</a></li>
+    <li><a href="lab1.html">Lab 1: MTA Prerequisites</a></li>
+  </ul>
+</nav>
+</div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Lab 1: Migration Toolkit for Applications Prerequisites</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this lab, you&#8217;ll configure the Red Hat Model-as-a-Service (MaaS) platform and create an API key for AI-assisted application modernization. You&#8217;ll use this API key in the upcoming Migration Toolkit for Applications (MTA) labs.</p>
+</div>
+<div class="paragraph">
+<p>By the end of this lab, you will have:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Accessed the Red Hat MaaS platform</p>
+</li>
+<li>
+<p>Subscribed to the required Granite model</p>
+</li>
+<li>
+<p>Created and saved an API key for MTA</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configure_the_red_hat_maas_platform"><a class="anchor" href="#_configure_the_red_hat_maas_platform"></a>Configure the Red Hat MaaS Platform</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Migration Toolkit for Applications integrates with Red Hat Developer Lightspeed to provide AI-assisted migration recommendations. Before using MTA, configure the Red Hat Model-as-a-Service (MaaS) platform and create an API key.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open the [<a href="https://maas-rhdp-frontend.apps.maas.redhatworkshops.io/login/">Red Hat MaaS Portal</a>] in your browser and sign in using your Red Hat account.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/maas.png"><img src="_images/maas.png" alt="maas" width="600"></a>
+</div>
+<div class="title">Figure 1. Red Hat MaaS Portal(<strong>Click the image to view it in full size in a new browser tab</strong>)</div>
+</div>
+</li>
+<li>
+<p>From the navigation menu, select <strong>Models</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/models.png"><img src="_images/models.png" alt="models" width="600"></a>
+</div>
+<div class="title">Figure 2. Red Hat MaaS Portal Home page(<strong>Click the image to view it in full size in a new browser tab</strong>)</div>
+</div>
+</li>
+<li>
+<p>Select <strong>granite-3-2-8b-instruct</strong> and click <b class="button">Subscribe</b>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/subscribe.png"><img src="_images/subscribe.png" alt="subscribe" width="600"></a>
+</div>
+<div class="title">Figure 3. Subscribe to Granite model(<strong>Click the image to view it in full size in a new browser tab</strong>)</div>
+</div>
+</li>
+<li>
+<p>From the navigation menu, select <strong>API Keys</strong>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/api.png"><img src="_images/api.png" alt="api" width="600"></a>
+</div>
+<div class="title">Figure 4. Red Hat MaaS API Keys(<strong>Click the image to view it in full size in a new browser tab</strong>)</div>
+</div>
+</li>
+<li>
+<p>Click <b class="button">Create API Key</b>.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/key.png"><img src="_images/key.png" alt="key" width="600"></a>
+</div>
+<div class="title">Figure 5. Create API Key(<strong>Click the image to view it in full size in a new browser tab</strong>)</div>
+</div>
+</li>
+<li>
+<p>Enter the following values and click <b class="button">Create API Key</b>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Name</strong>: <code>MTA-Dev</code></p>
+</li>
+<li>
+<p><strong>Description</strong>: <code>AI-assisted modernization for MTA</code></p>
+</li>
+<li>
+<p><strong>Model</strong>: <code>granite-3-2-8b-instruct</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Copy the generated API key and save it securely. You&#8217;ll use this key in the upcoming MTA labs.</p>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/info.png"><img src="_images/info.png" alt="info" width="600"></a>
+</div>
+<div class="title">Figure 6. Sample API Key Information(<strong>Click the image to view it in full size in a new browser tab</strong>)</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<a class="image" href="_images/key2.png"><img src="_images/key2.png" alt="key2" width="600"></a>
+</div>
+<div class="title">Figure 7. Sample API Key(<strong>Click the image to view it in full size in a new browser tab</strong>)</div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<nav class="pagination">
+  <span class="prev"><a href="scenerio.html">Lab Scenario</a></span>
+  <span class="next"><a href="lab2.html">Lab 2: Install MTA</a></span>
+</nav>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <img src="../../../_/img/rhl-logo-red.png" height="40px" alt="Red Hat"  href="https://redhat.com" >
+</footer><script id="site-script" src="../../../_/js/site.js" data-ui-root-path="../../../_"></script>
+<script async src="../../../_/js/vendor/highlight.js"></script>
+<script defer src="../../../_/js/vendor/tabs.js"></script>
+<script defer src="../../../_/js/vendor/reading-time.js"></script>
+  </body>
+</html>
