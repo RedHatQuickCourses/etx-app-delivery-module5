@@ -53,4 +53,4 @@ By the end of this module, you will be able to:
 
 This course assumes that you have the following prior experience:
 
-1. https://training-lms.redhat.com/lmt/clmscoursedetails.prmain?in_sessionId=5034892A2J492834&in_selfContained=N&in_offeringId=57857955&in_tab_group=&in_from_module=CLMSBROWSEV2.PRMAIN[Red Hat OpenShift Container Platform (OCP) Technical Overview] or Kubernetes Basics
+1. https://training-lms.redhat.com/sso/saml/auth/rhlpint?RelayState=deeplinkoffering%3D91425414[Red Hat OpenShift Technical Overview (DO080) v4.20, window=browser] or Kubernetes Basics
