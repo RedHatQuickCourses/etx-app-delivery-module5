@@ -90,7 +90,10 @@ image::ready.png[align="center"]
 
 NOTE: You may see two Migration Toolkit for Applications extensions. Select the extension shown in the screenshot with the new MTA logo.
 
-. Install the MTA extension.
+. In the Extensions search bar, search for **Migration Toolkit for Applications - Java** and install the extension.
++
+.Migration Toolkit for Applications Extension(Click the image to view it in full size in a new browser tab)
+image::mta-extension-install.png[align="center"]
 
 . Once the installation is complete, verify that the MTA extension icon appears in the left-hand Activity Bar. Select this icon to open the MTA Analysis view.
 +
