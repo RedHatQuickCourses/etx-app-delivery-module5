@@ -140,10 +140,7 @@ In the settings screen, fill in the details, make sure to substitute **OPENSHIFT
 * **Enable Hub**: Checked
 * **Hub URL**: `https://mta-openshift-mta.${OPENSHIFT_CLUSTER_INGRESS_DOMAIN}
 * **Insecure connection**: Checked
-* **Enable authentication**: Checked
-* **Select**: btn:[Credentials]
-* **Username**: `platform-admin`
-* **Password**: `openshift`
+* **Enable authentication**: Unchecked
 * **Solution Server**: Enabled
 * **Profile Sync**: Enabled
 +
